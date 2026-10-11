@@ -1,41 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d1c">
-<title>AJIT NOVA Search</title>
+<meta name="theme-color" content="#080d20">
+<title>AJIT NOVA | Smart Search</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#17356b,#080d1c 65%);color:white;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;padding:22px}
-main{width:100%;max-width:650px;text-align:center}
-.logo{font-size:clamp(38px,10vw,65px);font-weight:900;letter-spacing:2px;color:#65c8ff;text-shadow:0 0 25px #1677ff}
-.tag{color:#b7c8e8;margin:12px 0 30px}
-.search{display:flex;gap:8px;background:white;padding:7px;border-radius:18px;box-shadow:0 0 30px #287dff45}
-input{min-width:0;flex:1;border:0;outline:0;padding:13px;font-size:16px;color:#111;background:transparent}
-button{border:0;border-radius:12px;background:#1769ff;color:white;padding:0 18px;font-size:16px;font-weight:bold}
-.links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
-.links a{color:#d8e8ff;background:#ffffff12;border:1px solid #ffffff25;padding:11px 14px;border-radius:12px;text-decoration:none}
-.note{font-size:13px;color:#a8b8d4;margin-top:28px;line-height:1.6}
+body{
+ margin:0;min-height:100vh;padding:24px 16px;
+ display:flex;align-items:center;justify-content:center;
+ font-family:Arial,sans-serif;color:#f5f7ff;
+ background:radial-gradient(circle at 10% 10%,#214e9b,transparent 40%),
+ radial-gradient(circle at 90% 90%,#682b9d,transparent 40%),
+ linear-gradient(135deg,#070b18,#111d3b,#080d20);
+}
+.container{width:100%;max-width:680px;text-align:center}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}
+.brand{font-size:14px;letter-spacing:3px;font-weight:bold;color:#d4e4ff}
+.status{font-size:12px;color:#b8ffdc;padding:8px 12px;border:1px solid #9bffd344;border-radius:30px;background:#ffffff0b}
+.logo{
+ font-size:clamp(42px,11vw,70px);font-weight:900;letter-spacing:3px;margin:0;
+ background:linear-gradient(110deg,#fff,#8ec5ff,#d5adff);
+ -webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 0 22px #5a9dff55)
+}
+.tagline{color:#c3cfea;font-size:15px;margin:12px 0 30px}
+.panel{
+ padding:22px;border:1px solid #ffffff2b;border-radius:26px;
+ background:linear-gradient(135deg,#ffffff19,#ffffff07);
+ box-shadow:0 24px 70px #0005,inset 0 1px #ffffff25;
+ backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)
+}
+.search{display:flex;gap:10px}
+.search input{
+ width:100%;min-width:0;padding:17px 16px;border-radius:15px;
+ border:1px solid #ffffff35;background:#ffffff0d;color:white;
+ outline:none;font-size:16px
+}
+.search input::placeholder{color:#b5c2df}
+.search input:focus{border-color:#82b8ff;box-shadow:0 0 0 3px #64a5ff22}
+.search button{
+ border:1px solid #ffffff35;border-radius:15px;padding:0 20px;
+ color:white;font-size:15px;font-weight:bold;cursor:pointer;
+ background:linear-gradient(135deg,#438bff,#7955e9);
+ box-shadow:0 7px 22px #497aff45
+}
+.label{text-align:left;color:#c5d2ef;font-size:12px;letter-spacing:1px;margin:25px 0 12px}
+.links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.links a{
+ padding:13px 3px;text-decoration:none;color:#e8efff;font-size:12px;
+ border:1px solid #ffffff20;border-radius:15px;background:#ffffff0b;
+ backdrop-filter:blur(12px);transition:.2s
+}
+.links a:hover{background:#ffffff20;border-color:#8dbbff88;transform:translateY(-2px)}
+.links span{display:block;font-size:21px;margin-bottom:7px}
+.note{font-size:12px;line-height:1.8;color:#aebbd8;margin:20px 0 0}
+footer{font-size:12px;color:#99a9ca;margin-top:30px}
+@media(max-width:430px){
+ body{padding:18px 12px}
+ .top{margin-bottom:42px}
+ .panel{padding:15px;border-radius:22px}
+ .search{flex-direction:column}
+ .search button{padding:15px}
+ .links{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 </style>
 </head>
 <body>
-<main>
-<div class="logo">AJIT NOVA</div>
-<p class="tag">आपकी दुनिया, आपकी खोज 🚀</p>
-<form class="search" action="https://www.google.com/search" method="get">
-<input name="q" type="search" placeholder="यहाँ कुछ भी खोजें..." required>
-<button type="submit">खोजें</button>
-</form>
-<div class="links">
-<a href="https://www.google.com/">Google</a>
-<a href="https://www.youtube.com/">YouTube</a>
-<a href="https://www.wikipedia.org/">Wikipedia</a>
-<a href="https://www.google.com/maps">Maps</a>
-<a href="https://news.google.com/">News</a>
-</div>
-<p class="note">AJIT NOVA — Free Web Search<br>अपनी खोज लिखें और वेब पर परिणाम पाएँ।</p>
+<main class="container">
+ <div class="top">
+  <div class="brand">✦ AJIT NOVA</div>
+  <div class="status">● ONLINE SEARCH</div>
+ </div>
+
+ <h1 class="logo">AJIT NOVA</h1>
+ <p class="tagline">आपकी दुनिया, आपकी एक खोज।</p>
+
+ <section class="panel">
+  <form class="search" action="https://www.google.com/search" method="get">
+   <input type="search" name="q" placeholder="यहाँ कुछ भी खोजें..." aria-label="खोजें" required>
+   <button type="submit">खोजें ↗</button>
+  </form>
+
+  <p class="label">✦ QUICK ACCESS</p>
+  <nav class="links">
+   <a href="https://www.google.com/"><span>🔎</span>Google</a>
+   <a href="https://www.youtube.com/"><span>▶️</span>YouTube</a>
+   <a href="https://hi.wikipedia.org/"><span>📚</span>Wikipedia</a>
+   <a href="https://maps.google.com/"><span>📍</span>Maps</a>
+   <a href="https://news.google.com/"><span>📰</span>News</a>
+  </nav>
+
+  <p class="note">Smart, simple और fast search experience.<br>
+  AJIT NOVA — आपका अपना सर्च पेज।</p>
+ </section>
+
+ <footer>MADE WITH ♥ BY AJIT · © 2026 AJIT NOVA</footer>
 </main>
 </body>
 </html>
