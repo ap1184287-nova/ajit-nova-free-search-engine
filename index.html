@@ -1,102 +1,303 @@
+
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d20">
-<title>AJIT NOVA | Smart Search</title>
-<style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:24px 16px;
- display:flex;align-items:center;justify-content:center;
- font-family:Arial,sans-serif;color:#f5f7ff;
- background:radial-gradient(circle at 10% 10%,#214e9b,transparent 40%),
- radial-gradient(circle at 90% 90%,#682b9d,transparent 40%),
- linear-gradient(135deg,#070b18,#111d3b,#080d20);
-}
-.container{width:100%;max-width:680px;text-align:center}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:48px}
-.brand{font-size:14px;letter-spacing:3px;font-weight:bold;color:#d4e4ff}
-.status{font-size:12px;color:#b8ffdc;padding:8px 12px;border:1px solid #9bffd344;border-radius:30px;background:#ffffff0b}
-.logo{
- font-size:clamp(42px,11vw,70px);font-weight:900;letter-spacing:3px;margin:0;
- background:linear-gradient(110deg,#fff,#8ec5ff,#d5adff);
- -webkit-background-clip:text;background-clip:text;color:transparent;
- filter:drop-shadow(0 0 22px #5a9dff55)
-}
-.tagline{color:#c3cfea;font-size:15px;margin:12px 0 30px}
-.panel{
- padding:22px;border:1px solid #ffffff2b;border-radius:26px;
- background:linear-gradient(135deg,#ffffff19,#ffffff07);
- box-shadow:0 24px 70px #0005,inset 0 1px #ffffff25;
- backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)
-}
-.search{display:flex;gap:10px}
-.search input{
- width:100%;min-width:0;padding:17px 16px;border-radius:15px;
- border:1px solid #ffffff35;background:#ffffff0d;color:white;
- outline:none;font-size:16px
-}
-.search input::placeholder{color:#b5c2df}
-.search input:focus{border-color:#82b8ff;box-shadow:0 0 0 3px #64a5ff22}
-.search button{
- border:1px solid #ffffff35;border-radius:15px;padding:0 20px;
- color:white;font-size:15px;font-weight:bold;cursor:pointer;
- background:linear-gradient(135deg,#438bff,#7955e9);
- box-shadow:0 7px 22px #497aff45
-}
-.label{text-align:left;color:#c5d2ef;font-size:12px;letter-spacing:1px;margin:25px 0 12px}
-.links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
-.links a{
- padding:13px 3px;text-decoration:none;color:#e8efff;font-size:12px;
- border:1px solid #ffffff20;border-radius:15px;background:#ffffff0b;
- backdrop-filter:blur(12px);transition:.2s
-}
-.links a:hover{background:#ffffff20;border-color:#8dbbff88;transform:translateY(-2px)}
-.links span{display:block;font-size:21px;margin-bottom:7px}
-.note{font-size:12px;line-height:1.8;color:#aebbd8;margin:20px 0 0}
-footer{font-size:12px;color:#99a9ca;margin-top:30px}
-@media(max-width:430px){
- body{padding:18px 12px}
- .top{margin-bottom:42px}
- .panel{padding:15px;border-radius:22px}
- .search{flex-direction:column}
- .search button{padding:15px}
- .links{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d20">
+  <title>AJIT NOVA — Explore Beyond</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070b19;
+      --panel: rgba(19, 29, 58, .72);
+      --text: #f4f7ff;
+      --muted: #a3b2d2;
+      --border: rgba(130, 165, 255, .22);
+      --blue: #69a5ff;
+      --purple: #a88aff;
+      --input: rgba(8, 15, 35, .8);
+    }
+
+    body.light {
+      color-scheme: light;
+      --bg: #edf5ff;
+      --panel: rgba(255, 255, 255, .78);
+      --text: #142344;
+      --muted: #637493;
+      --border: rgba(60, 111, 200, .2);
+      --blue: #1769dc;
+      --purple: #7750d9;
+      --input: rgba(239, 246, 255, .9);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 50% 0%, #172c63 0, transparent 48%),
+        radial-gradient(ellipse at 90% 65%, #29164d 0, transparent 38%),
+        var(--bg);
+      color: var(--text);
+      transition: background .3s, color .3s;
+    }
+
+    body.light {
+      background:
+        radial-gradient(ellipse at 50% 0%, #c8e2ff 0, transparent 50%),
+        var(--bg);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 6%;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .brand span { color: var(--blue); }
+
+    button { font: inherit; cursor: pointer; }
+
+    .theme-btn, .quick-link {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
+
+    main {
+      width: min(920px, 92%);
+      margin: 0 auto;
+      padding: 75px 0 40px;
+      text-align: center;
+    }
+
+    .orb {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 26px;
+      font-size: 36px;
+      background: linear-gradient(135deg, #348bff, #8264ed);
+      box-shadow: 0 0 45px #397bff66;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 8vw, 66px);
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #64b6ff, #a994ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 14px 0 32px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      backdrop-filter: blur(22px);
+      box-shadow: 0 12px 55px #0002;
+    }
+
+    .search-box input {
+      min-width: 0;
+      flex: 1;
+      padding: 15px 10px;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      background: transparent;
+      font-size: 16px;
+    }
+
+    .search-box input::placeholder { color: var(--muted); }
+
+    .search-btn {
+      padding: 14px 20px;
+      color: white;
+      border: 0;
+      border-radius: 14px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #287cff, #7958e9);
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 30px 0 14px;
+    }
+
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .quick-link { font-size: 14px; }
+    .quick-link:hover, .theme-btn:hover {
+      border-color: var(--blue);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 65px;
+      text-align: left;
+    }
+
+    .card {
+      padding: 20px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      border-radius: 20px;
+    }
+
+    .card .icon { font-size: 25px; }
+    .card h3 { font-size: 16px; margin: 12px 0 7px; }
+    .card p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0; }
+
+    footer {
+      padding: 25px 10px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      main { padding-top: 55px; }
+      .features { grid-template-columns: 1fr; margin-top: 45px; }
+      .search-box { gap: 4px; }
+      .search-btn { padding: 13px; }
+      .brand { font-size: 19px; }
+    }
+  </style>
 </head>
 <body>
-<main class="container">
- <div class="top">
-  <div class="brand">✦ AJIT NOVA</div>
-  <div class="status">● ONLINE SEARCH</div>
- </div>
+  <header class="topbar">
+    <div class="brand">✦ AJIT <span>NOVA</span></div>
+    <button class="theme-btn" id="themeToggle" type="button">
+      ☀️ Light Mode
+    </button>
+  </header>
 
- <h1 class="logo">AJIT NOVA</h1>
- <p class="tagline">आपकी दुनिया, आपकी एक खोज।</p>
+  <main>
+    <div class="orb">✦</div>
+    <h1>Explore <span>Beyond.</span></h1>
+    <p class="subtitle">
+      Your world of information, one search away.<br>
+      Discover something amazing today.
+    </p>
 
- <section class="panel">
-  <form class="search" action="https://www.google.com/search" method="get">
-   <input type="search" name="q" placeholder="यहाँ कुछ भी खोजें..." aria-label="खोजें" required>
-   <button type="submit">खोजें ↗</button>
-  </form>
+    <form class="search-box" id="searchForm">
+      <span aria-hidden="true">🔎</span>
+      <input id="searchInput" type="search"
+        placeholder="Search anything on the web..."
+        aria-label="Search the web" required>
+      <button class="search-btn" type="submit">Search ↗</button>
+    </form>
 
-  <p class="label">✦ QUICK ACCESS</p>
-  <nav class="links">
-   <a href="https://www.google.com/"><span>🔎</span>Google</a>
-   <a href="https://www.youtube.com/"><span>▶️</span>YouTube</a>
-   <a href="https://hi.wikipedia.org/"><span>📚</span>Wikipedia</a>
-   <a href="https://maps.google.com/"><span>📍</span>Maps</a>
-   <a href="https://news.google.com/"><span>📰</span>News</a>
-  </nav>
+    <p class="label">EXPLORE THE WEB</p>
+    <div class="quick-links">
+      <button class="quick-link" data-query="latest news">📰 News</button>
+      <button class="quick-link" data-query="science">🔬 Science</button>
+      <button class="quick-link" data-query="technology">💻 Technology</button>
+      <button class="quick-link" data-query="education">📚 Education</button>
+      <button class="quick-link" data-query="India">🇮🇳 India</button>
+    </div>
 
-  <p class="note">Smart, simple और fast search experience.<br>
-  AJIT NOVA — आपका अपना सर्च पेज।</p>
- </section>
+    <section class="features">
+      <article class="card">
+        <div class="icon">🌌</div>
+        <h3>Explore Freely</h3>
+        <p>Search the web and discover new information.</p>
+      </article>
+      <article class="card">
+        <div class="icon">⚡</div>
+        <h3>Simple & Fast</h3>
+        <p>A clean interface designed for quick searches.</p>
+      </article>
+      <article class="card">
+        <div class="icon">🛡️</div>
+        <h3>Your Experience</h3>
+        <p>Choose the theme that feels right for you.</p>
+      </article>
+    </section>
+  </main>
 
- <footer>MADE WITH ♥ BY AJIT · © 2026 AJIT NOVA</footer>
-</main>
+  <footer>AJIT NOVA · Explore Beyond the Ordinary</footer>
+
+  <script>
+    const toggle = document.getElementById("themeToggle");
+
+    function setTheme(theme) {
+      document.body.classList.toggle("light", theme === "light");
+      toggle.textContent =
+        theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+      try {
+        localStorage.setItem("ajit-nova-theme", theme);
+      } catch (e) {}
+    }
+
+    let savedTheme = "dark";
+    try {
+      savedTheme = localStorage.getItem("ajit-nova-theme") || "dark";
+    } catch (e) {}
+    setTheme(savedTheme);
+
+    toggle.addEventListener("click", () => {
+      setTheme(document.body.classList.contains("light") ? "dark" : "light");
+    });
+
+    function searchWeb(query) {
+      const q = query.trim();
+      if (!q) return;
+      window.location.href =
+        "https://www.google.com/search?q=" + encodeURIComponent(q);
+    }
+
+    document.getElementById("searchForm").addEventListener("submit", e => {
+      e.preventDefault();
+      searchWeb(document.getElementById("searchInput").value);
+    });
+
+    document.querySelectorAll("[data-query]").forEach(button => {
+      button.addEventListener("click", () => {
+        searchWeb(button.dataset.query);
+      });
+    });
+  </script>
 </body>
 </html>
