@@ -1,0 +1,25 @@
+
+{
+  "id": "/ajit-nova-free-search-engine/",
+  "name": "AJIT NOVA",
+  "short_name": "NOVA",
+  "description": "AJIT NOVA - Explore Beyond",
+  "start_url": "/ajit-nova-free-search-engine/",
+  "scope": "/ajit-nova-free-search-engine/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070b19",
+  "theme_color": "#080d20",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
