@@ -424,6 +424,97 @@
           "इस browser में Voice Search उपलब्ध नहीं है। Chrome में कोशिश करें।";
       });
     }
+<!-- AJIT NOVA: Custom Background -->
+<style>
+  #nova-bg-btn {
+    position: fixed;
+    right: 14px;
+    bottom: 18px;
+    z-index: 9999;
+    padding: 12px 16px;
+    border: 1px solid #70c7ff;
+    border-radius: 30px;
+    background: #101827;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 18px #0005;
+  }
+
+  #nova-bg-input {
+    display: none;
+  }
+
+  body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+</style>
+
+<input
+  type="file"
+  id="nova-bg-input"
+  accept="image/*"
+/>
+
+<button id="nova-bg-btn" type="button">
+  🖼️ Change Background
+</button>
+
+<script>
+(function () {
+  const input = document.getElementById("nova-bg-input");
+  const button = document.getElementById("nova-bg-btn");
+
+  function restoreBackground() {
+    try {
+      const saved = localStorage.getItem("ajitNovaBackground");
+      if (saved) {
+        document.body.style.backgroundImage = 'url("' + saved + '")';
+      }
+    } catch (e) {}
+  }
+
+  button.addEventListener("click", function () {
+    input.click();
+  });
+
+  input.addEventListener("change", function () {
+    const file = input.files && input.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("Bhai, ek image select karo.");
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      alert("Bhai, 2 MB se chhoti photo select karo.");
+      input.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      try {
+        localStorage.setItem("ajitNovaBackground", reader.result);
+        document.body.style.backgroundImage =
+          'url("' + reader.result + '")';
+      } catch (e) {
+        alert("Photo save nahi hui. Chhoti image try karo.");
+      }
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  restoreBackground();
+})();
+</script>
+  
   </script>
 </body>
 </html>
