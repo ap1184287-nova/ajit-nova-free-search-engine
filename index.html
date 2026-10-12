@@ -1,276 +1,288 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#06131b">
-  <title>AJIT NOVA — Explore Beyond</title>
+  <meta name="theme-color" content="#070b16">
+  <meta name="description" content="AJIT NOVA GLOBAL - Search the world">
+  <title>AJIT NOVA GLOBAL</title>
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #06131b;
-      --panel: rgba(12, 31, 42, .78);
-      --text: #f2fcff;
-      --muted: #a4c4cb;
-      --border: rgba(93, 233, 212, .24);
-      --blue: #54d9ff;
-      --green: #62f5c5;
-      --input: rgba(3, 18, 27, .82);
-      --glow: rgba(54, 226, 199, .18);
+      --bg: #070b16;
+      --panel: rgba(18, 27, 48, 0.88);
+      --text: #f4f7ff;
+      --muted: #9baac7;
+      --blue: #39bfff;
+      --border: rgba(140, 180, 255, 0.2);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: system-ui, Arial, sans-serif;
+      font-family: Arial, sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(ellipse at 15% 0%, #075b64 0%, transparent 42%),
-        radial-gradient(ellipse at 90% 15%, #153f80 0%, transparent 38%),
-        radial-gradient(ellipse at 70% 90%, #075744 0%, transparent 35%),
-        var(--bg);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse at top, #15305b 0%, transparent 55%);
+      background-size: cover;
+      background-position: center;
       background-attachment: fixed;
+      transition: background 0.3s;
     }
 
-    button, input { font: inherit; }
-    button { cursor: pointer; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 8, 19, 0.36);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
 
     .topbar {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding: 18px 6%;
-      border-bottom: 1px solid var(--border);
-      background: rgba(5, 19, 28, .62);
-      backdrop-filter: blur(18px);
     }
 
     .brand {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
 
     .brand span {
-      color: var(--green);
-      text-shadow: 0 0 18px #62f5c555;
+      color: var(--blue);
     }
 
-    .theme-btn, .mic-btn, .quick-link {
-      color: var(--text);
+    .top-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .small-btn {
       border: 1px solid var(--border);
       background: var(--panel);
-      border-radius: 13px;
-      padding: 10px 13px;
-      transition: .2s ease;
-    }
-
-    .theme-btn:hover, .mic-btn:hover, .quick-link:hover {
-      border-color: var(--green);
-      box-shadow: 0 0 18px var(--glow);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
     }
 
     main {
-      width: min(900px, 92%);
-      margin: auto;
-      padding: 75px 0 45px;
+      width: min(760px, 100%);
+      margin: 0 auto;
+      padding: 65px 18px 110px;
       text-align: center;
     }
 
     .orb {
-      width: 72px;
-      height: 72px;
+      width: 76px;
+      height: 76px;
+      border-radius: 25px;
+      margin: 0 auto 22px;
       display: grid;
       place-items: center;
-      margin: 0 auto 24px;
-      border-radius: 24px;
-      color: #041b20;
-      font-size: 27px;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--blue), var(--green));
-      box-shadow: 0 0 38px #48edc344;
+      font-size: 35px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(135deg, #138aff, #744bff);
+      box-shadow: 0 0 42px #258cff45;
+      transform: rotate(-5deg);
     }
 
     h1 {
+      font-size: clamp(34px, 8vw, 58px);
       margin: 0;
-      font-size: clamp(38px, 8vw, 67px);
       letter-spacing: -2px;
-      line-height: 1.15;
     }
 
     h1 span {
-      background: linear-gradient(90deg, #55e4ff, #67f5bd);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--blue);
     }
 
     .subtitle {
       color: var(--muted);
-      line-height: 1.8;
-      margin: 18px 0 34px;
+      margin: 15px 0 32px;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
-    .search-box {
+    .searchbox {
       display: flex;
-      align-items: center;
       gap: 8px;
       padding: 8px;
-      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 10px 45px #0003, 0 0 28px var(--glow);
-      transition: .25s ease;
+      border-radius: 19px;
+      background: var(--panel);
+      box-shadow: 0 15px 55px #0003;
+      backdrop-filter: blur(15px);
     }
 
-    .search-box:focus-within {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px var(--glow), 0 0 30px var(--glow);
-    }
-
-    .search-box input {
+    .searchbox input {
       min-width: 0;
       flex: 1;
-      padding: 14px 10px;
-      border: 0;
-      outline: 0;
-      color: var(--text);
+      border: none;
+      outline: none;
       background: transparent;
+      color: var(--text);
+      padding: 13px 10px;
       font-size: 16px;
     }
 
-    .search-box input::placeholder { color: var(--muted); }
+    .searchbox input::placeholder {
+      color: var(--muted);
+    }
 
     .search-btn {
-      padding: 14px 18px;
-      color: #04201e;
-      border: 0;
+      border: none;
       border-radius: 13px;
-      font-weight: 800;
-      background: linear-gradient(120deg, var(--blue), var(--green));
-      transition: .2s ease;
+      padding: 0 20px;
+      color: #04111e;
+      background: linear-gradient(135deg, #64d8ff, #329cff);
+      font-weight: bold;
     }
 
-    .search-btn:hover {
-      box-shadow: 0 0 22px #5be9d677;
-      transform: translateY(-1px);
-    }
-
-    .mic-btn { padding: 12px; }
-    .mic-btn.listening {
-      background: #126c68;
-      border-color: var(--green);
-      box-shadow: 0 0 22px var(--glow);
-    }
-
-    .status {
-      min-height: 20px;
-      color: var(--muted);
-      font-size: 13px;
-      margin: 12px 0 0;
-    }
-
-    .label {
-      margin: 32px 0 14px;
+    .section-title {
+      margin: 35px 0 15px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 750;
       letter-spacing: 2px;
     }
 
-    .quick-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .features {
+    .shortcuts {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 60px;
-      text-align: left;
+      gap: 12px;
     }
 
-    .card {
-      padding: 21px;
-      border: 1px solid var(--border);
+    .shortcut {
+      text-decoration: none;
+      color: var(--text);
       background: var(--panel);
-      border-radius: 19px;
-      backdrop-filter: blur(18px);
-      transition: .25s ease;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 8px;
+      backdrop-filter: blur(12px);
+      transition: transform .2s, border-color .2s;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--green);
-      box-shadow: 0 10px 30px var(--glow);
+    .shortcut:hover {
+      transform: translateY(-3px);
+      border-color: var(--blue);
     }
 
-    .card h3 { font-size: 16px; margin: 0 0 9px; }
+    .shortcut .emoji {
+      display: block;
+      font-size: 25px;
+      margin-bottom: 9px;
+    }
 
-    .card p {
-      color: var(--muted);
+    .shortcut .label {
       font-size: 13px;
+      font-weight: bold;
+    }
+
+    .hint {
+      margin-top: 26px;
+      font-size: 12px;
+      color: var(--muted);
       line-height: 1.7;
-      margin: 0;
     }
 
     footer {
-      padding: 25px 10px;
       text-align: center;
-      font-size: 12px;
       color: var(--muted);
-      border-top: 1px solid var(--border);
+      font-size: 12px;
+      padding: 18px;
+    }
+
+    #photoInput {
+      display: none;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 88px;
+      transform: translateX(-50%);
+      max-width: 90%;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #18243a;
+      border: 1px solid var(--border);
+      color: white;
+      font-size: 13px;
+      display: none;
+      z-index: 20;
     }
 
     body.light {
-      color-scheme: light;
-      --bg: #eefaf8;
-      --panel: rgba(255, 255, 255, .83);
-      --text: #103039;
-      --muted: #58757b;
-      --border: rgba(22, 144, 132, .23);
-      --input: #f8ffff;
-      --glow: rgba(28, 178, 157, .13);
+      --bg: #edf4ff;
+      --panel: rgba(255, 255, 255, 0.91);
+      --text: #142039;
+      --muted: #60708c;
+      --border: rgba(60, 95, 150, 0.2);
     }
 
-    body.light .topbar { background: rgba(245, 255, 253, .8); }
-
-    body.light {
-      background:
-        radial-gradient(ellipse at 15% 0%, #b7f4e7 0%, transparent 42%),
-        radial-gradient(ellipse at 90% 15%, #c4e4ff 0%, transparent 38%),
-        var(--bg);
+    body.light::before {
+      background: rgba(255, 255, 255, 0.15);
     }
 
-    body.light .search-btn {
-      color: #07352f;
+    .bottom-tools {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: calc(100% - 24px);
+      max-width: 500px;
+      z-index: 10;
     }
 
-    @media (max-width: 600px) {
-      .topbar { padding: 15px 4%; }
-      .brand { font-size: 18px; letter-spacing: 1px; }
-      .theme-btn { font-size: 12px; padding: 9px; }
-      main { padding-top: 52px; }
-      .search-box { gap: 4px; padding: 6px; }
-      .search-box input { font-size: 14px; padding: 12px 5px; }
-      .search-btn { font-size: 13px; padding: 13px 10px; }
-      .mic-btn { padding: 11px 9px; }
-      .features { grid-template-columns: 1fr; margin-top: 42px; }
-      .subtitle { font-size: 14px; }
-    }
+    @media (max-width: 420px) {
+      main {
+        padding-top: 48px;
+      }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
+      .brand {
+        font-size: 17px;
+      }
+
+      .small-btn {
+        padding: 9px;
+        font-size: 12px;
+      }
+
+      .searchbox {
+        gap: 4px;
+      }
+
+      .search-btn {
+        padding: 0 13px;
+      }
+
+      .shortcut {
+        padding: 15px 5px;
       }
     }
   </style>
@@ -279,242 +291,204 @@
 <body>
   <header class="topbar">
     <div class="brand">AJIT <span>NOVA</span></div>
-    <button class="theme-btn" id="themeToggle" type="button">
-      Light Mode
-    </button>
+
+    <div class="top-actions">
+      <button class="small-btn" id="themeBtn" type="button">
+        ☀️ Theme
+      </button>
+    </div>
   </header>
 
   <main>
-    <div class="orb">AN</div>
+    <div class="orb">N</div>
 
-    <h1>Explore <span>Beyond.</span></h1>
-    <p class="subtitle">
-      Your world of information, one search away.<br>
-      Discover something amazing today.
-    </p>
-
-    <form class="search-box" id="searchForm">
-      <input id="searchInput" type="search"
-        placeholder="Search anything on the web..."
-        aria-label="Search the web" required>
-
-      <button class="mic-btn" id="micBtn"
-        type="button" aria-label="Voice search">Mic</button>
-
-      <button class="search-btn" type="submit">Search</button>
-    </form>
-
-    <p class="status" id="voiceStatus" role="status"></p>
-
-    <p class="label">EXPLORE THE WEB</p>
-
-    <div class="quick-links">
-      <button class="quick-link" data-query="latest news">News</button>
-      <button class="quick-link" data-query="science">Science</button>
-      <button class="quick-link" data-query="technology">Technology</button>
-      <button class="quick-link" data-query="education">Education</button>
-      <button class="quick-link" data-query="India">India</button>
+    <h1>AJIT <span>NOVA</span></h1>
+    <div class="subtitle">
+      GLOBAL SEARCH ENGINE<br>
+      Your world. Your search.
     </div>
 
-    <section class="features">
-      <article class="card">
-        <h3>Explore Freely</h3>
-        <p>Search the web and discover new information.</p>
-      </article>
+    <form class="searchbox" id="searchForm">
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search anything in the world..."
+        aria-label="Search the web"
+        autocomplete="off"
+        required
+      >
+      <button class="search-btn" type="submit">Search ↗</button>
+    </form>
 
-      <article class="card">
-        <h3>Simple & Fast</h3>
-        <p>A clean interface designed for quick searches.</p>
-      </article>
+    <div class="section-title">EXPLORE THE WEB</div>
 
-      <article class="card">
-        <h3>Made for You</h3>
-        <p>A modern search experience with an Aurora-inspired design.</p>
-      </article>
-    </section>
+    <div class="shortcuts">
+      <a class="shortcut" href="https://www.google.com/" target="_blank" rel="noopener">
+        <span class="emoji">🌐</span>
+        <span class="label">Web</span>
+      </a>
+
+      <a class="shortcut" href="https://images.google.com/" target="_blank" rel="noopener">
+        <span class="emoji">🖼️</span>
+        <span class="label">Images</span>
+      </a>
+
+      <a class="shortcut" href="https://news.google.com/" target="_blank" rel="noopener">
+        <span class="emoji">📰</span>
+        <span class="label">News</span>
+      </a>
+
+      <a class="shortcut" href="https://maps.google.com/" target="_blank" rel="noopener">
+        <span class="emoji">📍</span>
+        <span class="label">Maps</span>
+      </a>
+
+      <a class="shortcut" href="https://scholar.google.com/" target="_blank" rel="noopener">
+        <span class="emoji">🎓</span>
+        <span class="label">Study</span>
+      </a>
+
+      <a class="shortcut" href="https://www.youtube.com/" target="_blank" rel="noopener">
+        <span class="emoji">▶️</span>
+        <span class="label">Videos</span>
+      </a>
+    </div>
+
+    <div class="hint">
+      Search the web. Discover something new.<br>
+      Made with ❤️ by AJIT NOVA
+    </div>
   </main>
 
-  <footer>AJIT NOVA · Explore Beyond the Ordinary</footer>
+  <div class="bottom-tools">
+    <button class="small-btn" id="backgroundBtn" type="button">
+      🖼️ My Background
+    </button>
+    <button class="small-btn" id="resetBtn" type="button">
+      ↩️ Reset
+    </button>
+  </div>
+
+  <input id="photoInput" type="file" accept="image/*">
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <footer>AJIT NOVA GLOBAL · Personal Web Search</footer>
 
   <script>
-    const toggle = document.getElementById("themeToggle");
+    const searchForm = document.getElementById("searchForm");
     const searchInput = document.getElementById("searchInput");
-    const micBtn = document.getElementById("micBtn");
-    const voiceStatus = document.getElementById("voiceStatus");
+    const photoInput = document.getElementById("photoInput");
+    const toast = document.getElementById("toast");
 
-    function setTheme(theme) {
-      document.body.classList.toggle("light", theme === "light");
-      toggle.textContent =
-        theme === "light" ? "Dark Mode" : "Light Mode";
-
-      try {
-        localStorage.setItem("ajit-nova-theme", theme);
-      } catch (e) {}
+    function showToast(message) {
+      toast.textContent = message;
+      toast.style.display = "block";
+      clearTimeout(window.novaToastTimer);
+      window.novaToastTimer = setTimeout(() => {
+        toast.style.display = "none";
+      }, 2500);
     }
 
-    let savedTheme = "dark";
+    searchForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const query = searchInput.value.trim();
+      if (!query) {
+        searchInput.focus();
+        return;
+      }
+      window.open(
+        "https://www.google.com/search?q=" + encodeURIComponent(query),
+        "_blank",
+        "noopener"
+      );
+    });
+
+    document.getElementById("backgroundBtn").addEventListener("click", function () {
+      photoInput.click();
+    });
+
+    function applyBackground(dataUrl) {
+      document.body.style.backgroundImage =
+        'linear-gradient(rgba(4,8,19,.48), rgba(4,8,19,.48)), url("' +
+        dataUrl + '")';
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center";
+      document.body.style.backgroundAttachment = "fixed";
+    }
+
     try {
-      savedTheme = localStorage.getItem("ajit-nova-theme") || "dark";
-    } catch (e) {}
+      const savedBackground = localStorage.getItem("ajitNovaBg");
+      if (savedBackground) applyBackground(savedBackground);
 
-    setTheme(savedTheme);
+      if (localStorage.getItem("ajitNovaLight") === "yes") {
+        document.body.classList.add("light");
+      }
+    } catch (error) {}
 
-    toggle.addEventListener("click", () => {
-      setTheme(document.body.classList.contains("light") ? "dark" : "light");
-    });
+    photoInput.addEventListener("change", function () {
+      const file = photoInput.files && photoInput.files[0];
+      if (!file) return;
 
-    function searchWeb(query) {
-      const q = query.trim();
-      if (!q) return;
+      if (!file.type.startsWith("image/")) {
+        showToast("Please choose an image.");
+        return;
+      }
 
-      window.location.href =
-        "https://www.google.com/search?q=" + encodeURIComponent(q);
-    }
+      if (file.size > 2 * 1024 * 1024) {
+        showToast("Choose a photo under 2 MB.");
+        photoInput.value = "";
+        return;
+      }
 
-    document.getElementById("searchForm").addEventListener("submit", e => {
-      e.preventDefault();
-      searchWeb(searchInput.value);
-    });
+      const reader = new FileReader();
 
-    document.querySelectorAll("[data-query]").forEach(button => {
-      button.addEventListener("click", () => {
-        searchWeb(button.dataset.query);
-      });
-    });
-
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-      recognition.lang = "hi-IN";
-      recognition.continuous = false;
-
-      micBtn.addEventListener("click", () => {
-        voiceStatus.textContent = "Listening... बोलिए";
-        micBtn.classList.add("listening");
-
+      reader.onload = function () {
         try {
-          recognition.start();
-        } catch (e) {
-          voiceStatus.textContent = "थोड़ी देर बाद फिर कोशिश करें।";
-          micBtn.classList.remove("listening");
+          localStorage.setItem("ajitNovaBg", reader.result);
+          applyBackground(reader.result);
+          showToast("Background saved on this device!");
+        } catch (error) {
+          showToast("Could not save. Try a smaller photo.");
         }
-      });
-
-      recognition.onresult = event => {
-        const query = event.results[0][0].transcript;
-        searchInput.value = query;
-        voiceStatus.textContent = "सुना गया: " + query;
-        searchWeb(query);
       };
 
-      recognition.onerror = () => {
-        voiceStatus.textContent =
-          "Mic permission और browser support जाँचें।";
-        micBtn.classList.remove("listening");
+      reader.onerror = function () {
+        showToast("Could not read this photo.");
       };
 
-      recognition.onend = () => {
-        micBtn.classList.remove("listening");
-      };
-    } else {
-      micBtn.addEventListener("click", () => {
-        voiceStatus.textContent =
-          "इस browser में Voice Search उपलब्ध नहीं है। Chrome में कोशिश करें।";
-      });
-    }
-<!-- AJIT NOVA: Custom Background -->
-<style>
-  #nova-bg-btn {
-    position: fixed;
-    right: 14px;
-    bottom: 18px;
-    z-index: 9999;
-    padding: 12px 16px;
-    border: 1px solid #70c7ff;
-    border-radius: 30px;
-    background: #101827;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 18px #0005;
-  }
+      reader.readAsDataURL(file);
+    });
 
-  #nova-bg-input {
-    display: none;
-  }
-
-  body {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-</style>
-
-<input
-  type="file"
-  id="nova-bg-input"
-  accept="image/*"
-/>
-
-<button id="nova-bg-btn" type="button">
-  🖼️ Change Background
-</button>
-
-<script>
-(function () {
-  const input = document.getElementById("nova-bg-input");
-  const button = document.getElementById("nova-bg-btn");
-
-  function restoreBackground() {
-    try {
-      const saved = localStorage.getItem("ajitNovaBackground");
-      if (saved) {
-        document.body.style.backgroundImage = 'url("' + saved + '")';
-      }
-    } catch (e) {}
-  }
-
-  button.addEventListener("click", function () {
-    input.click();
-  });
-
-  input.addEventListener("change", function () {
-    const file = input.files && input.files[0];
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-      alert("Bhai, ek image select karo.");
-      return;
-    }
-
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Bhai, 2 MB se chhoti photo select karo.");
-      input.value = "";
-      return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = function () {
+    document.getElementById("resetBtn").addEventListener("click", function () {
       try {
-        localStorage.setItem("ajitNovaBackground", reader.result);
-        document.body.style.backgroundImage =
-          'url("' + reader.result + '")';
-      } catch (e) {
-        alert("Photo save nahi hui. Chhoti image try karo.");
+        localStorage.removeItem("ajitNovaBg");
+        document.body.style.backgroundImage = "";
+        document.body.style.backgroundColor = "";
+        localStorage.removeItem("ajitNovaLight");
+        document.body.classList.remove("light");
+        showToast("Background and theme reset.");
+      } catch (error) {
+        showToast("Could not reset settings.");
       }
-    };
+    });
 
-    reader.readAsDataURL(file);
-  });
+    document.getElementById("themeBtn").addEventListener("click", function () {
+      document.body.classList.toggle("light");
 
-  restoreBackground();
-})();
-</script>
-  
+      try {
+        localStorage.setItem(
+          "ajitNovaLight",
+          document.body.classList.contains("light") ? "yes" : "no"
+        );
+      } catch (error) {}
+
+      showToast(
+        document.body.classList.contains("light")
+          ? "Light theme enabled."
+          : "Dark theme enabled."
+      );
+    });
   </script>
 </body>
 </html>
