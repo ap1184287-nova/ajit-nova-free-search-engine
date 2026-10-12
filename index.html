@@ -1,37 +1,23 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050816">
+  <meta name="theme-color" content="#06131b">
   <title>AJIT NOVA — Explore Beyond</title>
 
   <style>
     :root {
       color-scheme: dark;
-      --bg: #050816;
-      --panel: rgba(13, 23, 49, .78);
-      --text: #f4f7ff;
-      --muted: #9baed0;
-      --border: rgba(70, 151, 255, .27);
-      --blue: #48b5ff;
-      --purple: #8c65ff;
-      --input: rgba(4, 10, 27, .9);
-      --glow: rgba(42, 133, 255, .25);
-    }
-
-    body.light {
-      color-scheme: light;
-      --bg: #edf5ff;
-      --panel: rgba(255, 255, 255, .85);
-      --text: #142344;
-      --muted: #637493;
-      --border: rgba(60, 111, 200, .22);
-      --blue: #1769dc;
-      --purple: #7750d9;
-      --input: #f4f8ff;
-      --glow: rgba(42, 133, 255, .12);
+      --bg: #06131b;
+      --panel: rgba(12, 31, 42, .78);
+      --text: #f2fcff;
+      --muted: #a4c4cb;
+      --border: rgba(93, 233, 212, .24);
+      --blue: #54d9ff;
+      --green: #62f5c5;
+      --input: rgba(3, 18, 27, .82);
+      --glow: rgba(54, 226, 199, .18);
     }
 
     * { box-sizing: border-box; }
@@ -42,17 +28,11 @@
       font-family: system-ui, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(ellipse at 50% -10%, #163e83 0, transparent 48%),
-        radial-gradient(ellipse at 0% 65%, #10285a 0, transparent 38%),
-        radial-gradient(ellipse at 100% 80%, #301454 0, transparent 35%),
+        radial-gradient(ellipse at 15% 0%, #075b64 0%, transparent 42%),
+        radial-gradient(ellipse at 90% 15%, #153f80 0%, transparent 38%),
+        radial-gradient(ellipse at 70% 90%, #075744 0%, transparent 35%),
         var(--bg);
-      transition: background .3s, color .3s;
-    }
-
-    body.light {
-      background:
-        radial-gradient(ellipse at 50% 0%, #c8e2ff, transparent 55%),
-        var(--bg);
+      background-attachment: fixed;
     }
 
     button, input { font: inherit; }
@@ -65,118 +45,98 @@
       gap: 12px;
       padding: 18px 6%;
       border-bottom: 1px solid var(--border);
-      background: var(--panel);
-      backdrop-filter: blur(20px);
+      background: rgba(5, 19, 28, .62);
+      backdrop-filter: blur(18px);
     }
 
     .brand {
-      font-size: 23px;
+      font-size: 22px;
       font-weight: 900;
       letter-spacing: 2px;
-      white-space: nowrap;
     }
 
     .brand span {
-      color: var(--blue);
-      text-shadow: 0 0 18px var(--glow);
+      color: var(--green);
+      text-shadow: 0 0 18px #62f5c555;
     }
 
-    .theme-btn, .quick-link {
+    .theme-btn, .mic-btn, .quick-link {
       color: var(--text);
       border: 1px solid var(--border);
       background: var(--panel);
-      border-radius: 14px;
-      padding: 10px 14px;
-      transition: .25s ease;
+      border-radius: 13px;
+      padding: 10px 13px;
+      transition: .2s ease;
     }
 
-    .theme-btn:hover, .quick-link:hover {
-      border-color: var(--blue);
+    .theme-btn:hover, .mic-btn:hover, .quick-link:hover {
+      border-color: var(--green);
       box-shadow: 0 0 18px var(--glow);
-      transform: translateY(-2px);
     }
 
     main {
-      width: min(920px, 92%);
+      width: min(900px, 92%);
       margin: auto;
-      padding: 65px 0 45px;
+      padding: 75px 0 45px;
       text-align: center;
     }
 
     .orb {
-      width: 82px;
-      height: 82px;
-      margin: 0 auto 24px;
+      width: 72px;
+      height: 72px;
       display: grid;
       place-items: center;
-      border-radius: 27px;
-      font-size: 38px;
-      color: white;
-      background: linear-gradient(135deg, #168cff, #8555ff);
-      border: 1px solid rgba(255,255,255,.3);
-      box-shadow:
-        0 0 22px #168cff80,
-        0 0 65px #604dff35;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
+      margin: 0 auto 24px;
+      border-radius: 24px;
+      color: #041b20;
+      font-size: 27px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 0 38px #48edc344;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(38px, 8vw, 68px);
-      line-height: 1.15;
+      font-size: clamp(38px, 8vw, 67px);
       letter-spacing: -2px;
+      line-height: 1.15;
     }
 
     h1 span {
-      background: linear-gradient(90deg, #50c7ff, #9b7aff);
+      background: linear-gradient(90deg, #55e4ff, #67f5bd);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      filter: drop-shadow(0 0 15px #438dff30);
     }
 
     .subtitle {
       color: var(--muted);
       line-height: 1.8;
-      margin: 17px 0 32px;
+      margin: 18px 0 34px;
     }
 
     .search-box {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 9px;
+      gap: 8px;
+      padding: 8px;
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      backdrop-filter: blur(22px);
-      box-shadow:
-        0 12px 50px #0003,
-        0 0 25px var(--glow);
-      transition: .3s ease;
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 45px #0003, 0 0 28px var(--glow);
+      transition: .25s ease;
     }
 
     .search-box:focus-within {
-      border-color: var(--blue);
-      box-shadow:
-        0 0 0 3px var(--glow),
-        0 0 35px var(--glow);
-    }
-
-    .search-icon {
-      padding-left: 9px;
-      font-size: 21px;
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px var(--glow), 0 0 30px var(--glow);
     }
 
     .search-box input {
       min-width: 0;
       flex: 1;
-      padding: 15px 8px;
+      padding: 14px 10px;
       border: 0;
       outline: 0;
       color: var(--text);
@@ -184,32 +144,43 @@
       font-size: 16px;
     }
 
-    .search-box input::placeholder {
-      color: var(--muted);
-    }
+    .search-box input::placeholder { color: var(--muted); }
 
     .search-btn {
-      padding: 14px 21px;
-      color: white;
+      padding: 14px 18px;
+      color: #04201e;
       border: 0;
-      border-radius: 15px;
-      font-weight: 750;
-      background: linear-gradient(135deg, #168cff, #7955f5);
-      box-shadow: 0 0 20px #387bff40;
-      transition: .25s ease;
+      border-radius: 13px;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--blue), var(--green));
+      transition: .2s ease;
     }
 
     .search-btn:hover {
-      box-shadow: 0 0 28px #438dff90;
+      box-shadow: 0 0 22px #5be9d677;
       transform: translateY(-1px);
     }
 
+    .mic-btn { padding: 12px; }
+    .mic-btn.listening {
+      background: #126c68;
+      border-color: var(--green);
+      box-shadow: 0 0 22px var(--glow);
+    }
+
+    .status {
+      min-height: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 12px 0 0;
+    }
+
     .label {
+      margin: 32px 0 14px;
       color: var(--muted);
       font-size: 12px;
       font-weight: 750;
       letter-spacing: 2px;
-      margin: 32px 0 15px;
     }
 
     .quick-links {
@@ -219,37 +190,30 @@
       gap: 10px;
     }
 
-    .quick-link { font-size: 14px; }
-
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 62px;
+      gap: 14px;
+      margin-top: 60px;
       text-align: left;
     }
 
     .card {
-      padding: 23px 20px;
+      padding: 21px;
       border: 1px solid var(--border);
       background: var(--panel);
+      border-radius: 19px;
       backdrop-filter: blur(18px);
-      border-radius: 21px;
-      transition: .3s ease;
+      transition: .25s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      border-color: var(--blue);
-      box-shadow: 0 10px 35px var(--glow);
+      transform: translateY(-4px);
+      border-color: var(--green);
+      box-shadow: 0 10px 30px var(--glow);
     }
 
-    .card .icon { font-size: 27px; }
-
-    .card h3 {
-      font-size: 16px;
-      margin: 13px 0 8px;
-    }
+    .card h3 { font-size: 16px; margin: 0 0 9px; }
 
     .card p {
       color: var(--muted);
@@ -260,22 +224,46 @@
 
     footer {
       padding: 25px 10px;
-      color: var(--muted);
       text-align: center;
       font-size: 12px;
+      color: var(--muted);
       border-top: 1px solid var(--border);
     }
 
+    body.light {
+      color-scheme: light;
+      --bg: #eefaf8;
+      --panel: rgba(255, 255, 255, .83);
+      --text: #103039;
+      --muted: #58757b;
+      --border: rgba(22, 144, 132, .23);
+      --input: #f8ffff;
+      --glow: rgba(28, 178, 157, .13);
+    }
+
+    body.light .topbar { background: rgba(245, 255, 253, .8); }
+
+    body.light {
+      background:
+        radial-gradient(ellipse at 15% 0%, #b7f4e7 0%, transparent 42%),
+        radial-gradient(ellipse at 90% 15%, #c4e4ff 0%, transparent 38%),
+        var(--bg);
+    }
+
+    body.light .search-btn {
+      color: #07352f;
+    }
+
     @media (max-width: 600px) {
-      .topbar { padding: 16px 4%; }
+      .topbar { padding: 15px 4%; }
       .brand { font-size: 18px; letter-spacing: 1px; }
-      .theme-btn { padding: 9px; font-size: 12px; }
-      main { padding-top: 48px; }
+      .theme-btn { font-size: 12px; padding: 9px; }
+      main { padding-top: 52px; }
+      .search-box { gap: 4px; padding: 6px; }
+      .search-box input { font-size: 14px; padding: 12px 5px; }
+      .search-btn { font-size: 13px; padding: 13px 10px; }
+      .mic-btn { padding: 11px 9px; }
       .features { grid-template-columns: 1fr; margin-top: 42px; }
-      .search-box { gap: 4px; padding: 7px; }
-      .search-box input { font-size: 14px; padding: 13px 4px; }
-      .search-btn { padding: 13px 12px; font-size: 13px; }
-      .search-icon { padding-left: 5px; font-size: 18px; }
       .subtitle { font-size: 14px; }
     }
 
@@ -290,61 +278,58 @@
 
 <body>
   <header class="topbar">
-    <div class="brand">✦ AJIT <span>NOVA</span></div>
+    <div class="brand">AJIT <span>NOVA</span></div>
     <button class="theme-btn" id="themeToggle" type="button">
-      ☀️ Light Mode
+      Light Mode
     </button>
   </header>
 
   <main>
-    <div class="orb">✦</div>
+    <div class="orb">AN</div>
 
     <h1>Explore <span>Beyond.</span></h1>
-
     <p class="subtitle">
       Your world of information, one search away.<br>
       Discover something amazing today.
     </p>
 
     <form class="search-box" id="searchForm">
-      <span class="search-icon" aria-hidden="true">🔎</span>
-      <input
-        id="searchInput"
-        type="search"
+      <input id="searchInput" type="search"
         placeholder="Search anything on the web..."
-        aria-label="Search the web"
-        required
-      >
-      <button class="search-btn" type="submit">Search ↗</button>
+        aria-label="Search the web" required>
+
+      <button class="mic-btn" id="micBtn"
+        type="button" aria-label="Voice search">Mic</button>
+
+      <button class="search-btn" type="submit">Search</button>
     </form>
+
+    <p class="status" id="voiceStatus" role="status"></p>
 
     <p class="label">EXPLORE THE WEB</p>
 
     <div class="quick-links">
-      <button class="quick-link" data-query="latest news">📰 News</button>
-      <button class="quick-link" data-query="science">🔬 Science</button>
-      <button class="quick-link" data-query="technology">💻 Technology</button>
-      <button class="quick-link" data-query="education">📚 Education</button>
-      <button class="quick-link" data-query="India">🇮🇳 India</button>
+      <button class="quick-link" data-query="latest news">News</button>
+      <button class="quick-link" data-query="science">Science</button>
+      <button class="quick-link" data-query="technology">Technology</button>
+      <button class="quick-link" data-query="education">Education</button>
+      <button class="quick-link" data-query="India">India</button>
     </div>
 
     <section class="features">
       <article class="card">
-        <div class="icon">🌌</div>
         <h3>Explore Freely</h3>
         <p>Search the web and discover new information.</p>
       </article>
 
       <article class="card">
-        <div class="icon">⚡</div>
         <h3>Simple & Fast</h3>
         <p>A clean interface designed for quick searches.</p>
       </article>
 
       <article class="card">
-        <div class="icon">🛡️</div>
-        <h3>Your Experience</h3>
-        <p>A futuristic interface made for your everyday searches.</p>
+        <h3>Made for You</h3>
+        <p>A modern search experience with an Aurora-inspired design.</p>
       </article>
     </section>
   </main>
@@ -353,11 +338,14 @@
 
   <script>
     const toggle = document.getElementById("themeToggle");
+    const searchInput = document.getElementById("searchInput");
+    const micBtn = document.getElementById("micBtn");
+    const voiceStatus = document.getElementById("voiceStatus");
 
     function setTheme(theme) {
       document.body.classList.toggle("light", theme === "light");
       toggle.textContent =
-        theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+        theme === "light" ? "Dark Mode" : "Light Mode";
 
       try {
         localStorage.setItem("ajit-nova-theme", theme);
@@ -365,7 +353,6 @@
     }
 
     let savedTheme = "dark";
-
     try {
       savedTheme = localStorage.getItem("ajit-nova-theme") || "dark";
     } catch (e) {}
@@ -373,9 +360,7 @@
     setTheme(savedTheme);
 
     toggle.addEventListener("click", () => {
-      setTheme(
-        document.body.classList.contains("light") ? "dark" : "light"
-      );
+      setTheme(document.body.classList.contains("light") ? "dark" : "light");
     });
 
     function searchWeb(query) {
@@ -388,7 +373,7 @@
 
     document.getElementById("searchForm").addEventListener("submit", e => {
       e.preventDefault();
-      searchWeb(document.getElementById("searchInput").value);
+      searchWeb(searchInput.value);
     });
 
     document.querySelectorAll("[data-query]").forEach(button => {
@@ -396,6 +381,49 @@
         searchWeb(button.dataset.query);
       });
     });
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+      recognition.lang = "hi-IN";
+      recognition.continuous = false;
+
+      micBtn.addEventListener("click", () => {
+        voiceStatus.textContent = "Listening... बोलिए";
+        micBtn.classList.add("listening");
+
+        try {
+          recognition.start();
+        } catch (e) {
+          voiceStatus.textContent = "थोड़ी देर बाद फिर कोशिश करें।";
+          micBtn.classList.remove("listening");
+        }
+      });
+
+      recognition.onresult = event => {
+        const query = event.results[0][0].transcript;
+        searchInput.value = query;
+        voiceStatus.textContent = "सुना गया: " + query;
+        searchWeb(query);
+      };
+
+      recognition.onerror = () => {
+        voiceStatus.textContent =
+          "Mic permission और browser support जाँचें।";
+        micBtn.classList.remove("listening");
+      };
+
+      recognition.onend = () => {
+        micBtn.classList.remove("listening");
+      };
+    } else {
+      micBtn.addEventListener("click", () => {
+        voiceStatus.textContent =
+          "इस browser में Voice Search उपलब्ध नहीं है। Chrome में कोशिश करें।";
+      });
+    }
   </script>
 </body>
 </html>
