@@ -1,28 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#0b57d0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070b16">
-  <meta name="description" content="AJIT NOVA GLOBAL - Search the world">
-  <title>AJIT NOVA GLOBAL</title>
+  <meta name="theme-color" content="#17102e">
+  <meta name="description" content="AJIT NOVA - Search the world">
+  <link rel="manifest" href="./manifest.json">
+  <title>AJIT NOVA</title>
 
   <style>
     :root {
-      --bg: #070b16;
-      --panel: rgba(18, 27, 48, 0.88);
-      --text: #f4f7ff;
-      --muted: #9baac7;
-      --blue: #39bfff;
-      --border: rgba(140, 180, 255, 0.2);
+      --bg: #100a20;
+      --panel: rgba(34, 23, 60, .82);
+      --text: #faf7ff;
+      --muted: #c0b2dc;
+      --accent: #c084fc;
+      --accent2: #8b5cf6;
+      --border: rgba(216, 180, 254, .25);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -31,29 +29,25 @@
       color: var(--text);
       background-color: var(--bg);
       background-image:
-        radial-gradient(ellipse at top, #15305b 0%, transparent 55%);
+        radial-gradient(ellipse at 50% 0%, #512b83 0%, transparent 48%),
+        radial-gradient(ellipse at 100% 60%, #28174a 0%, transparent 48%),
+        radial-gradient(ellipse at 0% 85%, #21133d 0%, transparent 45%);
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      transition: background 0.3s;
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: rgba(4, 8, 19, 0.36);
+      background: rgba(8, 5, 19, .18);
       pointer-events: none;
       z-index: -1;
     }
 
-    button, input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
 
     .topbar {
       max-width: 1000px;
@@ -71,14 +65,7 @@
       letter-spacing: 1px;
     }
 
-    .brand span {
-      color: var(--blue);
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 8px;
-    }
+    .brand span, h1 span { color: var(--accent); }
 
     .small-btn {
       border: 1px solid var(--border);
@@ -86,12 +73,13 @@
       color: var(--text);
       padding: 10px 12px;
       border-radius: 12px;
+      backdrop-filter: blur(12px);
     }
 
     main {
       width: min(760px, 100%);
       margin: 0 auto;
-      padding: 65px 18px 110px;
+      padding: 55px 18px 115px;
       text-align: center;
     }
 
@@ -104,62 +92,83 @@
       place-items: center;
       font-size: 35px;
       font-weight: bold;
-      color: #fff;
-      background: linear-gradient(135deg, #138aff, #744bff);
-      box-shadow: 0 0 42px #258cff45;
+      color: white;
+      background: linear-gradient(135deg, #d8b4fe, #7c3aed 60%, #4c1d95);
+      box-shadow: 0 0 45px #a855f766;
       transform: rotate(-5deg);
     }
 
     h1 {
-      font-size: clamp(34px, 8vw, 58px);
+      font-size: clamp(36px, 8vw, 58px);
       margin: 0;
       letter-spacing: -2px;
-    }
-
-    h1 span {
-      color: var(--blue);
     }
 
     .subtitle {
       color: var(--muted);
       margin: 15px 0 32px;
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .searchbox {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      gap: 7px;
       padding: 8px;
       border: 1px solid var(--border);
-      border-radius: 19px;
+      border-radius: 20px;
       background: var(--panel);
-      box-shadow: 0 15px 55px #0003;
-      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 55px #0004, 0 0 25px #a855f71a;
+      backdrop-filter: blur(18px);
     }
 
     .searchbox input {
       min-width: 0;
+      width: 100%;
       flex: 1;
       border: none;
       outline: none;
       background: transparent;
       color: var(--text);
-      padding: 13px 10px;
+      padding: 13px 9px;
       font-size: 16px;
     }
 
-    .searchbox input::placeholder {
-      color: var(--muted);
+    .searchbox input::placeholder { color: var(--muted); }
+
+    .icon-btn {
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px;
+      color: white;
+      background: #38245c;
+    }
+
+    .icon-btn.listening {
+      background: #b91c1c;
+      border-color: #fca5a5;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 0 #f8717100; }
+      to { box-shadow: 0 0 18px #f87171aa; }
     }
 
     .search-btn {
+      flex-shrink: 0;
       border: none;
       border-radius: 13px;
-      padding: 0 20px;
-      color: #04111e;
-      background: linear-gradient(135deg, #64d8ff, #329cff);
+      padding: 0 16px;
+      min-height: 44px;
+      color: white;
+      background: linear-gradient(135deg, #c084fc, #7c3aed);
       font-weight: bold;
+      box-shadow: 0 4px 18px #8b5cf644;
     }
 
     .section-title {
@@ -180,78 +189,34 @@
       color: var(--text);
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 17px;
       padding: 18px 8px;
       backdrop-filter: blur(12px);
       transition: transform .2s, border-color .2s;
     }
 
-    .shortcut:hover {
-      transform: translateY(-3px);
-      border-color: var(--blue);
-    }
+    .shortcut:active { transform: scale(.97); }
+    .shortcut:hover { border-color: var(--accent); }
 
-    .shortcut .emoji {
+    .emoji {
       display: block;
       font-size: 25px;
       margin-bottom: 9px;
     }
 
-    .shortcut .label {
-      font-size: 13px;
-      font-weight: bold;
-    }
+    .label { font-size: 13px; font-weight: bold; }
 
     .hint {
       margin-top: 26px;
       font-size: 12px;
       color: var(--muted);
-      line-height: 1.7;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
-      padding: 18px;
-    }
-
-    #photoInput {
-      display: none;
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 88px;
-      transform: translateX(-50%);
-      max-width: 90%;
-      padding: 12px 18px;
-      border-radius: 12px;
-      background: #18243a;
-      border: 1px solid var(--border);
-      color: white;
-      font-size: 13px;
-      display: none;
-      z-index: 20;
-    }
-
-    body.light {
-      --bg: #edf4ff;
-      --panel: rgba(255, 255, 255, 0.91);
-      --text: #142039;
-      --muted: #60708c;
-      --border: rgba(60, 95, 150, 0.2);
-    }
-
-    body.light::before {
-      background: rgba(255, 255, 255, 0.15);
+      line-height: 1.8;
     }
 
     .bottom-tools {
       position: fixed;
       left: 50%;
-      bottom: 18px;
+      bottom: 15px;
       transform: translateX(-50%);
       display: flex;
       justify-content: center;
@@ -262,45 +227,66 @@
       z-index: 10;
     }
 
+    #photoInput { display: none; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 85px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 90%;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #281b43;
+      border: 1px solid var(--border);
+      color: white;
+      font-size: 13px;
+      display: none;
+      z-index: 20;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 18px 18px 95px;
+    }
+
+    body.light {
+      --bg: #f5efff;
+      --panel: rgba(255, 255, 255, .91);
+      --text: #25143e;
+      --muted: #6d5b87;
+      --accent: #7c3aed;
+      --accent2: #6d28d9;
+      --border: rgba(109, 40, 217, .2);
+      background-image:
+        radial-gradient(ellipse at top, #e5d0ff, transparent 60%);
+    }
+
+    body.light .icon-btn { color: #fff; }
+    body.light .orb { color: white; }
+
     @media (max-width: 420px) {
-      main {
-        padding-top: 48px;
-      }
-
-      .brand {
-        font-size: 17px;
-      }
-
-      .small-btn {
-        padding: 9px;
-        font-size: 12px;
-      }
-
-      .searchbox {
-        gap: 4px;
-      }
-
-      .search-btn {
-        padding: 0 13px;
-      }
-
-      .shortcut {
-        padding: 15px 5px;
-      }
+      main { padding-top: 42px; }
+      .brand { font-size: 17px; }
+      .small-btn { padding: 9px; font-size: 12px; }
+      .searchbox { gap: 5px; padding: 6px; }
+      .searchbox input { font-size: 14px; padding: 10px 5px; }
+      .icon-btn { min-width: 39px; min-height: 42px; padding: 5px; }
+      .search-btn { padding: 0 10px; font-size: 13px; }
+      .shortcut { padding: 15px 5px; }
     }
   </style>
 </head>
-<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#0b57d0">
+
 <body>
   <header class="topbar">
     <div class="brand">AJIT <span>NOVA</span></div>
-
-    <div class="top-actions">
-      <button class="small-btn" id="themeBtn" type="button">
-        ☀️ Theme
-      </button>
-    </div>
+    <button class="small-btn" id="themeBtn" type="button">
+      ☀️ Theme
+    </button>
   </header>
 
   <main>
@@ -308,19 +294,21 @@
 
     <h1>AJIT <span>NOVA</span></h1>
     <div class="subtitle">
-      GLOBAL SEARCH ENGINE<br>
-      Your world. Your search.
+      YOUR WORLD. YOUR SEARCH.<br>
+      Explore something new.
     </div>
 
     <form class="searchbox" id="searchForm">
       <input
         id="searchInput"
         type="search"
-        placeholder="Search anything in the world..."
+        placeholder="Search anything..."
         aria-label="Search the web"
         autocomplete="off"
         required
       >
+      <button class="icon-btn" id="micBtn" type="button"
+        aria-label="Search by voice" title="Speak to search">🎙️</button>
       <button class="search-btn" type="submit">Search ↗</button>
     </form>
 
@@ -328,39 +316,28 @@
 
     <div class="shortcuts">
       <a class="shortcut" href="https://www.google.com/" target="_blank" rel="noopener">
-        <span class="emoji">🌐</span>
-        <span class="label">Web</span>
+        <span class="emoji">🌐</span><span class="label">Web</span>
       </a>
-
       <a class="shortcut" href="https://images.google.com/" target="_blank" rel="noopener">
-        <span class="emoji">🖼️</span>
-        <span class="label">Images</span>
+        <span class="emoji">🖼️</span><span class="label">Images</span>
       </a>
-
       <a class="shortcut" href="https://news.google.com/" target="_blank" rel="noopener">
-        <span class="emoji">📰</span>
-        <span class="label">News</span>
+        <span class="emoji">📰</span><span class="label">News</span>
       </a>
-
       <a class="shortcut" href="https://maps.google.com/" target="_blank" rel="noopener">
-        <span class="emoji">📍</span>
-        <span class="label">Maps</span>
+        <span class="emoji">📍</span><span class="label">Maps</span>
       </a>
-
       <a class="shortcut" href="https://scholar.google.com/" target="_blank" rel="noopener">
-        <span class="emoji">🎓</span>
-        <span class="label">Study</span>
+        <span class="emoji">🎓</span><span class="label">Study</span>
       </a>
-
       <a class="shortcut" href="https://www.youtube.com/" target="_blank" rel="noopener">
-        <span class="emoji">▶️</span>
-        <span class="label">Videos</span>
+        <span class="emoji">▶️</span><span class="label">Videos</span>
       </a>
     </div>
 
     <div class="hint">
       Search the web. Discover something new.<br>
-      Made with ❤️ by AJIT NOVA
+      Made with ❤️ by AJIT
     </div>
   </main>
 
@@ -374,16 +351,15 @@
   </div>
 
   <input id="photoInput" type="file" accept="image/*">
-
   <div class="toast" id="toast" role="status"></div>
-
-  <footer>AJIT NOVA GLOBAL · Personal Web Search</footer>
+  <footer>AJIT NOVA · Personal Web Search</footer>
 
   <script>
     const searchForm = document.getElementById("searchForm");
     const searchInput = document.getElementById("searchInput");
     const photoInput = document.getElementById("photoInput");
     const toast = document.getElementById("toast");
+    const micBtn = document.getElementById("micBtn");
 
     function showToast(message) {
       toast.textContent = message;
@@ -391,10 +367,11 @@
       clearTimeout(window.novaToastTimer);
       window.novaToastTimer = setTimeout(() => {
         toast.style.display = "none";
-      }, 2500);
+      }, 3000);
     }
 
-    searchForm.addEventListener("submit", function (event) {
+    // Google web search
+    searchForm.addEventListener("submit", function(event) {
       event.preventDefault();
       const query = searchInput.value.trim();
       if (!query) {
@@ -403,18 +380,74 @@
       }
       window.open(
         "https://www.google.com/search?q=" + encodeURIComponent(query),
-        "_blank",
-        "noopener"
+        "_blank"
       );
     });
 
-    document.getElementById("backgroundBtn").addEventListener("click", function () {
+    // Voice search: browser support is required
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    let isListening = false;
+
+    if (SpeechRecognition) {
+      recognition = new SpeechRecognition();
+      recognition.lang = "hi-IN";
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.onstart = function() {
+        isListening = true;
+        micBtn.classList.add("listening");
+        micBtn.textContent = "🔴";
+        showToast("Bolna shuru karo...");
+      };
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        searchInput.value = transcript;
+        showToast("Awaaz likh di gayi. Search dabao.");
+      };
+
+      recognition.onerror = function(event) {
+        if (event.error === "not-allowed") {
+          showToast("Microphone permission browser settings me allow karo.");
+        } else {
+          showToast("Voice search nahi chala. Dobara try karo.");
+        }
+      };
+
+      recognition.onend = function() {
+        isListening = false;
+        micBtn.classList.remove("listening");
+        micBtn.textContent = "🎙️";
+      };
+
+      micBtn.addEventListener("click", function() {
+        if (isListening) {
+          recognition.stop();
+        } else {
+          try {
+            recognition.start();
+          } catch (error) {
+            showToast("Thodi der baad dobara try karo.");
+          }
+        }
+      });
+    } else {
+      micBtn.addEventListener("click", function() {
+        showToast("Is browser me voice search supported nahi hai. Chrome me try karo.");
+      });
+    }
+
+    // Custom background
+    document.getElementById("backgroundBtn").addEventListener("click", function() {
       photoInput.click();
     });
 
     function applyBackground(dataUrl) {
       document.body.style.backgroundImage =
-        'linear-gradient(rgba(4,8,19,.48), rgba(4,8,19,.48)), url("' +
+        'linear-gradient(rgba(12,6,25,.48), rgba(12,6,25,.48)), url("' +
         dataUrl + '")';
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
@@ -430,7 +463,7 @@
       }
     } catch (error) {}
 
-    photoInput.addEventListener("change", function () {
+    photoInput.addEventListener("change", function() {
       const file = photoInput.files && photoInput.files[0];
       if (!file) return;
 
@@ -446,8 +479,7 @@
       }
 
       const reader = new FileReader();
-
-      reader.onload = function () {
+      reader.onload = function() {
         try {
           localStorage.setItem("ajitNovaBg", reader.result);
           applyBackground(reader.result);
@@ -456,28 +488,28 @@
           showToast("Could not save. Try a smaller photo.");
         }
       };
-
-      reader.onerror = function () {
+      reader.onerror = function() {
         showToast("Could not read this photo.");
       };
-
       reader.readAsDataURL(file);
     });
 
-    document.getElementById("resetBtn").addEventListener("click", function () {
+    // Reset theme and custom background
+    document.getElementById("resetBtn").addEventListener("click", function() {
       try {
         localStorage.removeItem("ajitNovaBg");
-        document.body.style.backgroundImage = "";
-        document.body.style.backgroundColor = "";
         localStorage.removeItem("ajitNovaLight");
+        document.body.style.backgroundImage = "";
         document.body.classList.remove("light");
-        showToast("Background and theme reset.");
+        photoInput.value = "";
+        showToast("Theme and background reset.");
       } catch (error) {
         showToast("Could not reset settings.");
       }
     });
 
-    document.getElementById("themeBtn").addEventListener("click", function () {
+    // Toggle light and purple-dark themes
+    document.getElementById("themeBtn").addEventListener("click", function() {
       document.body.classList.toggle("light");
 
       try {
@@ -490,7 +522,7 @@
       showToast(
         document.body.classList.contains("light")
           ? "Light theme enabled."
-          : "Dark theme enabled."
+          : "Galaxy Purple theme enabled."
       );
     });
   </script>
