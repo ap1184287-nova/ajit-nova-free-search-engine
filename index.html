@@ -1,349 +1,421 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080e1e">
-  <meta name="description" content="AJIT NOVA - Explore the world">
+  <meta name="theme-color" content="#070b19">
+  <meta name="description" content="AJIT NOVA - Your personal search experience.">
+  <title>AJIT NOVA — Explore Beyond</title>
+
   <link rel="manifest" href="./manifest.json">
-  <title>AJIT NOVA — Global Search</title>
 
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #080e1e;
-      --panel: #101a30;
-      --blue: #4285ff;
-      --text: #f3f7ff;
-      --muted: #a6b6d0;
-      --border: #253653;
+      --bg: #070b19;
+      --blue: #168cff;
+      --cyan: #36d9ff;
+      --text: #f5f8ff;
+      --muted: #a7b7d4;
+      --panel: rgba(16, 29, 57, 0.78);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: system-ui, Arial, sans-serif;
       color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(ellipse at 50% 0%, #183567 0%, transparent 48%),
-        var(--bg);
+        radial-gradient(ellipse at 50% 38%,
+          rgba(0, 113, 255, 0.20), transparent 38%),
+        radial-gradient(ellipse at 50% 100%,
+          rgba(0, 200, 255, 0.12), transparent 45%),
+        linear-gradient(145deg, #030611, #0b1530 55%, #050916);
+      overflow-x: hidden;
     }
 
-    .wrap {
-      width: min(850px, 100%);
-      margin: auto;
-      padding: 24px 17px 50px;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .45;
+      background-image:
+        radial-gradient(2px 2px at 12% 18%, #d5f4ff 50%, transparent 60%),
+        radial-gradient(1px 1px at 80% 22%, #fff 50%, transparent 60%),
+        radial-gradient(2px 2px at 70% 70%, #68cfff 50%, transparent 60%),
+        radial-gradient(1px 1px at 25% 75%, #fff 50%, transparent 60%),
+        radial-gradient(1px 1px at 92% 48%, #fff 50%, transparent 60%),
+        radial-gradient(2px 2px at 40% 12%, #75dfff 50%, transparent 60%);
+      z-index: -1;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 18px 20px;
     }
 
     header {
+      width: 100%;
+      max-width: 1050px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 12px;
-      margin-bottom: 65px;
     }
 
     .brand {
-      font-size: 23px;
-      font-weight: 850;
-      letter-spacing: 1px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: white;
+      text-shadow: 0 0 18px rgba(54, 217, 255, .55);
     }
 
-    .brand span { color: #66a5ff; }
+    .brand span {
+      color: var(--cyan);
+    }
 
-    .tag {
-      color: #a6caff;
+    .status {
       font-size: 11px;
-      border: 1px solid #34517c;
-      padding: 7px 10px;
+      color: #8ce9ff;
+      border: 1px solid rgba(54, 217, 255, .32);
       border-radius: 30px;
+      padding: 8px 12px;
+      background: rgba(0, 132, 255, .08);
+      white-space: nowrap;
     }
 
-    .hero { text-align: center; }
+    main {
+      width: 100%;
+      max-width: 780px;
+      margin: auto 0;
+      padding: 55px 0 65px;
+      text-align: center;
+    }
 
     .globe {
-      font-size: 40px;
-      margin-bottom: 10px;
+      width: 138px;
+      height: 138px;
+      border-radius: 50%;
+      margin: 0 auto 25px;
+      position: relative;
+      background:
+        radial-gradient(circle at 32% 26%,
+          #b4f7ff 0%, #43d9ff 9%, #0874e9 32%,
+          #08265e 63%, #030b21 78%);
+      box-shadow:
+        0 0 25px rgba(0, 151, 255, .55),
+        0 0 70px rgba(0, 111, 255, .28),
+        inset -15px -15px 28px rgba(0, 0, 20, .75);
+      border: 1px solid rgba(110, 222, 255, .7);
+    }
+
+    .globe::before {
+      content: "";
+      position: absolute;
+      inset: 15px -7px;
+      border: 1px solid rgba(98, 224, 255, .75);
+      border-radius: 50%;
+      transform: rotate(-25deg);
+    }
+
+    .globe::after {
+      content: "";
+      position: absolute;
+      inset: -7px 15px;
+      border: 1px solid rgba(98, 224, 255, .45);
+      border-radius: 50%;
+      transform: rotate(28deg);
     }
 
     h1 {
+      font-size: clamp(36px, 8vw, 68px);
       margin: 0;
-      font-size: clamp(32px, 8vw, 54px);
-      letter-spacing: -1.5px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1.12;
+      text-shadow: 0 0 25px rgba(0, 132, 255, .3);
     }
 
-    h1 span { color: #69a7ff; }
+    h1 span {
+      color: var(--cyan);
+      text-shadow: 0 0 22px rgba(54, 217, 255, .35);
+    }
 
-    .subtitle {
+    .tagline {
       color: var(--muted);
-      margin: 12px 0 27px;
-      font-size: 14px;
+      font-size: 15px;
+      margin: 16px 0 32px;
+      letter-spacing: .5px;
     }
 
-    .search {
+    .search-form {
       display: flex;
-      gap: 8px;
       align-items: center;
-      padding: 7px;
-      background: #111d34;
-      border: 1px solid #35517c;
-      border-radius: 17px;
-      box-shadow: 0 12px 45px #0005;
+      gap: 8px;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 8px;
+      border: 1px solid rgba(75, 170, 255, .65);
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow:
+        0 0 25px rgba(0, 119, 255, .16),
+        inset 0 0 15px rgba(0, 119, 255, .06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
-    .search:focus-within {
-      border-color: #69a7ff;
+    .search-form:focus-within {
+      border-color: var(--cyan);
+      box-shadow: 0 0 28px rgba(0, 170, 255, .25);
     }
 
     #query {
       flex: 1;
       min-width: 0;
-      padding: 12px 6px;
-      background: transparent;
       border: 0;
-      outline: 0;
+      outline: none;
+      background: transparent;
       color: white;
-      font-size: 16px;
+      padding: 14px 9px;
+      font-size: 15px;
     }
 
-    button {
+    #query::placeholder {
+      color: #a9c2e8;
+      opacity: 1;
+    }
+
+    .tool-button {
+      flex-shrink: 0;
       border: 0;
       cursor: pointer;
       color: white;
-      font: inherit;
+      background: rgba(32, 110, 205, .2);
+      border-radius: 13px;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      transition: .2s;
     }
 
-    .mic, .go {
+    .tool-button:hover {
+      background: rgba(31, 145, 255, .38);
+    }
+
+    .search-button {
       flex-shrink: 0;
-      border-radius: 12px;
-      padding: 12px;
+      border: 0;
+      cursor: pointer;
+      padding: 0 19px;
+      height: 46px;
+      border-radius: 13px;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+      background: linear-gradient(135deg, #087cff, #16c7ff);
+      box-shadow: 0 0 18px rgba(0, 140, 255, .25);
     }
 
-    .mic { background: #243653; }
-    .go { background: var(--blue); font-weight: 700; }
-
-    button:focus-visible, a:focus-visible {
-      outline: 2px solid #8fc1ff;
-      outline-offset: 3px;
+    .search-button:hover {
+      filter: brightness(1.12);
     }
 
-    .sources {
+    #message {
+      min-height: 20px;
+      margin: 13px 0 0;
+      font-size: 12px;
+      color: #9ddfff;
+    }
+
+    .features {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0 35px;
+      gap: 10px;
+      margin-top: 30px;
     }
 
-    .pill {
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      padding: 7px 12px;
+    .feature {
+      color: #cce6ff;
+      background: rgba(14, 38, 76, .58);
+      border: 1px solid rgba(81, 153, 235, .28);
+      border-radius: 30px;
+      padding: 10px 14px;
       font-size: 12px;
-      color: #bcd3f5;
-      background: #101a2c;
     }
 
-    #status {
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-      margin: 20px 0;
-    }
-
-    #results { margin-top: 28px; }
-
-    .result {
-      padding: 17px;
-      margin: 12px 0;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      background: #101a2cdd;
-    }
-
-    .result a {
-      color: #79b0ff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 650;
-    }
-
-    .result a:hover { text-decoration: underline; }
-
-    .url {
-      display: block;
-      color: #82c6a5;
+    .bottom-note {
+      color: #8397b9;
       font-size: 12px;
-      margin: 7px 0;
-      overflow-wrap: anywhere;
-    }
-
-    .snippet {
-      color: #c0cbe0;
-      font-size: 14px;
-      line-height: 1.65;
-      margin: 0;
-    }
-
-    .note {
-      margin-top: 35px;
-      text-align: center;
-      color: #8191ab;
-      font-size: 12px;
+      margin-top: 28px;
       line-height: 1.7;
     }
 
     footer {
+      width: 100%;
+      max-width: 1050px;
       text-align: center;
-      color: #7385a2;
+      padding-top: 16px;
+      border-top: 1px solid rgba(120, 164, 220, .14);
+      color: #8193b3;
       font-size: 12px;
-      margin-top: 45px;
+      line-height: 1.8;
     }
 
-    @media (max-width: 430px) {
-      header { margin-bottom: 52px; }
-      .brand { font-size: 20px; }
-      .tag { font-size: 10px; }
-      .search { gap: 5px; }
-      .mic, .go { padding: 11px 10px; }
+    footer strong {
+      color: #b8eaff;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 20px 14px 16px;
+      }
+
+      .brand {
+        font-size: 17px;
+        letter-spacing: 1px;
+      }
+
+      .status {
+        font-size: 10px;
+        padding: 7px 9px;
+      }
+
+      main {
+        padding: 45px 0;
+      }
+
+      .globe {
+        width: 112px;
+        height: 112px;
+        margin-bottom: 24px;
+      }
+
+      .tagline {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .search-form {
+        gap: 4px;
+        padding: 6px;
+        border-radius: 16px;
+      }
+
+      #query {
+        font-size: 12px;
+        padding: 12px 4px;
+      }
+
+      .tool-button {
+        width: 36px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .search-button {
+        height: 40px;
+        padding: 0 11px;
+        font-size: 12px;
+      }
+
+      .feature {
+        padding: 9px 11px;
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
+  <div class="page">
     <header>
-      <div class="brand">✦ AJIT <span>NOVA</span></div>
-      <div class="tag">GLOBAL SEARCH</div>
+      <div class="brand">AJIT <span>NOVA</span></div>
+      <div class="status">✦ YOUR PERSONAL SEARCH</div>
     </header>
 
-    <section class="hero">
-      <div class="globe">🌐</div>
-      <h1>Explore <span>Beyond.</span></h1>
-      <p class="subtitle">
-        दुनिया को खोजो, एक ही जगह।
-      </p>
+    <main>
+      <div class="globe" aria-hidden="true"></div>
 
-      <form class="search" id="searchForm">
+      <h1>AJIT <span>NOVA</span></h1>
+      <p class="tagline">Explore Beyond · Discover More · Search Freely</p>
+
+      <form class="search-form"
+            id="searchForm"
+            action="https://www.google.com/search"
+            method="GET">
+
         <input
           id="query"
           type="search"
-          placeholder="यहाँ कुछ भी खोजें..."
-          aria-label="खोजने के लिए शब्द लिखें"
+          name="q"
+          placeholder="AJIT NOVA PER KUCHH BHI KHOJE..."
+          aria-label="AJIT NOVA search"
           autocomplete="off"
           required
         >
-        <button class="mic" id="mic" type="button"
-          aria-label="माइक्रोफोन से खोजें">🎙️</button>
-        <button class="go" type="submit">खोजें</button>
+
+        <button
+          class="tool-button"
+          type="button"
+          id="micButton"
+          aria-label="Voice search"
+          title="Bolkar search karein">🎙️</button>
+
+        <button class="search-button" type="submit">
+          SEARCH ↗
+        </button>
       </form>
 
-      <div class="sources">
-        <span class="pill">🌍 ज्ञान खोज</span>
-        <span class="pill">⚡ तेज़ खोज</span>
-        <span class="pill">📱 मोबाइल + PC</span>
+      <p id="message" role="status"></p>
+
+      <div class="features">
+        <div class="feature">⚡ Quick Search</div>
+        <div class="feature">🌐 Web Discovery</div>
+        <div class="feature">📱 Mobile + PC</div>
+        <div class="feature">✦ Installable Web App</div>
       </div>
-    </section>
 
-    <p id="status" role="status" aria-live="polite">
-      AJIT NOVA में अपनी पहली खोज करें।
-    </p>
-
-    <section id="results" aria-label="खोज के नतीजे"></section>
-
-    <p class="note">
-      अभी खोज के नतीजे Wikipedia से प्राप्त होते हैं।
-      यह शुरुआती संस्करण है; पूरे इंटरनेट का स्वतंत्र इंडेक्स नहीं।
-    </p>
+      <div class="bottom-note">
+        Your Search, Your Journey.<br>
+        Search the web from one simple place.
+      </div>
+    </main>
 
     <footer>
-      AJIT NOVA · Your Search, Your Journey
+      <strong>AJIT NOVA</strong><br>
+      Made with ♥ by Ajit
     </footer>
-  </main>
+  </div>
 
   <script>
     const form = document.getElementById("searchForm");
     const input = document.getElementById("query");
-    const status = document.getElementById("status");
-    const results = document.getElementById("results");
-    const mic = document.getElementById("mic");
+    const micButton = document.getElementById("micButton");
+    const message = document.getElementById("message");
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      const term = input.value.trim();
-      if (!term) {
+    form.addEventListener("submit", function (event) {
+      if (!input.value.trim()) {
+        event.preventDefault();
+        message.textContent = "Pehle kuchh likho ya microphone se bolo.";
         input.focus();
-        return;
-      }
-
-      status.textContent = "खोज जारी है...";
-      results.replaceChildren();
-
-      try {
-        const params = new URLSearchParams({
-          action: "query",
-          list: "search",
-          srsearch: term,
-          format: "json",
-          origin: "*",
-          srlimit: "10"
-        });
-
-        const response = await fetch(
-          "https://hi.wikipedia.org/w/api.php?" + params
-        );
-
-        if (!response.ok) {
-          throw new Error("Search service unavailable");
-        }
-
-        const data = await response.json();
-        const items = data.query?.search || [];
-
-        if (items.length === 0) {
-          status.textContent =
-            "कोई नतीजा नहीं मिला। दूसरे शब्दों से खोजें।";
-          return;
-        }
-
-        status.textContent =
-          `${items.length} नतीजे मिले — "${term}"`;
-
-        items.forEach((item) => {
-          const card = document.createElement("article");
-          card.className = "result";
-
-          const link = document.createElement("a");
-          link.href =
-            "https://hi.wikipedia.org/wiki/" +
-            encodeURIComponent(item.title.replace(/ /g, "_"));
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
-          link.textContent = item.title;
-
-          const url = document.createElement("span");
-          url.className = "url";
-          url.textContent = "hi.wikipedia.org";
-
-          const snippet = document.createElement("p");
-          snippet.className = "snippet";
-          snippet.textContent = item.snippet
-            .replace(/<[^>]*>/g, "")
-            .replace(/&quot;/g, '"')
-            .replace(/&#039;/g, "'")
-            .replace(/&amp;/g, "&")
-            .replace(/&lt;/g, "<")
-            .replace(/&gt;/g, ">");
-
-          card.append(link, url, snippet);
-          results.append(card);
-        });
-      } catch (error) {
-        status.textContent =
-          "अभी नतीजे नहीं मिल पाए। इंटरनेट कनेक्शन जाँचकर फिर कोशिश करें।";
       }
     });
 
@@ -355,31 +427,31 @@
       const recognition = new SpeechRecognition();
       recognition.lang = "hi-IN";
       recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
 
-      mic.addEventListener("click", () => {
-        status.textContent = "बोलिए, आपकी आवाज़ सुनी जा रही है...";
+      micButton.addEventListener("click", function () {
+        message.textContent = "Bolna shuru karein...";
         recognition.start();
       });
 
-      recognition.onresult = (event) => {
+      recognition.onresult = function (event) {
         input.value = event.results[0][0].transcript;
-        form.requestSubmit();
+        message.textContent = "Aapki baat likh di gayi. Ab SEARCH dabayein.";
+        input.focus();
       };
 
-      recognition.onerror = () => {
-        status.textContent =
-          "आवाज़ से खोज उपलब्ध नहीं हुई। आप लिखकर खोज सकते हैं।";
+      recognition.onerror = function () {
+        message.textContent =
+          "Voice search nahi chala. Aap type karke search kar sakte hain.";
       };
 
-      recognition.onend = () => {
-        if (status.textContent.includes("आवाज़ सुनी")) {
-          status.textContent = "आप चाहें तो लिखकर भी खोज सकते हैं।";
-        }
+      recognition.onend = function () {
+        micButton.blur();
       };
     } else {
-      mic.addEventListener("click", () => {
-        status.textContent =
-          "इस ब्राउज़र में माइक्रोफोन खोज उपलब्ध नहीं है। लिखकर खोजें।";
+      micButton.addEventListener("click", function () {
+        message.textContent =
+          "Is browser mein voice search support nahi hai. Type karke search karein.";
       });
     }
   </script>
