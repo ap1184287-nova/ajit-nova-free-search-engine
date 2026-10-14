@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#030817">
-  <meta name="description" content="AJIT NOVA - Explore Beyond">
+  <meta name="theme-color" content="#080e1e">
+  <meta name="description" content="AJIT NOVA - Explore the world">
   <link rel="manifest" href="./manifest.json">
-  <title>AJIT NOVA — Explore Beyond</title>
+  <title>AJIT NOVA — Global Search</title>
 
   <style>
     :root {
-      --bg: #020817;
-      --panel: rgba(5, 19, 43, .86);
-      --text: #f4f8ff;
-      --muted: #aac3e8;
-      --accent: #00c8ff;
-      --border: rgba(0, 174, 255, .5);
+      color-scheme: dark;
+      --bg: #080e1e;
+      --panel: #101a30;
+      --blue: #4285ff;
+      --text: #f3f7ff;
+      --muted: #a6b6d0;
+      --border: #253653;
     }
 
     * { box-sizing: border-box; }
@@ -23,487 +24,362 @@
     body {
       margin: 0;
       min-height: 100vh;
-      padding: 20px 14px 28px;
-      font-family: Arial, sans-serif;
+      font-family: system-ui, Arial, sans-serif;
       color: var(--text);
-      background-color: var(--bg);
-      background-image:
-        radial-gradient(ellipse at 50% 0%, #073b83 0%, transparent 48%),
-        radial-gradient(ellipse at 100% 60%, #061d4a 0%, transparent 48%),
-        radial-gradient(ellipse at 0% 85%, #020b20 0%, transparent 45%);
-      background-size: cover;
-      background-attachment: fixed;
-      transition: background .25s, color .25s;
+      background:
+        radial-gradient(ellipse at 50% 0%, #183567 0%, transparent 48%),
+        var(--bg);
     }
 
-    body.has-photo {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-    .app {
-      max-width: 560px;
+    .wrap {
+      width: min(850px, 100%);
       margin: auto;
+      padding: 24px 17px 50px;
     }
 
-    header { text-align: center; padding: 18px 0 24px; }
-
-    .logo {
-      font-size: clamp(34px, 10vw, 53px);
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      text-shadow: 0 0 22px #008cff99;
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 65px;
     }
 
-    .logo span {
-      color: var(--accent);
-      text-shadow: 0 0 22px #008cff;
+    .brand {
+      font-size: 23px;
+      font-weight: 850;
+      letter-spacing: 1px;
     }
+
+    .brand span { color: #66a5ff; }
+
+    .tag {
+      color: #a6caff;
+      font-size: 11px;
+      border: 1px solid #34517c;
+      padding: 7px 10px;
+      border-radius: 30px;
+    }
+
+    .hero { text-align: center; }
+
+    .globe {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 8vw, 54px);
+      letter-spacing: -1.5px;
+    }
+
+    h1 span { color: #69a7ff; }
 
     .subtitle {
       color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 3px;
-      margin-top: 9px;
+      margin: 12px 0 27px;
+      font-size: 14px;
     }
 
-    .tagline {
-      color: #d5eaff;
-      font-size: 13px;
-      margin-top: 8px;
-    }
-
-    .tools {
+    .search {
       display: flex;
-      justify-content: flex-end;
       gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    button, .tool-btn {
-      font: inherit;
-      cursor: pointer;
-      color: var(--text);
-    }
-
-    .tool-btn {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      padding: 9px 12px;
-      border-radius: 12px;
-      font-size: 12px;
-    }
-
-    .searchbox {
-      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px;
-      border: 1px solid var(--accent);
-      border-radius: 24px;
-      background: rgba(1, 9, 25, .92);
-      box-shadow: 0 15px 55px #0008, 0 0 28px #00aaff66;
-      backdrop-filter: blur(18px);
+      padding: 7px;
+      background: #111d34;
+      border: 1px solid #35517c;
+      border-radius: 17px;
+      box-shadow: 0 12px 45px #0005;
     }
 
-    .searchbox input {
+    .search:focus-within {
+      border-color: #69a7ff;
+    }
+
+    #query {
       flex: 1;
       min-width: 0;
-      padding: 12px 5px;
-      color: white;
+      padding: 12px 6px;
       background: transparent;
       border: 0;
       outline: 0;
-      font-size: 15px;
-    }
-
-    .searchbox input::placeholder { color: #9bbce0; }
-
-    .search-btn, .mic-btn {
-      width: 43px;
-      height: 43px;
-      flex-shrink: 0;
-      border: 0;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #078bff, #0644d8);
-      box-shadow: 0 0 16px #008cff66;
-      font-size: 19px;
-    }
-
-    .mic-btn { background: #09274b; border: 1px solid #00c8ff; }
-
-    .status {
-      min-height: 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
-      margin: 10px 0 18px;
-    }
-
-    .shortcuts {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px 8px;
-      margin: 20px 0 25px;
-    }
-
-    .shortcut {
-      text-decoration: none;
-      color: var(--text);
-      text-align: center;
-      padding: 12px 2px;
-      border: 1px solid rgba(0, 174, 255, .2);
-      border-radius: 17px;
-      background: rgba(5, 21, 47, .78);
-      backdrop-filter: blur(12px);
-      transition: transform .2s, border-color .2s;
-    }
-
-    .shortcut:active { transform: scale(.96); }
-    .shortcut:hover { border-color: var(--accent); }
-
-    .shortcut .symbol {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 8px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #183c70, #07162e);
-      border: 1px solid #167dd7;
-      box-shadow: 0 0 15px #007dff30;
-      font-size: 23px;
-    }
-
-    .shortcut span:last-child { font-size: 11px; }
-
-    .section {
-      padding: 17px;
-      margin: 14px 0;
-      border: 1px solid var(--border);
-      border-radius: 19px;
-      background: var(--panel);
-      box-shadow: 0 0 22px #007dff17;
-      backdrop-filter: blur(15px);
-    }
-
-    .section h2 {
-      margin: 0 0 10px;
+      color: white;
       font-size: 16px;
-      color: var(--accent);
     }
 
-    .section p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-      margin: 7px 0;
+    button {
+      border: 0;
+      cursor: pointer;
+      color: white;
+      font: inherit;
     }
 
-    .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 12px;
-    }
-
-    .action {
-      padding: 10px 13px;
-      border: 1px solid var(--border);
+    .mic, .go {
+      flex-shrink: 0;
       border-radius: 12px;
-      background: #082858;
-      font-size: 12px;
+      padding: 12px;
     }
 
-    #photoInput { display: none; }
+    .mic { background: #243653; }
+    .go { background: var(--blue); font-weight: 700; }
+
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid #8fc1ff;
+      outline-offset: 3px;
+    }
+
+    .sources {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 35px;
+    }
+
+    .pill {
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 7px 12px;
+      font-size: 12px;
+      color: #bcd3f5;
+      background: #101a2c;
+    }
+
+    #status {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 20px 0;
+    }
+
+    #results { margin-top: 28px; }
+
+    .result {
+      padding: 17px;
+      margin: 12px 0;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #101a2cdd;
+    }
+
+    .result a {
+      color: #79b0ff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .result a:hover { text-decoration: underline; }
+
+    .url {
+      display: block;
+      color: #82c6a5;
+      font-size: 12px;
+      margin: 7px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .snippet {
+      color: #c0cbe0;
+      font-size: 14px;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .note {
+      margin-top: 35px;
+      text-align: center;
+      color: #8191ab;
+      font-size: 12px;
+      line-height: 1.7;
+    }
 
     footer {
       text-align: center;
-      color: var(--muted);
-      font-size: 11px;
-      padding: 22px 0 5px;
+      color: #7385a2;
+      font-size: 12px;
+      margin-top: 45px;
     }
 
-    body.light {
-      --bg: #eaf5ff;
-      --panel: rgba(255, 255, 255, .88);
-      --text: #102340;
-      --muted: #476181;
-      --accent: #075ee8;
-      --border: rgba(0, 102, 220, .3);
-      background-image:
-        radial-gradient(ellipse at 50% 0%, #c1e3ff 0%, transparent 55%),
-        linear-gradient(145deg, #f5faff, #dcecff);
-    }
-
-    body.light .searchbox {
-      background: rgba(255,255,255,.95);
-    }
-
-    body.light .searchbox input { color: #102340; }
-    body.light .searchbox input::placeholder { color: #627997; }
-
-    body.light .shortcut { background: rgba(255,255,255,.85); }
-    body.light .shortcut .symbol { background: #e0efff; }
-    body.light .tagline { color: #345778; }
-
-    @media (max-width: 360px) {
-      body { padding: 12px 9px; }
-      .shortcuts { gap: 8px 5px; }
-      .shortcut .symbol { width: 40px; height: 40px; }
+    @media (max-width: 430px) {
+      header { margin-bottom: 52px; }
+      .brand { font-size: 20px; }
+      .tag { font-size: 10px; }
+      .search { gap: 5px; }
+      .mic, .go { padding: 11px 10px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="app">
+  <main class="wrap">
     <header>
-      <div class="logo">AJIT <span>NOVA</span></div>
-      <div class="subtitle">GLOBAL SEARCH ENGINE</div>
-      <div class="tagline">Fast · Smart · Simple · For Everyone</div>
+      <div class="brand">✦ AJIT <span>NOVA</span></div>
+      <div class="tag">GLOBAL SEARCH</div>
     </header>
 
-    <div class="tools">
-      <button class="tool-btn" id="themeBtn" type="button">☀️ / 🌙 Theme</button>
-      <button class="tool-btn" id="resetBtn" type="button">↺ Reset</button>
-    </div>
+    <section class="hero">
+      <div class="globe">🌐</div>
+      <h1>Explore <span>Beyond.</span></h1>
+      <p class="subtitle">
+        दुनिया को खोजो, एक ही जगह।
+      </p>
 
-    <form class="searchbox" id="searchForm">
-      <input id="searchBox" type="search"
-        placeholder="Google Search..." aria-label="Search the web"
-        autocomplete="off" required>
-      <button class="mic-btn" id="micBtn" type="button"
-        aria-label="Voice search">🎙️</button>
-      <button class="search-btn" type="submit"
-        aria-label="Search">⌕</button>
-    </form>
+      <form class="search" id="searchForm">
+        <input
+          id="query"
+          type="search"
+          placeholder="यहाँ कुछ भी खोजें..."
+          aria-label="खोजने के लिए शब्द लिखें"
+          autocomplete="off"
+          required
+        >
+        <button class="mic" id="mic" type="button"
+          aria-label="माइक्रोफोन से खोजें">🎙️</button>
+        <button class="go" type="submit">खोजें</button>
+      </form>
 
-    <div class="status" id="status" aria-live="polite">
-      Search Beyond Limits ✨
-    </div>
-
-    <!-- Google shortcut tile jaanbujhkar nahi rakha hai -->
-    <nav class="shortcuts" aria-label="Quick links">
-      <a class="shortcut" href="https://www.youtube.com/">
-        <span class="symbol">▶️</span><span>YouTube</span>
-      </a>
-      <a class="shortcut" href="https://maps.google.com/">
-        <span class="symbol">🗺️</span><span>Maps</span>
-      </a>
-      <a class="shortcut" href="https://news.google.com/">
-        <span class="symbol">📰</span><span>News</span>
-      </a>
-      <a class="shortcut" href="https://scholar.google.com/">
-        <span class="symbol">🎓</span><span>Education</span>
-      </a>
-      <a class="shortcut" href="https://www.ncs.gov.in/">
-        <span class="symbol">💼</span><span>Jobs</span>
-      </a>
-      <a class="shortcut" href="https://mausam.imd.gov.in/">
-        <span class="symbol">🌤️</span><span>Weather</span>
-      </a>
-      <a class="shortcut" href="https://www.wikipedia.org/">
-        <span class="symbol">🌐</span><span>Explore</span>
-      </a>
-      <a class="shortcut" href="https://www.isro.gov.in/">
-        <span class="symbol">🚀</span><span>Science</span>
-      </a>
-    </nav>
-
-    <section class="section">
-      <h2>🖼️ Gallery Background</h2>
-      <p>Apne phone ki Gallery se photo chuno. Photo isi browser mein save karne ki koshish hogi.</p>
-      <div class="action-row">
-        <button class="action" id="choosePhoto" type="button">Choose Photo</button>
-        <button class="action" id="removePhoto" type="button">Remove Photo</button>
+      <div class="sources">
+        <span class="pill">🌍 ज्ञान खोज</span>
+        <span class="pill">⚡ तेज़ खोज</span>
+        <span class="pill">📱 मोबाइल + PC</span>
       </div>
-      <input id="photoInput" type="file" accept="image/*">
     </section>
 
-    <section class="section">
-      <h2>🎙️ Voice Search</h2>
-      <p>Mic dabao aur apna sawal bolo. Browser aur microphone permission par nirbhar karta hai.</p>
-      <p id="voiceInfo">Voice search ready hai.</p>
-    </section>
+    <p id="status" role="status" aria-live="polite">
+      AJIT NOVA में अपनी पहली खोज करें।
+    </p>
 
-    <section class="section">
-      <h2>📲 Install AJIT NOVA</h2>
-      <p>Agar browser install support karta hai, to app ko Home Screen par jod sakte ho.</p>
-      <div class="action-row">
-        <button class="action" id="installBtn" type="button">Install App</button>
-      </div>
-      <p id="installInfo">Chrome ke menu mein “Add to Home screen” bhi dekh sakte ho.</p>
-    </section>
+    <section id="results" aria-label="खोज के नतीजे"></section>
 
-    <footer>AJIT NOVA · Explore Beyond · Free for Everyone</footer>
+    <p class="note">
+      अभी खोज के नतीजे Wikipedia से प्राप्त होते हैं।
+      यह शुरुआती संस्करण है; पूरे इंटरनेट का स्वतंत्र इंडेक्स नहीं।
+    </p>
+
+    <footer>
+      AJIT NOVA · Your Search, Your Journey
+    </footer>
   </main>
 
   <script>
-    const $ = id => document.getElementById(id);
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("query");
+    const status = document.getElementById("status");
+    const results = document.getElementById("results");
+    const mic = document.getElementById("mic");
 
-    // Google web search
-    $("searchForm").addEventListener("submit", function (event) {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const query = $("searchBox").value.trim();
-      if (!query) return;
-      window.open(
-        "https://www.google.com/search?q=" + encodeURIComponent(query),
-        "_blank",
-        "noopener"
-      );
-    });
 
-    // Dark / Light theme
-    function applyTheme(light) {
-      document.body.classList.toggle("light", light);
-      try {
-        localStorage.setItem("ajitNovaLight", light ? "1" : "0");
-      } catch (e) {}
-    }
-
-    try {
-      applyTheme(localStorage.getItem("ajitNovaLight") === "1");
-    } catch (e) {}
-
-    $("themeBtn").addEventListener("click", () => {
-      applyTheme(!document.body.classList.contains("light"));
-    });
-
-    // Gallery background image
-    const photoInput = $("photoInput");
-
-    function applyPhoto(data) {
-      if (data) {
-        document.body.style.backgroundImage =
-          'linear-gradient(#02081766,#02081766), url("' + data + '")';
-        document.body.classList.add("has-photo");
-      } else {
-        document.body.classList.remove("has-photo");
-        document.body.style.backgroundImage = "";
-      }
-    }
-
-    try {
-      const savedPhoto = localStorage.getItem("ajitNovaBg");
-      if (savedPhoto) applyPhoto(savedPhoto);
-    } catch (e) {}
-
-    $("choosePhoto").addEventListener("click", () => photoInput.click());
-
-    photoInput.addEventListener("change", () => {
-      const file = photoInput.files && photoInput.files[0];
-      if (!file) return;
-
-      if (!file.type.startsWith("image/")) {
-        $("status").textContent = "Kripya image file chuno.";
+      const term = input.value.trim();
+      if (!term) {
+        input.focus();
         return;
       }
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        const data = reader.result;
-        applyPhoto(data);
-        try {
-          localStorage.setItem("ajitNovaBg", data);
-          $("status").textContent = "Background save ho gaya! 💙";
-        } catch (e) {
-          $("status").textContent =
-            "Photo lag gayi, lekin browser storage full hai; save nahi hui.";
+      status.textContent = "खोज जारी है...";
+      results.replaceChildren();
+
+      try {
+        const params = new URLSearchParams({
+          action: "query",
+          list: "search",
+          srsearch: term,
+          format: "json",
+          origin: "*",
+          srlimit: "10"
+        });
+
+        const response = await fetch(
+          "https://hi.wikipedia.org/w/api.php?" + params
+        );
+
+        if (!response.ok) {
+          throw new Error("Search service unavailable");
         }
-      };
-      reader.readAsDataURL(file);
-    });
 
-    $("removePhoto").addEventListener("click", () => {
-      try { localStorage.removeItem("ajitNovaBg"); } catch (e) {}
-      applyPhoto("");
-      $("status").textContent = "Custom background hata diya.";
-    });
+        const data = await response.json();
+        const items = data.query?.search || [];
 
-    $("resetBtn").addEventListener("click", () => {
-      try {
-        localStorage.removeItem("ajitNovaBg");
-        localStorage.removeItem("ajitNovaLight");
-      } catch (e) {}
-      applyPhoto("");
-      applyTheme(false);
-      $("status").textContent = "Theme aur background reset ho gaye.";
-    });
+        if (items.length === 0) {
+          status.textContent =
+            "कोई नतीजा नहीं मिला। दूसरे शब्दों से खोजें।";
+          return;
+        }
 
-    // Microphone voice search
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+        status.textContent =
+          `${items.length} नतीजे मिले — "${term}"`;
 
-    $("micBtn").addEventListener("click", () => {
-      if (!SpeechRecognition) {
-        $("status").textContent =
-          "Voice search ke liye Android Chrome mein try karo.";
-        return;
+        items.forEach((item) => {
+          const card = document.createElement("article");
+          card.className = "result";
+
+          const link = document.createElement("a");
+          link.href =
+            "https://hi.wikipedia.org/wiki/" +
+            encodeURIComponent(item.title.replace(/ /g, "_"));
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = item.title;
+
+          const url = document.createElement("span");
+          url.className = "url";
+          url.textContent = "hi.wikipedia.org";
+
+          const snippet = document.createElement("p");
+          snippet.className = "snippet";
+          snippet.textContent = item.snippet
+            .replace(/<[^>]*>/g, "")
+            .replace(/&quot;/g, '"')
+            .replace(/&#039;/g, "'")
+            .replace(/&amp;/g, "&")
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">");
+
+          card.append(link, url, snippet);
+          results.append(card);
+        });
+      } catch (error) {
+        status.textContent =
+          "अभी नतीजे नहीं मिल पाए। इंटरनेट कनेक्शन जाँचकर फिर कोशिश करें।";
       }
+    });
 
+    const SpeechRecognition =
+      window.SpeechRecognition ||
+      window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
       const recognition = new SpeechRecognition();
       recognition.lang = "hi-IN";
       recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
 
-      $("voiceInfo").textContent = "Listening... Ab bolo 🎙️";
-      $("status").textContent = "Sun raha hoon...";
+      mic.addEventListener("click", () => {
+        status.textContent = "बोलिए, आपकी आवाज़ सुनी जा रही है...";
+        recognition.start();
+      });
 
-      recognition.onresult = event => {
-        const spoken = event.results[0][0].transcript;
-        $("searchBox").value = spoken;
-        $("voiceInfo").textContent = "Suna gaya: " + spoken;
-        $("searchForm").requestSubmit();
+      recognition.onresult = (event) => {
+        input.value = event.results[0][0].transcript;
+        form.requestSubmit();
       };
 
       recognition.onerror = () => {
-        $("voiceInfo").textContent =
-          "Mic permission aur internet connection check karo.";
-        $("status").textContent = "Voice search abhi available nahi hai.";
+        status.textContent =
+          "आवाज़ से खोज उपलब्ध नहीं हुई। आप लिखकर खोज सकते हैं।";
       };
 
       recognition.onend = () => {
-        if ($("voiceInfo").textContent === "Listening... Ab bolo 🎙️") {
-          $("voiceInfo").textContent = "Voice search ready hai.";
+        if (status.textContent.includes("आवाज़ सुनी")) {
+          status.textContent = "आप चाहें तो लिखकर भी खोज सकते हैं।";
         }
       };
-
-      try { recognition.start(); }
-      catch (e) {
-        $("voiceInfo").textContent = "Mic dobara try karo.";
-      }
-    });
-
-    // PWA install prompt, if browser provides it
-    let installPrompt = null;
-
-    window.addEventListener("beforeinstallprompt", event => {
-      event.preventDefault();
-      installPrompt = event;
-      $("installInfo").textContent = "Install ke liye taiyar hai.";
-    });
-
-    $("installBtn").addEventListener("click", async () => {
-      if (installPrompt) {
-        installPrompt.prompt();
-        await installPrompt.userChoice;
-        installPrompt = null;
-      } else {
-        $("installInfo").textContent =
-          "Chrome ke ⋮ menu mein Add to Home screen ya Install app chuno.";
-      }
-      // PWA install tabhi milega jab site aur manifest browser ki requirements poori karein.
-    });
-
-    // Existing service worker file ko register karne ki koshish
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./service-worker.js")
-          .catch(() => {
-            // Agar tumhari file ka naam alag hai, existing setup ko waise hi rehne do.
-          });
+    } else {
+      mic.addEventListener("click", () => {
+        status.textContent =
+          "इस ब्राउज़र में माइक्रोफोन खोज उपलब्ध नहीं है। लिखकर खोजें।";
       });
     }
   </script>
