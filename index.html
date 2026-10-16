@@ -1,205 +1,183 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#020817">
-<title>AJIT NOVA | Explore Beyond</title>
-<style>
-*{box-sizing:border-box}
-:root{--blue:#078cff;--cyan:#00eaff}
-body{
- margin:0;min-height:100vh;color:#f4f8ff;
- font-family:Arial,sans-serif;background:#020817;
- overflow-x:hidden;
-}
-.sky{
- position:fixed;inset:0;z-index:-2;overflow:hidden;
- background:
- radial-gradient(ellipse at 50% 70%,#e6a66d66,transparent 30%),
- linear-gradient(#010515 0%,#071d43 48%,#16365b 72%,#020817 100%);
-}
-.stars{
- position:absolute;inset:0;
- background-image:
- radial-gradient(2px 2px at 15% 18%,white,transparent),
- radial-gradient(1px 1px at 70% 12%,white,transparent),
- radial-gradient(2px 2px at 83% 32%,#9beaff,transparent),
- radial-gradient(1px 1px at 30% 40%,white,transparent),
- radial-gradient(2px 2px at 50% 8%,white,transparent);
- background-size:190px 150px;
-}
-.planet{
- position:absolute;width:240px;height:240px;
- border-radius:50%;top:20%;left:50%;
- transform:translateX(-50%);
- background:radial-gradient(circle at 30% 25%,#64c9ff,#1458a1 40%,#03102e 75%);
- box-shadow:0 0 45px #078cff88,0 0 100px #007bff44;
- opacity:.8;
-}
-.planet:after{
- content:"";position:absolute;inset:35% -25%;
- border:3px solid #00dfff;
- border-radius:50%;transform:rotate(-20deg);
- box-shadow:0 0 20px #00cfff;
-}
-.mountains{
- position:absolute;bottom:0;width:100%;height:40%;
- background:linear-gradient(160deg,#567c9b,#101e39 65%);
- clip-path:polygon(0 55%,12% 28%,22% 57%,36% 8%,49% 52%,65% 18%,78% 58%,91% 25%,100% 50%,100% 100%,0 100%);
-}
-.lake{
- position:absolute;bottom:0;width:100%;height:25%;
- background:linear-gradient(#1a4567,#06152e 85%);
- clip-path:polygon(0 12%,100% 0,100% 100%,0 100%);
-}
-header{
- display:flex;align-items:center;gap:12px;padding:15px;
- background:#020817a8;border-bottom:1px solid #078cff66;
- backdrop-filter:blur(12px)
-}
-.menu{font-size:25px;color:var(--cyan)}
-.logo{
- font-size:34px;font-weight:900;font-style:italic;
- color:#b6f7ff;text-shadow:0 0 15px var(--blue);
- animation:float 3s ease-in-out infinite,rotate 6s ease-in-out infinite
-}
-@keyframes float{50%{translate:0 -7px}}
-@keyframes rotate{50%{rotate:5deg}}
-.brand{font-size:25px;font-weight:900}
-.brand span,h1 span{color:var(--cyan);text-shadow:0 0 20px var(--blue)}
-.sub{font-size:9px;letter-spacing:3px;margin-top:4px}
-main{
- width:min(94%,760px);margin:auto;text-align:center;
- padding:clamp(25px,7vh,65px) 0 30px
-}
-h1{font-size:clamp(38px,10vw,66px);margin:18px 0 8px}
-.tag{font-size:12px;letter-spacing:5px;color:#b3eeff}
-.motto{margin:20px 0 30px;color:#e2edff;font-size:13px}
-.search{
- display:flex;align-items:center;gap:4px;padding:6px;
- border:2px solid var(--cyan);border-radius:50px;
- background:#020c20e8;box-shadow:0 0 22px #008cff77
-}
-.search input{
- flex:1;min-width:0;padding:13px 4px;
- color:white;background:transparent;border:0;outline:0;font-size:14px
-}
-.search input::placeholder{color:#c0d1e9}
-button{cursor:pointer}
-.mic,.go{border:0;color:white}
-.mic{background:transparent;color:var(--cyan);font-size:22px;padding:7px}
-.go{
- background:linear-gradient(135deg,#00cfff,#0862ff);
- border-radius:50%;width:46px;height:46px;font-size:22px;
- box-shadow:0 0 15px #078cff
-}
-#status{font-size:12px;color:#b5dfff;min-height:24px;margin-top:12px}
-.grid{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:23px 10px;margin:32px 0 42px
-}
-.item{color:white;text-decoration:none;display:grid;justify-items:center;gap:8px}
-.tile{
- width:67px;height:67px;display:grid;place-items:center;
- border:1px solid var(--c);border-radius:20px;
- background:#031127dd;color:var(--c);font-size:28px;
- box-shadow:0 0 18px color-mix(in srgb,var(--c) 30%,transparent);
- backdrop-filter:blur(8px)
-}
-.item b{font-size:14px}
-.item small{color:#c2d6ed;font-size:11px}
-footer{padding:12px;color:#bcefff}
-footer strong{font-size:26px;font-style:italic}
-footer small{display:block;letter-spacing:5px;margin-top:8px}
-@media(min-width:600px){
- .grid{grid-template-columns:repeat(6,1fr)}
- .planet{width:290px;height:290px}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJIT NOVA FREE SEARCH</title>
+    
+    <!-- Google Fonts for modern typography -->
+    <link href="https://googleapis.com" rel="stylesheet">
+
+    <!-- CSS स्टाइल एक ही जगह पर -->
+    <style>
+        /* बेसिक रीसेट और सेटिंग्स */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* एनिमेटेड नियोन बैकग्राउंड */
+        .background-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 12s infinite alternate ease-in-out;
+        }
+
+        .c1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #00f2fe 0%, #4facfe 100%);
+            top: -10%;
+            left: 10%;
+        }
+
+        .c2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #b152ff 0%, #7c00ff 100%);
+            bottom: -10%;
+            right: 10%;
+            animation-delay: -6s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 40px) scale(1.2); }
+        }
+
+        /* सर्च कंटेनर (कांच जैसा लुक) */
+        .search-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px 40px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 650px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ब्रांड टाइटल स्टाइल */
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .brand-title span {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #00f2fe;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #66747e;
+            margin-top: 20px;
+        }
+
+        /* सर्च बॉक्स और बटन */
+        .search-box {
+            display: flex;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 6px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within {
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .search-box input::placeholder {
+            color: #aaa;
+        }
+
+        .search-box button {
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            border: none;
+            outline: none;
+            color: #0b0c10;
+            font-weight: 600;
+            padding: 0 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+        }
+    </style>
 </head>
 <body>
-<div class="sky">
- <div class="stars"></div>
- <div class="planet"></div>
- <div class="mountains"></div>
- <div class="lake"></div>
-</div>
 
-<header>
- <div class="menu">☰</div>
- <div class="logo">AN</div>
- <div>
-  <div class="brand">AJIT <span>NOVA</span></div>
-  <div class="sub">GLOBAL SEARCH ENGINE</div>
- </div>
-</header>
+    <!-- बैकग्राउंड में घूमने वाली नियोन लाइट्स -->
+    <div class="background-animation">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+    </div>
 
-<main>
- <h1>AJIT <span>NOVA</span></h1>
- <div class="tag">GLOBAL SEARCH ENGINE</div>
- <div class="motto">Search Anything. Anywhere. Anytime.</div>
+    <!-- मुख्य सर्च बॉक्स एरिया -->
+    <div class="search-container">
+        <h1 class="brand-title">AJIT NOVA <span>FREE SEARCH</span></h1>
+        
+        <!-- अपनी ज़रूरत के हिसाब से action बदल लें (जैसे Google API या खुद का बैकएंड) -->
+        <form action="/search" method="GET">
+            <div class="search-box">
+                <input type="text" name="q" placeholder="Explore the universe of knowledge..." required autocomplete="off">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+        
+        <p class="tagline">Fast. Private. Powerful.</p>
+    </div>
 
- <form class="search" id="form">
-  <span style="font-size:23px;padding-left:9px">⌕</span>
-  <input id="q" type="search"
-   placeholder="AJIT NOVA पर कुछ भी खोजें..." required>
-  <button class="mic" id="mic" type="button" aria-label="Voice search">🎙</button>
-  <button class="go" type="submit" aria-label="Search">➜</button>
- </form>
- <div id="status">आपकी दुनिया, आपकी खोज।</div>
-
- <section class="grid">
-  <a class="item" href="https://www.google.com/" style="--c:#00dfff">
-   <div class="tile">◎</div><b>Web</b><small>Global Search</small>
-  </a>
-  <a class="item" href="https://news.google.com/" style="--c:#e879ff">
-   <div class="tile">▤</div><b>News</b><small>Latest Updates</small>
-  </a>
-  <a class="item" href="https://maps.google.com/" style="--c:#00ffac">
-   <div class="tile">⌖</div><b>Maps</b><small>Find Places</small>
-  </a>
-  <a class="item" href="https://weather.google.com/" style="--c:#ffbf47">
-   <div class="tile">☀</div><b>Weather</b><small>Forecast</small>
-  </a>
-  <a class="item" href="https://www.google.com/search?q=science" style="--c:#bb91ff">
-   <div class="tile">⚛</div><b>Science</b><small>Discover More</small>
-  </a>
-  <a class="item" href="https://www.google.com/" style="--c:#42cfff">
-   <div class="tile">•••</div><b>More</b><small>Explore</small>
-  </a>
- </section>
-
- <footer><strong>Explore Beyond</strong><small>AJIT NOVA</small></footer>
-</main>
-
-<script>
-const form=document.getElementById('form');
-const q=document.getElementById('q');
-const status=document.getElementById('status');
-
-form.addEventListener('submit',e=>{
- e.preventDefault();
- const text=q.value.trim();
- if(text) location.href='https://www.google.com/search?q='+encodeURIComponent(text);
-});
-
-document.getElementById('mic').addEventListener('click',()=>{
- const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
- if(!SR){
-  status.textContent='इस ब्राउज़र में Voice Search उपलब्ध नहीं है।';
-  return;
- }
- const r=new SR();
- r.lang='hi-IN';
- r.onstart=()=>status.textContent='🎙 बोलिए...';
- r.onresult=e=>{
-  q.value=e.results[0][0].transcript;
-  form.requestSubmit();
- };
- r.onerror=()=>status.textContent='माइक्रोफोन की अनुमति जाँचें।';
- r.start();
-});
-</script>
 </body>
 </html>
