@@ -1,19 +1,29 @@
-const CACHE_NAME = "ajit-nova-v1";
+const CACHE_NAME = "ajit-nova-v2";
 
 const APP_FILES = [
   "./",
   "./index.html",
   "./manifest.json",
   "./offline.html",
-  "./icons/icon-192.png"
+  "./icon-192.png",
+  "./icon-512.png"
 ];
 
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache =>
-      cache.addAll(APP_FILES)
-    )
+    caches.open(CACHE_NAME).then(async cache => {
+      await Promise.all(
+        APP_FILES.map(async file => {
+          try {
+            await cache.add(file);
+          } catch (error) {
+            console.warn("Cache skipped:", file);
+          }
+        })
+      );
+    })
   );
+
   self.skipWaiting();
 });
 
@@ -22,41 +32,46 @@ self.addEventListener("activate", event => {
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(key => key !== CACHE_NAME)
+          .filter(key => key.startsWith("ajit-nova-") && key !== CACHE_NAME)
           .map(key => caches.delete(key))
       )
-    )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") return;
+  const request = event.request;
 
-  const url = new URL(event.request.url);
+  if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
 
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
-    fetch(event.request)
+    fetch(request)
       .then(response => {
         if (response.ok) {
           const copy = response.clone();
           caches.open(CACHE_NAME).then(cache =>
-            cache.put(event.request, copy)
+            cache.put(request, copy)
           );
         }
         return response;
       })
       .catch(async () => {
-        const cached = await caches.match(event.request);
+        const cached = await caches.match(request);
         if (cached) return cached;
 
-        if (event.request.mode === "navigate") {
-          return caches.match("./offline.html");
+        if (request.mode === "navigate") {
+          const offlinePage = await caches.match("./offline.html");
+          if (offlinePage) return offlinePage;
         }
 
-        return new Response("", { status: 503 });
+        return new Response("इंटरनेट उपलब्ध नहीं है। कृपया दोबारा कोशिश करें।", {
+          status: 503,
+          headers: { "Content-Type": "text/plain; charset=utf-8" }
+        });
       })
   );
 });
