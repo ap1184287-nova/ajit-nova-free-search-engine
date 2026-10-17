@@ -1,24 +1,36 @@
-
 {
+  "id": "./",
   "name": "AJIT NOVA",
   "short_name": "NOVA",
   "description": "AJIT NOVA - Your World, Your Search",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "portrait",
-  "background_color": "#070b16",
-  "theme_color": "#0b57d0",
+  "background_color": "#070b19",
+  "theme_color": "#168cff",
   "icons": [
     {
       "src": "./icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "./icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
