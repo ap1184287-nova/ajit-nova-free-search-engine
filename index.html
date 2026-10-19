@@ -4,138 +4,356 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#020817">
+<meta name="theme-color" content="#090014">
 <meta name="description" content="AJIT NOVA - Explore Beyond. Search the web, images, videos and news.">
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon-192.png" type="image/png">
-<title>AJIT NOVA | Explore Beyond</title>
+<title>AJIT NOVA | Cyber Purple</title>
+
 <style>
 *{box-sizing:border-box}
-:root{--blue:#078cff;--cyan:#00eaff}
-body{margin:0;min-height:100vh;color:#f4f8ff;font-family:Arial,sans-serif;background:#020817;overflow-x:hidden}
-.sky{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(ellipse at 50% 70%,#e6a66d66,transparent 30%),linear-gradient(#010515 0%,#071d43 48%,#16365b 72%,#020817 100%)}
-.stars{position:absolute;inset:0;background-image:radial-gradient(2px 2px at 15% 18%,white,transparent),radial-gradient(1px 1px at 70% 12%,white,transparent),radial-gradient(2px 2px at 83% 32%,#9beaff,transparent),radial-gradient(1px 1px at 30% 40%,white,transparent),radial-gradient(2px 2px at 50% 8%,white,transparent);background-size:190px 150px}
-.planet{position:absolute;width:240px;height:240px;border-radius:50%;top:20%;left:50%;transform:translateX(-50%);background:radial-gradient(circle at 30% 25%,#64c9ff,#1458a1 40%,#03102e 75%);box-shadow:0 0 45px #078cff88,0 0 100px #007bff44;opacity:.8}
-.planet:after{content:"";position:absolute;inset:35% -25%;border:3px solid #00dfff;border-radius:50%;transform:rotate(-20deg);box-shadow:0 0 20px #00cfff}
-.mountains{position:absolute;bottom:0;width:100%;height:40%;background:linear-gradient(160deg,#567c9b,#101e39 65%);clip-path:polygon(0 55%,12% 28%,22% 57%,36% 8%,49% 52%,65% 18%,78% 58%,91% 25%,100% 50%,100% 100%,0 100%)}
-.lake{position:absolute;bottom:0;width:100%;height:25%;background:linear-gradient(#1a4567,#06152e 85%);clip-path:polygon(0 12%,100% 0,100% 100%,0 100%)}
-header{display:flex;align-items:center;gap:12px;padding:15px;background:#020817a8;border-bottom:1px solid #078cff66;backdrop-filter:blur(12px)}
-.menu{font-size:25px;color:var(--cyan)}
-.logo{font-size:34px;font-weight:900;font-style:italic;color:#b6f7ff;text-shadow:0 0 15px var(--blue);animation:float 3s ease-in-out infinite,rotate 6s ease-in-out infinite}
-@keyframes float{50%{translate:0 -7px}}
-@keyframes rotate{50%{rotate:5deg}}
-.brand{font-size:25px;font-weight:900}
-.brand span,h1 span{color:var(--cyan);text-shadow:0 0 20px var(--blue)}
-.sub{font-size:9px;letter-spacing:3px;margin-top:4px}
-main{width:min(94%,760px);margin:auto;text-align:center;padding:clamp(25px,7vh,65px) 0 30px}
-h1{font-size:clamp(38px,10vw,66px);margin:18px 0 8px}
-.tag{font-size:12px;letter-spacing:5px;color:#b3eeff}
-.motto{margin:20px 0 30px;color:#e2edff;font-size:13px}
-.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:0 0 12px}
-.tab{border:1px solid #3d78a8;background:#06162de8;color:#d8eaff;padding:9px 14px;border-radius:22px;font-size:13px;font-weight:bold}
-.tab[aria-pressed="true"]{background:linear-gradient(135deg,#00cfff,#0862ff);border-color:var(--cyan);color:white;box-shadow:0 0 15px #078cff77}
-.search{display:flex;align-items:center;gap:4px;padding:6px;border:2px solid var(--cyan);border-radius:50px;background:#020c20e8;box-shadow:0 0 22px #008cff77}
-.search input{flex:1;min-width:0;padding:13px 4px;color:white;background:transparent;border:0;outline:0;font-size:14px}
-.search input::placeholder{color:#c0d1e9}
+:root{
+ --purple:#bd36ff;
+ --pink:#f04cff;
+ --violet:#792bff;
+ --cyan:#d9a4ff;
+ --text:#f9f3ff;
+ --muted:#cdb8e5;
+ --line:#b33dff66;
+ --panel:rgba(20,7,36,.82);
+}
+html{min-height:100%;background:#080010}
+body{
+ margin:0;min-height:100vh;color:var(--text);
+ font-family:Arial,sans-serif;overflow-x:hidden;
+ background:
+ radial-gradient(ellipse at 50% 28%,#40115e 0%,transparent 42%),
+ radial-gradient(ellipse at 5% 90%,#25083e 0%,transparent 38%),
+ linear-gradient(160deg,#050009,#10031e 55%,#030007);
+ background-attachment:fixed;
+}
+button,a{-webkit-tap-highlight-color:transparent}
 button{cursor:pointer}
+.sky{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
+ background:radial-gradient(ellipse at 50% 75%,#5d168b44,transparent 48%)}
+.stars{
+ position:absolute;inset:0;
+ background-image:
+ radial-gradient(2px 2px at 15% 18%,white,transparent),
+ radial-gradient(1px 1px at 70% 12%,#f1caff,transparent),
+ radial-gradient(2px 2px at 83% 32%,#d8a0ff,transparent),
+ radial-gradient(1px 1px at 30% 40%,white,transparent),
+ radial-gradient(2px 2px at 50% 8%,white,transparent);
+ background-size:190px 150px;opacity:.7
+}
+.planet{
+ position:absolute;width:290px;height:290px;border-radius:50%;
+ top:23%;left:50%;transform:translateX(-50%);
+ background:radial-gradient(circle at 30% 25%,#e9baff,#8628c4 35%,#24083f 70%);
+ box-shadow:0 0 35px #d23dff66,0 0 95px #7d19ff44;
+ opacity:.35
+}
+.planet:after{
+ content:"";position:absolute;inset:35% -25%;
+ border:3px solid #e44cff;border-radius:50%;
+ transform:rotate(-20deg);box-shadow:0 0 20px #c92cff
+}
+.mountains{
+ position:absolute;bottom:0;width:100%;height:35%;
+ background:linear-gradient(160deg,#5c2879,#160b2d 65%);
+ clip-path:polygon(0 55%,12% 28%,22% 57%,36% 8%,49% 52%,65% 18%,78% 58%,91% 25%,100% 50%,100% 100%,0 100%)
+}
+.lake{
+ position:absolute;bottom:0;width:100%;height:20%;
+ background:linear-gradient(#41145e,#080011 85%);
+ clip-path:polygon(0 12%,100% 0,100% 100%,0 100%);opacity:.8
+}
+header{
+ display:flex;align-items:center;gap:12px;padding:14px 16px;
+ background:#090014c9;border-bottom:1px solid var(--line);
+ backdrop-filter:blur(16px);position:relative
+}
+.menu{font-size:24px;color:#ed9aff}
+.logo{
+ font-size:34px;font-weight:900;font-style:italic;
+ color:#f1d7ff;text-shadow:0 0 15px var(--purple);
+ animation:float 3s ease-in-out infinite,rotate 6s ease-in-out infinite
+}
+@keyframes float{50%{translate:0 -6px}}
+@keyframes rotate{50%{rotate:4deg}}
+.brand{font-size:23px;font-weight:900;letter-spacing:.5px}
+.brand span,h1 span{
+ color:#e16aff;text-shadow:0 0 20px #b52aff
+}
+.sub{font-size:9px;letter-spacing:2px;margin-top:4px;color:#d6b7ef}
+main{width:min(94%,760px);margin:auto;text-align:center;
+ padding:clamp(24px,6vh,58px) 0 28px}
+.logo-ring{
+ width:150px;height:150px;margin:0 auto 18px;
+ border-radius:50%;display:grid;place-items:center;position:relative;
+ background:radial-gradient(circle,#35104d,#10051c 68%,#07000d);
+ border:2px solid #d14cff;
+ box-shadow:0 0 12px #e354ff,0 0 35px #a020ff77,
+ inset 0 0 28px #c333ff44;
+ animation:float 4s ease-in-out infinite,glow 3s infinite
+}
+.logo-ring:before{
+ content:"";position:absolute;inset:-7px;border-radius:50%;
+ border:1px solid #9d3bff;opacity:.7
+}
+.logo-ring:after{
+ content:"";position:absolute;width:175px;height:48px;
+ border:3px solid #df50ff;border-left-color:transparent;
+ border-right-color:#8e36ff;border-radius:50%;transform:rotate(-24deg);
+ filter:drop-shadow(0 0 6px #d946ff)
+}
+.logo-big{
+ font-size:65px;font-weight:1000;font-style:italic;letter-spacing:-7px;
+ background:linear-gradient(135deg,#fff,#e2baff 45%,#a12bff 78%,#fff);
+ -webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 0 10px #bb40ff)
+}
+.logo-star{position:absolute;top:12px;right:24px;color:white;
+ text-shadow:0 0 12px #f04cff;font-size:22px}
+@keyframes glow{50%{filter:brightness(1.18)}}
+h1{font-size:clamp(38px,10vw,64px);margin:15px 0 8px;letter-spacing:1px}
+.tag{font-size:11px;letter-spacing:4px;color:#e1c2ff}
+.motto{margin:18px 0 25px;color:#e5d6f7;font-size:13px}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:13px}
+.tab{
+ border:1px solid #8043a4;background:#180b2be8;color:#eadbff;
+ padding:9px 13px;border-radius:22px;font-size:13px;font-weight:bold
+}
+.tab[aria-pressed="true"]{
+ background:linear-gradient(135deg,#8f20ee,#e033ff);
+ border-color:#ed9aff;color:white;
+ box-shadow:0 0 16px #b22cff66
+}
+.search{
+ display:flex;align-items:center;gap:4px;padding:6px;
+ border:2px solid #d34aff;border-radius:50px;
+ background:#10051feF;box-shadow:0 0 20px #a62aff66,inset 0 0 12px #9225ff22
+}
+.search input{
+ flex:1;min-width:0;padding:13px 4px;color:white;
+ background:transparent;border:0;outline:0;font-size:14px
+}
+.search input::placeholder{color:#cbb4df}
 .mic,.go{border:0;color:white}
-.mic{background:transparent;color:var(--cyan);font-size:22px;padding:7px}
-.go{background:linear-gradient(135deg,#00cfff,#0862ff);border-radius:50%;width:46px;height:46px;font-size:22px;box-shadow:0 0 15px #078cff}
-#status{font-size:12px;color:#b5dfff;min-height:24px;margin-top:12px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:23px 10px;margin:32px 0 42px}
-.item{color:white;text-decoration:none;display:grid;justify-items:center;gap:8px}
-.tile{width:67px;height:67px;display:grid;place-items:center;border:1px solid var(--c);border-radius:20px;background:#031127dd;color:var(--c);font-size:28px;box-shadow:0 0 18px color-mix(in srgb,var(--c) 30%,transparent);backdrop-filter:blur(8px)}
+.mic{background:transparent;color:#ed9aff;font-size:22px;padding:7px}
+.go{
+ background:linear-gradient(135deg,#d936ff,#7622ff);
+ border-radius:50%;width:46px;height:46px;font-size:22px;
+ box-shadow:0 0 15px #b42aff88
+}
+#status{font-size:12px;color:#d5b5f4;min-height:24px;margin-top:12px}
+.install{
+ display:none;margin:12px auto;padding:12px 20px;
+ border:1px solid #e052ff;border-radius:25px;
+ background:linear-gradient(110deg,#6313ad,#b521eb);
+ color:white;font-weight:bold;box-shadow:0 0 15px #a52aff55
+}
+.grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:22px 10px;
+ margin:32px 0 40px
+}
+.item{
+ color:white;text-decoration:none;display:grid;justify-items:center;
+ gap:8px;min-width:0
+}
+.tile{
+ width:67px;height:67px;display:grid;place-items:center;
+ border:1px solid var(--c);border-radius:20px;
+ background:rgba(19,6,35,.86);color:var(--c);font-size:28px;
+ box-shadow:0 0 18px color-mix(in srgb,var(--c) 30%,transparent);
+ backdrop-filter:blur(8px);transition:transform .2s,box-shadow .2s
+}
+.item:active .tile{transform:scale(.94)}
 .item b{font-size:14px}
-.item small{color:#c2d6ed;font-size:11px}
-footer{padding:12px;color:#bcefff}
-footer strong{font-size:26px;font-style:italic}
+.item small{color:#cbb6e4;font-size:11px}
+footer{padding:12px;color:#e2b9ff}
+footer strong{font-size:26px;font-style:italic;text-shadow:0 0 15px #b52aff}
 footer small{display:block;letter-spacing:5px;margin-top:8px}
-.install{display:none;margin:12px auto;padding:12px 20px;border:1px solid var(--cyan);border-radius:25px;background:#06254a;color:white;font-weight:bold}
-@media(min-width:600px){.grid{grid-template-columns:repeat(6,1fr)}.planet{width:290px;height:290px}}
-@media(prefers-reduced-motion:reduce){.logo{animation:none}}
+@media(min-width:600px){
+ .grid{grid-template-columns:repeat(6,1fr)}
+ .planet{width:330px;height:330px}
+}
+@media(max-width:360px){
+ .tab{padding:8px 10px;font-size:12px}
+ .logo-ring{width:130px;height:130px}
+ .logo-big{font-size:57px}
+ .search input{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ .logo,.logo-ring{animation:none}
+}
 </style>
 </head>
+
 <body>
-<div class="sky"><div class="stars"></div><div class="planet"></div><div class="mountains"></div><div class="lake"></div></div>
-<header>
-<div class="menu" aria-hidden="true">☰</div><div class="logo">AN</div>
-<div><div class="brand">AJIT <span>NOVA</span></div><div class="sub">GLOBAL SEARCH ENGINE</div></div>
-</header>
-<main>
-<h1>AJIT <span>NOVA</span></h1>
-<div class="tag">GLOBAL SEARCH ENGINE</div>
-<div class="motto">Search Anything. Anywhere. Anytime.</div>
-<div class="tabs" role="group" aria-label="Search category">
-<button class="tab" type="button" data-mode="web" aria-pressed="true">🌐 Web</button>
-<button class="tab" type="button" data-mode="images" aria-pressed="false">🖼 Images</button>
-<button class="tab" type="button" data-mode="videos" aria-pressed="false">▶ Videos</button>
-<button class="tab" type="button" data-mode="news" aria-pressed="false">📰 News</button>
+<div class="sky">
+ <div class="stars"></div>
+ <div class="planet"></div>
+ <div class="mountains"></div>
+ <div class="lake"></div>
 </div>
-<form class="search" id="form">
-<span style="font-size:23px;padding-left:9px" aria-hidden="true">⌕</span>
-<input id="q" type="search" placeholder="AJIT NOVA पर कुछ भी खोजें..." aria-label="खोज शब्द लिखें" required>
-<button class="mic" id="mic" type="button" aria-label="आवाज़ से खोजें">🎙</button>
-<button class="go" type="submit" aria-label="खोजें">➜</button>
-</form>
-<div id="status" role="status" aria-live="polite">आपकी दुनिया, आपकी खोज।</div>
-<button class="install" id="installBtn" type="button">AJIT NOVA इंस्टॉल करें</button>
-<section class="grid">
-<a class="item" href="https://www.google.com/" style="--c:#00dfff"><div class="tile">◎</div><b>Web</b><small>Global Search</small></a>
-<a class="item" href="https://news.google.com/" style="--c:#e879ff"><div class="tile">▤</div><b>News</b><small>Latest Updates</small></a>
-<a class="item" href="https://maps.google.com/" style="--c:#00ffac"><div class="tile">⌖</div><b>Maps</b><small>Find Places</small></a>
-<a class="item" href="https://weather.google.com/" style="--c:#ffbf47"><div class="tile">☀</div><b>Weather</b><small>Forecast</small></a>
-<a class="item" href="https://www.google.com/search?q=science" style="--c:#bb91ff"><div class="tile">⚛</div><b>Science</b><small>Discover More</small></a>
-<a class="item" href="https://www.google.com/" style="--c:#42cfff"><div class="tile">•••</div><b>More</b><small>Explore</small></a>
-</section>
-<footer><strong>Explore Beyond</strong><small>AJIT NOVA</small></footer>
+
+<header>
+ <div class="menu" aria-hidden="true">☰</div>
+ <div class="logo">AN</div>
+ <div>
+  <div class="brand">AJIT <span>NOVA</span></div>
+  <div class="sub">GLOBAL SEARCH ENGINE</div>
+ </div>
+</header>
+
+<main>
+ <div class="logo-ring">
+  <div class="logo-big">AN</div>
+  <div class="logo-star">✦</div>
+ </div>
+
+ <h1>AJIT <span>NOVA</span></h1>
+ <div class="tag">GLOBAL SEARCH ENGINE</div>
+ <div class="motto">Search Anything. Anywhere. Anytime.</div>
+
+ <div class="tabs" role="group" aria-label="Search category">
+  <button class="tab" type="button" data-mode="web" aria-pressed="true">🌐 Web</button>
+  <button class="tab" type="button" data-mode="images" aria-pressed="false">🖼 Images</button>
+  <button class="tab" type="button" data-mode="videos" aria-pressed="false">▶ Videos</button>
+  <button class="tab" type="button" data-mode="news" aria-pressed="false">📰 News</button>
+ </div>
+
+ <form class="search" id="form">
+  <span style="font-size:23px;padding-left:9px" aria-hidden="true">⌕</span>
+  <input id="q" type="search" placeholder="AJIT NOVA पर कुछ भी खोजें..."
+   aria-label="खोज शब्द लिखें" required>
+  <button class="mic" id="mic" type="button" aria-label="आवाज़ से खोजें">🎙</button>
+  <button class="go" type="submit" aria-label="खोजें">➜</button>
+ </form>
+
+ <div id="status" role="status" aria-live="polite">आपकी दुनिया, आपकी खोज।</div>
+ <button class="install" id="installBtn" type="button">📲 AJIT NOVA इंस्टॉल करें</button>
+
+ <section class="grid">
+  <a class="item" href="https://www.google.com/" style="--c:#e65cff">
+   <div class="tile">◎</div><b>Web</b><small>Global Search</small>
+  </a>
+  <a class="item" href="https://news.google.com/" style="--c:#ff80e5">
+   <div class="tile">▤</div><b>News</b><small>Latest Updates</small>
+  </a>
+  <a class="item" href="https://maps.google.com/" style="--c:#9c8aff">
+   <div class="tile">⌖</div><b>Maps</b><small>Find Places</small>
+  </a>
+  <a class="item" href="https://weather.google.com/" style="--c:#ffbd69">
+   <div class="tile">☀</div><b>Weather</b><small>Forecast</small>
+  </a>
+  <a class="item" href="https://www.google.com/search?q=science" style="--c:#c79aff">
+   <div class="tile">⚛</div><b>Science</b><small>Discover More</small>
+  </a>
+  <a class="item" href="https://www.google.com/" style="--c:#62dfff">
+   <div class="tile">•••</div><b>More</b><small>Explore</small>
+  </a>
+ </section>
+
+ <footer>
+  <strong>Explore Beyond</strong>
+  <small>AJIT NOVA</small>
+ </footer>
 </main>
+
 <script>
 const form=document.getElementById("form");
 const q=document.getElementById("q");
 const status=document.getElementById("status");
 let mode="web";
+
 const searchUrls={
-web:text=>"https://www.google.com/search?q="+encodeURIComponent(text),
-images:text=>"https://www.google.com/search?tbm=isch&q="+encodeURIComponent(text),
-videos:text=>"https://www.google.com/search?tbm=vid&q="+encodeURIComponent(text),
-news:text=>"https://news.google.com/search?q="+encodeURIComponent(text)
+ web:text=>"https://www.google.com/search?q="+encodeURIComponent(text),
+ images:text=>"https://www.google.com/search?tbm=isch&q="+encodeURIComponent(text),
+ videos:text=>"https://www.google.com/search?tbm=vid&q="+encodeURIComponent(text),
+ news:text=>"https://news.google.com/search?q="+encodeURIComponent(text)
 };
-const placeholders={web:"AJIT NOVA पर कुछ भी खोजें...",images:"दुनिया भर की तस्वीरें खोजें...",videos:"वीडियो खोजें...",news:"ताज़ा खबरें खोजें..."};
+
+const placeholders={
+ web:"AJIT NOVA पर कुछ भी खोजें...",
+ images:"दुनिया भर की तस्वीरें खोजें...",
+ videos:"वीडियो खोजें...",
+ news:"ताज़ा खबरें खोजें..."
+};
+
 document.querySelectorAll(".tab").forEach(tab=>{
-tab.addEventListener("click",()=>{
-mode=tab.dataset.mode;
-document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-pressed",String(t===tab)));
-q.placeholder=placeholders[mode];
-status.textContent=({web:"🌐 Web Search चुना गया",images:"🖼 Images Search चुना गया",videos:"▶ Videos Search चुना गया",news:"📰 News Search चुना गया"})[mode];
-q.focus();
+ tab.addEventListener("click",()=>{
+  mode=tab.dataset.mode;
+  document.querySelectorAll(".tab").forEach(t=>
+   t.setAttribute("aria-pressed",String(t===tab))
+  );
+  q.placeholder=placeholders[mode];
+  status.textContent=({
+   web:"🌐 Web Search चुना गया",
+   images:"🖼 Images Search चुना गया",
+   videos:"▶ Videos Search चुना गया",
+   news:"📰 News Search चुना गया"
+  })[mode];
+  q.focus();
+ });
 });
-});
+
 form.addEventListener("submit",e=>{
-e.preventDefault();
-const text=q.value.trim();
-if(text)location.href=searchUrls[mode](text);
+ e.preventDefault();
+ const text=q.value.trim();
+ if(text)location.href=searchUrls[mode](text);
 });
+
 document.getElementById("mic").addEventListener("click",()=>{
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-if(!SR){status.textContent="इस ब्राउज़र में आवाज़ से खोज उपलब्ध नहीं है।";return;}
-const r=new SR();r.lang="hi-IN";
-r.onstart=()=>status.textContent="🎙 बोलिए...";
-r.onresult=e=>{q.value=e.results[0][0].transcript;form.requestSubmit();};
-r.onerror=()=>status.textContent="माइक्रोफोन की अनुमति जाँचें।";
-r.start();
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){
+  status.textContent="इस ब्राउज़र में आवाज़ से खोज उपलब्ध नहीं है।";
+  return;
+ }
+ const r=new SR();
+ r.lang="hi-IN";
+ r.onstart=()=>status.textContent="🎙 बोलिए...";
+ r.onresult=e=>{
+  q.value=e.results[0][0].transcript;
+  form.requestSubmit();
+ };
+ r.onerror=()=>status.textContent="माइक्रोफोन की अनुमति जाँचें।";
+ try{r.start()}
+ catch(e){status.textContent="माइक्रोफोन दोबारा शुरू नहीं हो सका।"}
 });
+
 let installPrompt=null;
 const installBtn=document.getElementById("installBtn");
+
 window.addEventListener("beforeinstallprompt",event=>{
-event.preventDefault();installPrompt=event;installBtn.style.display="block";
+ event.preventDefault();
+ installPrompt=event;
+ installBtn.style.display="block";
 });
+
 installBtn.addEventListener("click",async()=>{
-if(!installPrompt){status.textContent="Chrome के मेनू ⋮ में Install app या Add to Home screen देखें।";return;}
-installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installBtn.style.display="none";
+ if(!installPrompt){
+  status.textContent="Chrome मेनू ⋮ में Install app या Add to Home screen देखें।";
+  return;
+ }
+ installPrompt.prompt();
+ await installPrompt.userChoice;
+ installPrompt=null;
+ installBtn.style.display="none";
 });
-window.addEventListener("appinstalled",()=>{installBtn.style.display="none";status.textContent="AJIT NOVA इंस्टॉल हो गया!";});
+
+window.addEventListener("appinstalled",()=>{
+ installBtn.style.display="none";
+ status.textContent="AJIT NOVA इंस्टॉल हो गया!";
+});
+
 if("serviceWorker" in navigator){
-window.addEventListener("load",()=>{navigator.serviceWorker.register("./sw.js").catch(error=>console.error("Service Worker registration failed:",error));});
+ window.addEventListener("load",()=>{
+  navigator.serviceWorker.register("./sw.js").catch(error=>
+   console.error("Service Worker registration failed:",error)
+  );
+ });
 }
 </script>
 </body>
