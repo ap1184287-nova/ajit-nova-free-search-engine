@@ -10,6 +10,30 @@
 <link rel="icon" href="./icon-192.png" type="image/png">
 <title>AJIT NOVA | Cyber Purple</title>
 
+/* AJIT NOVA 3D MOVING LOGO */
+.logo {
+  display: inline-block;
+  transform-style: preserve-3d;
+  animation: nova3D 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px #a855f7)
+          drop-shadow(0 0 22px #7c3aed);
+}
+
+@keyframes nova3D {
+  0%, 100% {
+    transform: translateY(0) rotateY(0deg) rotateX(0deg);
+  }
+  25% {
+    transform: translateY(-9px) rotateY(90deg) rotateX(8deg);
+  }
+  50% {
+    transform: translateY(0) rotateY(180deg) rotateX(0deg);
+  }
+  75% {
+    transform: translateY(-9px) rotateY(270deg) rotateX(-8deg);
+  }
+}
+ 
 <style>
 *{box-sizing:border-box}
 :root{
