@@ -1,360 +1,314 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#090014">
-<meta name="description" content="AJIT NOVA - Explore Beyond. Search the web, images, videos and news.">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#03060d">
+<meta name="description" content="AJIT NOVA - Explore Beyond">
 <link rel="manifest" href="./manifest.json">
-<link rel="icon" href="./icon-192.png" type="image/png">
-<title>AJIT NOVA | Cyber Purple</title>
+<link rel="icon" href="./icon-192.png">
+<title>AJIT NOVA | NEON CYBER</title>
 
 <style>
+:root {
+  --blue:#168bff;
+  --cyan:#00eaff;
+  --bg:#03060d;
+  --panel:#0a1220;
+  --border:rgba(0,234,255,.24);
+}
 *{box-sizing:border-box}
-:root{
- --purple:#bd36ff;
- --pink:#f04cff;
- --violet:#792bff;
- --cyan:#d9a4ff;
- --text:#f9f3ff;
- --muted:#cdb8e5;
- --line:#b33dff66;
- --panel:rgba(20,7,36,.82);
-}
-html{min-height:100%;background:#080010}
+html{background:var(--bg);min-height:100%;scroll-behavior:smooth}
 body{
- margin:0;min-height:100vh;color:var(--text);
- font-family:Arial,sans-serif;overflow-x:hidden;
- background:
- radial-gradient(ellipse at 50% 28%,#40115e 0%,transparent 42%),
- radial-gradient(ellipse at 5% 90%,#25083e 0%,transparent 38%),
- linear-gradient(160deg,#050009,#10031e 55%,#030007);
- background-attachment:fixed;
+  margin:0;min-height:100vh;
+  font-family:system-ui,-apple-system,sans-serif;
+  color:#f4f9ff;
+  background:
+    radial-gradient(ellipse at 50% 0%,#102a49 0,transparent 42%),
+    radial-gradient(ellipse at 100% 60%,#07182b 0,transparent 42%),
+    #03060d;
+  overflow-x:hidden;
 }
-button,a{-webkit-tap-highlight-color:transparent}
-button{cursor:pointer}
-.sky{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
- background:radial-gradient(ellipse at 50% 75%,#5d168b44,transparent 48%)}
-.stars{
- position:absolute;inset:0;
- background-image:
- radial-gradient(2px 2px at 15% 18%,white,transparent),
- radial-gradient(1px 1px at 70% 12%,#f1caff,transparent),
- radial-gradient(2px 2px at 83% 32%,#d8a0ff,transparent),
- radial-gradient(1px 1px at 30% 40%,white,transparent),
- radial-gradient(2px 2px at 50% 8%,white,transparent);
- background-size:190px 150px;opacity:.7
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  opacity:.35;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%,#fff 99%,transparent),
+    radial-gradient(2px 2px at 80% 15%,var(--cyan) 99%,transparent),
+    radial-gradient(1px 1px at 35% 65%,#fff 99%,transparent),
+    radial-gradient(1px 1px at 70% 80%,var(--blue) 99%,transparent),
+    radial-gradient(1px 1px at 20% 90%,#fff 99%,transparent);
 }
-.planet{
- position:absolute;width:290px;height:290px;border-radius:50%;
- top:23%;left:50%;transform:translateX(-50%);
- background:radial-gradient(circle at 30% 25%,#e9baff,#8628c4 35%,#24083f 70%);
- box-shadow:0 0 35px #d23dff66,0 0 95px #7d19ff44;
- opacity:.35
-}
-.planet:after{
- content:"";position:absolute;inset:35% -25%;
- border:3px solid #e44cff;border-radius:50%;
- transform:rotate(-20deg);box-shadow:0 0 20px #c92cff
-}
-.mountains{
- position:absolute;bottom:0;width:100%;height:35%;
- background:linear-gradient(160deg,#5c2879,#160b2d 65%);
- clip-path:polygon(0 55%,12% 28%,22% 57%,36% 8%,49% 52%,65% 18%,78% 58%,91% 25%,100% 50%,100% 100%,0 100%)
-}
-.lake{
- position:absolute;bottom:0;width:100%;height:20%;
- background:linear-gradient(#41145e,#080011 85%);
- clip-path:polygon(0 12%,100% 0,100% 100%,0 100%);opacity:.8
-}
-header{
- display:flex;align-items:center;gap:12px;padding:14px 16px;
- background:#090014c9;border-bottom:1px solid var(--line);
- backdrop-filter:blur(16px);position:relative
-}
-.menu{font-size:24px;color:#ed9aff}
+button,input{font:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.app{position:relative;z-index:1;width:min(100% - 28px,760px);margin:auto;padding:20px 0 30px}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:900;letter-spacing:2px}
 .logo{
- font-size:34px;font-weight:900;font-style:italic;
- color:#f1d7ff;text-shadow:0 0 15px var(--purple);
- animation:float 3s ease-in-out infinite,rotate 6s ease-in-out infinite
+  width:46px;height:46px;display:grid;place-items:center;
+  border:1px solid var(--cyan);border-radius:13px;
+  color:white;font-size:20px;font-weight:950;
+  background:linear-gradient(145deg,#143d60,#050a13 60%,#0c2d46);
+  box-shadow:0 0 12px #008bff80,inset 0 0 12px #00eaff35;
+  animation:float 3s ease-in-out infinite,glow 2.5s ease-in-out infinite;
 }
-@keyframes float{50%{translate:0 -6px}}
-@keyframes rotate{50%{rotate:4deg}}
-.brand{font-size:23px;font-weight:900;letter-spacing:.5px}
-.brand span,h1 span{
- color:#e16aff;text-shadow:0 0 20px #b52aff
-}
-.sub{font-size:9px;letter-spacing:2px;margin-top:4px;color:#d6b7ef}
-main{width:min(94%,760px);margin:auto;text-align:center;
- padding:clamp(24px,6vh,58px) 0 28px}
-.logo-ring{
- width:150px;height:150px;margin:0 auto 18px;
- border-radius:50%;display:grid;place-items:center;position:relative;
- background:radial-gradient(circle,#35104d,#10051c 68%,#07000d);
- border:2px solid #d14cff;
- box-shadow:0 0 12px #e354ff,0 0 35px #a020ff77,
- inset 0 0 28px #c333ff44;
- animation:float 4s ease-in-out infinite,glow 3s infinite
-}
-.logo-ring:before{
- content:"";position:absolute;inset:-7px;border-radius:50%;
- border:1px solid #9d3bff;opacity:.7
-}
-.logo-ring:after{
- content:"";position:absolute;width:175px;height:48px;
- border:3px solid #df50ff;border-left-color:transparent;
- border-right-color:#8e36ff;border-radius:50%;transform:rotate(-24deg);
- filter:drop-shadow(0 0 6px #d946ff)
-}
-.logo-big{
- font-size:65px;font-weight:1000;font-style:italic;letter-spacing:-7px;
- background:linear-gradient(135deg,#fff,#e2baff 45%,#a12bff 78%,#fff);
- -webkit-background-clip:text;background-clip:text;color:transparent;
- filter:drop-shadow(0 0 10px #bb40ff)
-}
-.logo-star{position:absolute;top:12px;right:24px;color:white;
- text-shadow:0 0 12px #f04cff;font-size:22px}
-@keyframes glow{50%{filter:brightness(1.18)}}
-h1{font-size:clamp(38px,10vw,64px);margin:15px 0 8px;letter-spacing:1px}
-.tag{font-size:11px;letter-spacing:4px;color:#e1c2ff}
-.motto{margin:18px 0 25px;color:#e5d6f7;font-size:13px}
-.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:13px}
-.tab{
- border:1px solid #8043a4;background:#180b2be8;color:#eadbff;
- padding:9px 13px;border-radius:22px;font-size:13px;font-weight:bold
-}
-.tab[aria-pressed="true"]{
- background:linear-gradient(135deg,#8f20ee,#e033ff);
- border-color:#ed9aff;color:white;
- box-shadow:0 0 16px #b22cff66
-}
-.search{
- display:flex;align-items:center;gap:4px;padding:6px;
- border:2px solid #d34aff;border-radius:50px;
- background:#10051feF;box-shadow:0 0 20px #a62aff66,inset 0 0 12px #9225ff22
-}
-.search input{
- flex:1;min-width:0;padding:13px 4px;color:white;
- background:transparent;border:0;outline:0;font-size:14px
-}
-.search input::placeholder{color:#cbb4df}
-.mic,.go{border:0;color:white}
-.mic{background:transparent;color:#ed9aff;font-size:22px;padding:7px}
-.go{
- background:linear-gradient(135deg,#d936ff,#7622ff);
- border-radius:50%;width:46px;height:46px;font-size:22px;
- box-shadow:0 0 15px #b42aff88
-}
-#status{font-size:12px;color:#d5b5f4;min-height:24px;margin-top:12px}
+@keyframes float{0%,100%{transform:translateY(0) rotateY(0)}50%{transform:translateY(-4px) rotateY(15deg)}}
+@keyframes glow{50%{box-shadow:0 0 27px #008bffcc,inset 0 0 18px #00eaff70}}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .install{
- display:none;margin:12px auto;padding:12px 20px;
- border:1px solid #e052ff;border-radius:25px;
- background:linear-gradient(110deg,#6313ad,#b521eb);
- color:white;font-weight:bold;box-shadow:0 0 15px #a52aff55
+  display:none;color:var(--cyan);background:#071725;
+  border:1px solid var(--border);border-radius:11px;padding:9px 12px
 }
-.grid{
- display:grid;grid-template-columns:repeat(3,1fr);gap:22px 10px;
- margin:32px 0 40px
+.hero{text-align:center;padding:clamp(44px,9vh,76px) 0 29px}
+.hero .logo{
+  width:94px;height:94px;margin:0 auto 25px;
+  font-size:37px;border-radius:25px;
+  border-width:2px;position:relative;
 }
-.item{
- color:white;text-decoration:none;display:grid;justify-items:center;
- gap:8px;min-width:0
+.hero .logo:after{
+  content:"";position:absolute;inset:-8px;border:1px solid #168bff65;
+  border-radius:30px;transform:rotate(45deg);
+  animation:orbit 12s linear infinite;
 }
-.tile{
- width:67px;height:67px;display:grid;place-items:center;
- border:1px solid var(--c);border-radius:20px;
- background:rgba(19,6,35,.86);color:var(--c);font-size:28px;
- box-shadow:0 0 18px color-mix(in srgb,var(--c) 30%,transparent);
- backdrop-filter:blur(8px);transition:transform .2s,box-shadow .2s
+@keyframes orbit{to{transform:rotate(405deg)}}
+h1{
+  margin:0;font-size:clamp(32px,8vw,54px);
+  font-weight:950;letter-spacing:2px;line-height:1.12;
+  color:#fff;
+  text-shadow:0 0 8px #168bff,0 0 26px #168bff88;
 }
-.item:active .tile{transform:scale(.94)}
-.item b{font-size:14px}
-.item small{color:#cbb6e4;font-size:11px}
-footer{padding:12px;color:#e2b9ff}
-footer strong{font-size:26px;font-style:italic;text-shadow:0 0 15px #b52aff}
-footer small{display:block;letter-spacing:5px;margin-top:8px}
-@media(min-width:600px){
- .grid{grid-template-columns:repeat(6,1fr)}
- .planet{width:330px;height:330px}
+.tagline{margin:13px 0 0;color:#91abc8;font-size:13px;letter-spacing:1px}
+.line{
+  width:100px;height:2px;margin:19px auto 0;
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--blue),transparent);
+  box-shadow:0 0 12px var(--cyan);
 }
-@media(max-width:360px){
- .tab{padding:8px 10px;font-size:12px}
- .logo-ring{width:130px;height:130px}
- .logo-big{font-size:57px}
- .search input{font-size:12px}
+.search-box{
+  padding:12px;border:1px solid var(--border);border-radius:21px;
+  background:linear-gradient(145deg,#0c1b2cdd,#060b14f5);
+  box-shadow:0 0 28px #006eff13,inset 0 1px #ffffff0c;
+}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:11px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:1 0 auto;padding:9px 12px;border:1px solid transparent;
+  border-radius:10px;background:transparent;color:#8299b6;font-size:12px
+}
+.tab.active{
+  color:var(--cyan);border-color:#00eaff55;
+  background:#00eaff0c;box-shadow:inset 0 0 12px #00eaff09
+}
+.search-row{
+  display:flex;align-items:center;gap:4px;
+  min-width:0;padding:5px;border-radius:14px;
+  border:1px solid #168bff60;background:#030912;
+  box-shadow:0 0 13px #168bff14
+}
+.search-symbol{padding:0 7px;color:var(--cyan);font-size:23px}
+#query{
+  width:100%;min-width:0;flex:1;padding:12px 0;
+  border:0;outline:none;border-radius:0;
+  background:transparent;color:white;font-size:16px;
+  appearance:none;box-shadow:none
+}
+#query::placeholder{color:#7189a6;opacity:1;font-size:13px}
+.icon-btn{
+  flex-shrink:0;width:40px;height:42px;border:0;
+  border-radius:10px;background:transparent;color:#b9e8ff;font-size:19px
+}
+.submit{
+  flex-shrink:0;width:43px;height:42px;border:1px solid #55dfff66;
+  border-radius:11px;background:linear-gradient(135deg,#087cff,#00bce8);
+  color:#fff;font-size:21px;box-shadow:0 0 15px #168bff66
+}
+.hint{text-align:center;color:#617a99;font-size:11px;margin:10px 0 0}
+#status{text-align:center;color:var(--cyan);font-size:12px;min-height:18px;margin-top:8px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:29px 2px 13px}
+.section-head h2{font-size:14px;margin:0;font-weight:750}
+.section-head span{font-size:10px;color:#6885a4;letter-spacing:.7px}
+.shortcuts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.shortcut{
+  min-width:0;min-height:98px;text-decoration:none;color:#d9eaff;
+  border:1px solid #1b3850;border-radius:15px;
+  background:linear-gradient(145deg,#0b1828,#060b13);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:9px;font-size:11px;transition:border-color .2s,transform .2s
+}
+.shortcut:hover{border-color:#00eaff88}
+.shortcut:active{transform:scale(.96)}
+.shortcut-icon{
+  display:grid;place-items:center;width:41px;height:41px;
+  border:1px solid #168bff66;border-radius:12px;
+  color:var(--cyan);background:#0c2740;font-size:20px;
+  box-shadow:inset 0 0 12px #168bff16,0 0 10px #168bff10
+}
+.card{
+  margin-top:25px;padding:16px;border:1px solid #15364c;border-radius:16px;
+  background:linear-gradient(110deg,#09192a,#080d18)
+}
+.card-title{font-size:13px;font-weight:800;color:#eaf8ff}
+.card p{font-size:12px;line-height:1.7;color:#91a9c4;margin:7px 0 0}
+footer{text-align:center;padding:27px 0 8px;font-size:11px;color:#536b87}
+@media(max-width:380px){
+  .app{width:calc(100% - 20px)}
+  .brand{font-size:14px;letter-spacing:1px;gap:9px}
+  .logo{width:42px;height:42px}
+  .shortcuts{gap:7px}
+  .shortcut{min-height:87px;font-size:10px}
+  .shortcut-icon{width:37px;height:37px}
 }
 @media(prefers-reduced-motion:reduce){
- .logo,.logo-ring{animation:none}
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
 
 <body>
-<div class="sky">
- <div class="stars"></div>
- <div class="planet"></div>
- <div class="mountains"></div>
- <div class="lake"></div>
-</div>
+<main class="app">
+  <header>
+    <div class="brand"><div class="logo">AN</div><span>AJIT NOVA</span></div>
+    <button class="install" id="installBtn" type="button">＋ Install</button>
+  </header>
 
-<header>
- <div class="menu" aria-hidden="true">☰</div>
- <div class="logo">AN</div>
- <div>
-  <div class="brand">AJIT <span>NOVA</span></div>
-  <div class="sub">GLOBAL SEARCH ENGINE</div>
- </div>
-</header>
+  <section class="hero">
+    <div class="logo">AN</div>
+    <h1>AJIT NOVA</h1>
+    <p class="tagline">THE FUTURE OF SEARCH</p>
+    <div class="line"></div>
+  </section>
 
-<main>
- <div class="logo-ring">
-  <div class="logo-big">AN</div>
-  <div class="logo-star">✦</div>
- </div>
+  <section class="search-box">
+    <div class="tabs" role="group" aria-label="Search category">
+      <button class="tab active" data-mode="web" type="button">🌐 Web</button>
+      <button class="tab" data-mode="images" type="button">▧ Images</button>
+      <button class="tab" data-mode="videos" type="button">▷ Videos</button>
+      <button class="tab" data-mode="news" type="button">▤ News</button>
+    </div>
+    <form id="searchForm">
+      <div class="search-row">
+        <span class="search-symbol">⌕</span>
+        <input id="query" type="search" placeholder="AJIT NOVA PER KUCHH BHI KHOJE" autocomplete="off" enterkeyhint="search" aria-label="Search">
+        <button class="icon-btn" id="micBtn" type="button" aria-label="Voice search">🎙️</button>
+        <button class="submit" type="submit" aria-label="Search">➜</button>
+      </div>
+    </form>
+    <p class="hint">SEARCH ANYTHING · EXPLORE EVERYTHING</p>
+    <div id="status" role="status" aria-live="polite"></div>
+  </section>
 
- <h1>AJIT <span>NOVA</span></h1>
- <div class="tag">GLOBAL SEARCH ENGINE</div>
- <div class="motto">Search Anything. Anywhere. Anytime.</div>
+  <section>
+    <div class="section-head"><h2>✦ QUICK ACCESS</h2><span>EXPLORE THE WORLD</span></div>
+    <div class="shortcuts">
+      <a class="shortcut" href="https://www.google.com/"><span class="shortcut-icon">🌐</span>Google</a>
+      <a class="shortcut" href="https://www.google.com/news"><span class="shortcut-icon">📰</span>News</a>
+      <a class="shortcut" href="https://maps.google.com/"><span class="shortcut-icon">📍</span>Maps</a>
+      <a class="shortcut" href="https://www.google.com/search?q=weather"><span class="shortcut-icon">🌤️</span>Weather</a>
+      <a class="shortcut" href="https://www.google.com/search?q=science"><span class="shortcut-icon">🔬</span>Science</a>
+      <a class="shortcut" href="https://www.google.com/search?q=technology"><span class="shortcut-icon">💻</span>Tech</a>
+      <a class="shortcut" href="https://www.youtube.com/"><span class="shortcut-icon">▶️</span>YouTube</a>
+      <a class="shortcut" href="https://www.wikipedia.org/"><span class="shortcut-icon">📚</span>Wikipedia</a>
+    </div>
+  </section>
 
- <div class="tabs" role="group" aria-label="Search category">
-  <button class="tab" type="button" data-mode="web" aria-pressed="true">🌐 Web</button>
-  <button class="tab" type="button" data-mode="images" aria-pressed="false">🖼 Images</button>
-  <button class="tab" type="button" data-mode="videos" aria-pressed="false">▶ Videos</button>
-  <button class="tab" type="button" data-mode="news" aria-pressed="false">📰 News</button>
- </div>
+  <section class="card">
+    <div class="card-title">⚡ YOUR WORLD. YOUR SEARCH.</div>
+    <p>Discover websites, images, videos and the latest news with AJIT NOVA's futuristic search experience.</p>
+  </section>
 
- <form class="search" id="form">
-  <span style="font-size:23px;padding-left:9px" aria-hidden="true">⌕</span>
-  <input id="q" type="search" placeholder="AJIT NOVA पर कुछ भी खोजें..."
-   aria-label="खोज शब्द लिखें" required>
-  <button class="mic" id="mic" type="button" aria-label="आवाज़ से खोजें">🎙</button>
-  <button class="go" type="submit" aria-label="खोजें">➜</button>
- </form>
-
- <div id="status" role="status" aria-live="polite">आपकी दुनिया, आपकी खोज।</div>
- <button class="install" id="installBtn" type="button">📲 AJIT NOVA इंस्टॉल करें</button>
-
- <section class="grid">
-  <a class="item" href="https://www.google.com/" style="--c:#e65cff">
-   <div class="tile">◎</div><b>Web</b><small>Global Search</small>
-  </a>
-  <a class="item" href="https://news.google.com/" style="--c:#ff80e5">
-   <div class="tile">▤</div><b>News</b><small>Latest Updates</small>
-  </a>
-  <a class="item" href="https://maps.google.com/" style="--c:#9c8aff">
-   <div class="tile">⌖</div><b>Maps</b><small>Find Places</small>
-  </a>
-  <a class="item" href="https://weather.google.com/" style="--c:#ffbd69">
-   <div class="tile">☀</div><b>Weather</b><small>Forecast</small>
-  </a>
-  <a class="item" href="https://www.google.com/search?q=science" style="--c:#c79aff">
-   <div class="tile">⚛</div><b>Science</b><small>Discover More</small>
-  </a>
-  <a class="item" href="https://www.google.com/" style="--c:#62dfff">
-   <div class="tile">•••</div><b>More</b><small>Explore</small>
-  </a>
- </section>
-
- <footer>
-  <strong>Explore Beyond</strong>
-  <small>AJIT NOVA</small>
- </footer>
+  <footer>AJIT NOVA © 2026 · POWERED BY CURIOSITY</footer>
 </main>
 
 <script>
-const form=document.getElementById("form");
-const q=document.getElementById("q");
-const status=document.getElementById("status");
-let mode="web";
+(() => {
+  const input = document.getElementById("query");
+  const form = document.getElementById("searchForm");
+  const status = document.getElementById("status");
+  const mic = document.getElementById("micBtn");
+  const installBtn = document.getElementById("installBtn");
+  const tabs = document.querySelectorAll(".tab");
 
-const searchUrls={
- web:text=>"https://www.google.com/search?q="+encodeURIComponent(text),
- images:text=>"https://www.google.com/search?tbm=isch&q="+encodeURIComponent(text),
- videos:text=>"https://www.google.com/search?tbm=vid&q="+encodeURIComponent(text),
- news:text=>"https://news.google.com/search?q="+encodeURIComponent(text)
-};
+  let mode = "web";
+  let installPrompt = null;
 
-const placeholders={
- web:"AJIT NOVA पर कुछ भी खोजें...",
- images:"दुनिया भर की तस्वीरें खोजें...",
- videos:"वीडियो खोजें...",
- news:"ताज़ा खबरें खोजें..."
-};
+  const urls = {
+    web: "https://www.google.com/search?q=",
+    images: "https://www.google.com/search?tbm=isch&q=",
+    videos: "https://www.google.com/search?tbm=vid&q=",
+    news: "https://www.google.com/search?tbm=nws&q="
+  };
 
-document.querySelectorAll(".tab").forEach(tab=>{
- tab.addEventListener("click",()=>{
-  mode=tab.dataset.mode;
-  document.querySelectorAll(".tab").forEach(t=>
-   t.setAttribute("aria-pressed",String(t===tab))
-  );
-  q.placeholder=placeholders[mode];
-  status.textContent=({
-   web:"🌐 Web Search चुना गया",
-   images:"🖼 Images Search चुना गया",
-   videos:"▶ Videos Search चुना गया",
-   news:"📰 News Search चुना गया"
-  })[mode];
-  q.focus();
- });
-});
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      mode = tab.dataset.mode;
+      tabs.forEach(t => t.classList.toggle("active", t === tab));
+      input.placeholder = mode === "web" ? "AJIT NOVA PER KUCHH BHI KHOJE" :
+        mode === "images" ? "Images खोजें..." :
+        mode === "videos" ? "Videos खोजें..." : "News खोजें...";
+    });
+  });
 
-form.addEventListener("submit",e=>{
- e.preventDefault();
- const text=q.value.trim();
- if(text)location.href=searchUrls[mode](text);
-});
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const q = input.value.trim();
+    if (!q) {
+      status.textContent = "भाई, पहले कुछ लिखकर खोजो।";
+      input.focus({preventScroll:true});
+      return;
+    }
+    location.href = urls[mode] + encodeURIComponent(q);
+  });
 
-document.getElementById("mic").addEventListener("click",()=>{
- const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
- if(!SR){
-  status.textContent="इस ब्राउज़र में आवाज़ से खोज उपलब्ध नहीं है।";
-  return;
- }
- const r=new SR();
- r.lang="hi-IN";
- r.onstart=()=>status.textContent="🎙 बोलिए...";
- r.onresult=e=>{
-  q.value=e.results[0][0].transcript;
-  form.requestSubmit();
- };
- r.onerror=()=>status.textContent="माइक्रोफोन की अनुमति जाँचें।";
- try{r.start()}
- catch(e){status.textContent="माइक्रोफोन दोबारा शुरू नहीं हो सका।"}
-});
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (Recognition) {
+    mic.addEventListener("click", () => {
+      const rec = new Recognition();
+      rec.lang = "hi-IN";
+      rec.interimResults = false;
+      mic.textContent = "🔴";
+      status.textContent = "बोलिए, सुन रहा हूँ...";
+      rec.onresult = e => {
+        input.value = e.results[0][0].transcript;
+        form.requestSubmit();
+      };
+      rec.onerror = () => {
+        status.textContent = "Voice Search नहीं चला। फिर कोशिश करें।";
+      };
+      rec.onend = () => { mic.textContent = "🎙️"; };
+      try { rec.start(); }
+      catch (_) {
+        status.textContent = "माइक दोबारा दबाकर कोशिश करें।";
+        mic.textContent = "🎙️";
+      }
+    });
+  } else {
+    mic.addEventListener("click", () => {
+      status.textContent = "इस ब्राउज़र में Voice Search उपलब्ध नहीं है।";
+    });
+  }
 
-let installPrompt=null;
-const installBtn=document.getElementById("installBtn");
+  window.addEventListener("beforeinstallprompt", event => {
+    event.preventDefault();
+    installPrompt = event;
+    installBtn.style.display = "inline-block";
+  });
 
-window.addEventListener("beforeinstallprompt",event=>{
- event.preventDefault();
- installPrompt=event;
- installBtn.style.display="block";
-});
+  installBtn.addEventListener("click", async () => {
+    if (!installPrompt) {
+      status.textContent = "ब्राउज़र मेन्यू में Add to Home Screen देखें।";
+      return;
+    }
+    installPrompt.prompt();
+    await installPrompt.userChoice;
+    installPrompt = null;
+    installBtn.style.display = "none";
+  });
 
-installBtn.addEventListener("click",async()=>{
- if(!installPrompt){
-  status.textContent="Chrome मेनू ⋮ में Install app या Add to Home screen देखें।";
-  return;
- }
- installPrompt.prompt();
- await installPrompt.userChoice;
- installPrompt=null;
- installBtn.style.display="none";
-});
-
-window.addEventListener("appinstalled",()=>{
- installBtn.style.display="none";
- status.textContent="AJIT NOVA इंस्टॉल हो गया!";
-});
-
-if("serviceWorker" in navigator){
- window.addEventListener("load",()=>{
-  navigator.serviceWorker.register("./sw.js").catch(error=>
-   console.error("Service Worker registration failed:",error)
-  );
- });
-}
+  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    });
+  }
+})();
 </script>
 </body>
 </html>
