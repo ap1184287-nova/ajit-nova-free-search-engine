@@ -2,312 +2,324 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#03060d">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#020617">
 <meta name="description" content="AJIT NOVA - Explore Beyond">
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon-192.png">
-<title>AJIT NOVA | NEON CYBER</title>
+<title>AJIT NOVA | Explore Beyond</title>
 
 <style>
-:root {
-  --blue:#168bff;
-  --cyan:#00eaff;
-  --bg:#03060d;
-  --panel:#0a1220;
-  --border:rgba(0,234,255,.24);
-}
+:root{--blue:#078bff;--cyan:#00eaff}
 *{box-sizing:border-box}
-html{background:var(--bg);min-height:100%;scroll-behavior:smooth}
+html{min-height:100%;background:#020617}
 body{
-  margin:0;min-height:100vh;
-  font-family:system-ui,-apple-system,sans-serif;
-  color:#f4f9ff;
-  background:
-    radial-gradient(ellipse at 50% 0%,#102a49 0,transparent 42%),
-    radial-gradient(ellipse at 100% 60%,#07182b 0,transparent 42%),
-    #03060d;
-  overflow-x:hidden;
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;
-  opacity:.35;
-  background-image:
-    radial-gradient(1px 1px at 10% 20%,#fff 99%,transparent),
-    radial-gradient(2px 2px at 80% 15%,var(--cyan) 99%,transparent),
-    radial-gradient(1px 1px at 35% 65%,#fff 99%,transparent),
-    radial-gradient(1px 1px at 70% 80%,var(--blue) 99%,transparent),
-    radial-gradient(1px 1px at 20% 90%,#fff 99%,transparent);
+ margin:0;min-height:100vh;color:#f4f9ff;
+ font-family:system-ui,Arial,sans-serif;overflow-x:hidden;
+ background:
+ radial-gradient(ellipse at 50% 45%,#063d70 0%,transparent 45%),
+ radial-gradient(ellipse at 0% 90%,#06305b 0%,transparent 40%),
+ linear-gradient(#020617,#01030a);
 }
 button,input{font:inherit}
-button{cursor:pointer;-webkit-tap-highlight-color:transparent}
-.app{position:relative;z-index:1;width:min(100% - 28px,760px);margin:auto;padding:20px 0 30px}
-header{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:900;letter-spacing:2px}
-.logo{
-  width:46px;height:46px;display:grid;place-items:center;
-  border:1px solid var(--cyan);border-radius:13px;
-  color:white;font-size:20px;font-weight:950;
-  background:linear-gradient(145deg,#143d60,#050a13 60%,#0c2d46);
-  box-shadow:0 0 12px #008bff80,inset 0 0 12px #00eaff35;
-  animation:float 3s ease-in-out infinite,glow 2.5s ease-in-out infinite;
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+.space{
+ position:fixed;inset:0;z-index:0;pointer-events:none;
+ background-image:
+ radial-gradient(2px 2px at 15% 20%,#fff 98%,transparent),
+ radial-gradient(1px 1px at 75% 12%,#00eaff 98%,transparent),
+ radial-gradient(1px 1px at 40% 55%,#fff 98%,transparent),
+ radial-gradient(2px 2px at 90% 70%,#168bff 98%,transparent),
+ radial-gradient(1px 1px at 25% 85%,#fff 98%,transparent);
+ background-size:170px 190px;
+ animation:stars 25s linear infinite;
 }
-@keyframes float{0%,100%{transform:translateY(0) rotateY(0)}50%{transform:translateY(-4px) rotateY(15deg)}}
-@keyframes glow{50%{box-shadow:0 0 27px #008bffcc,inset 0 0 18px #00eaff70}}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
-.install{
-  display:none;color:var(--cyan);background:#071725;
-  border:1px solid var(--border);border-radius:11px;padding:9px 12px
+@keyframes stars{to{background-position:170px 190px}}
+.earth{
+ position:fixed;pointer-events:none;z-index:0;
+ width:160vw;height:65vw;max-height:430px;
+ top:56%;left:50%;transform:translateX(-50%);
+ border-radius:50% 50% 0 0;
+ border-top:2px solid #00eaff;
+ background:radial-gradient(ellipse at 50% 0%,#078bff35,transparent 65%);
+ box-shadow:0 -8px 35px #078bff70,0 -25px 75px #078bff20;
 }
-.hero{text-align:center;padding:clamp(44px,9vh,76px) 0 29px}
-.hero .logo{
-  width:94px;height:94px;margin:0 auto 25px;
-  font-size:37px;border-radius:25px;
-  border-width:2px;position:relative;
+.app{
+ position:relative;z-index:1;
+ width:calc(100% - 26px);max-width:700px;
+ margin:auto;padding:18px 0 35px;
 }
-.hero .logo:after{
-  content:"";position:absolute;inset:-8px;border:1px solid #168bff65;
-  border-radius:30px;transform:rotate(45deg);
-  animation:orbit 12s linear infinite;
+header{display:flex;align-items:center;gap:11px}
+.brandLogo,.heroLogo{
+ display:grid;place-items:center;position:relative;
+ flex-shrink:0;color:#fff;font-weight:1000;
+ border:2px solid #00eaff;
+ background:linear-gradient(145deg,#14547c,#020817 55%,#0874a5);
+ transform-style:preserve-3d;
+ animation:spin3d 5s linear infinite,glow 2s ease-in-out infinite alternate;
 }
-@keyframes orbit{to{transform:rotate(405deg)}}
+.brandLogo{
+ width:48px;height:48px;border-radius:15px;font-size:20px;
+}
+@keyframes spin3d{
+ 0%{transform:perspective(500px) rotateY(0deg)}
+ 25%{transform:perspective(500px) rotateY(90deg) rotateX(8deg)}
+ 50%{transform:perspective(500px) rotateY(180deg)}
+ 75%{transform:perspective(500px) rotateY(270deg) rotateX(-8deg)}
+ 100%{transform:perspective(500px) rotateY(360deg)}
+}
+@keyframes glow{
+ from{box-shadow:0 0 10px #078bff70,inset 0 0 10px #00eaff20}
+ to{box-shadow:0 0 28px #078bff,0 0 45px #00eaff40,inset 0 0 20px #00eaff50}
+}
+.brandName{font-size:19px;font-weight:950;letter-spacing:2px}
+.brandName span,h1 span{color:#00eaff}
+.brandSub{font-size:9px;color:#a5c9eb;letter-spacing:2px;margin-top:3px}
+.pill{
+ margin-left:auto;padding:8px 9px;border:1px solid #087fba;
+ border-radius:30px;background:#06172a;color:#a9edff;
+ font-size:9px;white-space:nowrap;
+}
+.hero{text-align:center;padding:48px 0 30px}
+.heroLogo{
+ width:125px;height:125px;margin:0 auto 30px;
+ border-radius:32px;font-size:51px;
+}
+.heroLogo:before,.heroLogo:after{
+ content:"";position:absolute;inset:-12px;
+ border:1px solid #078bff;border-radius:30%;transform:rotate(35deg);
+}
+.heroLogo:after{inset:-20px;border-color:#00eaff66;transform:rotate(70deg)}
 h1{
-  margin:0;font-size:clamp(32px,8vw,54px);
-  font-weight:950;letter-spacing:2px;line-height:1.12;
-  color:#fff;
-  text-shadow:0 0 8px #168bff,0 0 26px #168bff88;
+ margin:0;font-size:clamp(35px,9vw,54px);
+ font-weight:1000;letter-spacing:2px;line-height:1.1;
+ text-shadow:0 0 14px #078bff,0 0 35px #078bff70;
 }
-.tagline{margin:13px 0 0;color:#91abc8;font-size:13px;letter-spacing:1px}
+.tagline{font-size:11px;letter-spacing:3px;color:#b2cce9;margin:15px 0 0}
 .line{
-  width:100px;height:2px;margin:19px auto 0;
-  background:linear-gradient(90deg,transparent,var(--cyan),var(--blue),transparent);
-  box-shadow:0 0 12px var(--cyan);
+ width:140px;height:2px;margin:23px auto;
+ background:linear-gradient(90deg,transparent,#00eaff,#078bff,transparent);
+ box-shadow:0 0 15px #00eaff;
 }
-.search-box{
-  padding:12px;border:1px solid var(--border);border-radius:21px;
-  background:linear-gradient(145deg,#0c1b2cdd,#060b14f5);
-  box-shadow:0 0 28px #006eff13,inset 0 1px #ffffff0c;
+.searchBox{
+ padding:12px;border:1px solid #087fba;border-radius:24px;
+ background:linear-gradient(145deg,#0a1c31f5,#020817f5);
+ box-shadow:0 0 28px #006eff30,inset 0 0 20px #00aaff10;
 }
-.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:11px}
-.tabs::-webkit-scrollbar{display:none}
+.tabs{display:flex;gap:5px;margin-bottom:13px}
 .tab{
-  flex:1 0 auto;padding:9px 12px;border:1px solid transparent;
-  border-radius:10px;background:transparent;color:#8299b6;font-size:12px
+ flex:1;min-width:0;padding:11px 2px;border:1px solid transparent;
+ border-radius:12px;background:transparent;color:#91abc8;font-size:12px;
 }
 .tab.active{
-  color:var(--cyan);border-color:#00eaff55;
-  background:#00eaff0c;box-shadow:inset 0 0 12px #00eaff09
+ color:#00eaff;border-color:#00eaff80;
+ background:#00eaff13;box-shadow:0 0 13px #00eaff20;
 }
-.search-row{
-  display:flex;align-items:center;gap:4px;
-  min-width:0;padding:5px;border-radius:14px;
-  border:1px solid #168bff60;background:#030912;
-  box-shadow:0 0 13px #168bff14
+.searchRow{
+ display:flex;align-items:center;gap:3px;min-width:0;
+ padding:5px;border:1px solid #168bffb0;
+ border-radius:17px;background:#020914;
+ box-shadow:0 0 18px #078bff30;
 }
-.search-symbol{padding:0 7px;color:var(--cyan);font-size:23px}
+.searchIcon{font-size:25px;color:#00eaff;padding:0 5px}
 #query{
-  width:100%;min-width:0;flex:1;padding:12px 0;
-  border:0;outline:none;border-radius:0;
-  background:transparent;color:white;font-size:16px;
-  appearance:none;box-shadow:none
+ display:block;flex:1;width:0;min-width:0;
+ padding:12px 0;border:0;outline:none;
+ background:transparent;color:#fff;
+ font-size:16px;appearance:none;border-radius:0;
 }
-#query::placeholder{color:#7189a6;opacity:1;font-size:13px}
-.icon-btn{
-  flex-shrink:0;width:40px;height:42px;border:0;
-  border-radius:10px;background:transparent;color:#b9e8ff;font-size:19px
+#query:focus{font-size:16px}
+#query::placeholder{font-size:11px;color:#91a8c4;opacity:1}
+#query::-webkit-search-cancel-button{-webkit-appearance:none}
+.iconBtn{
+ flex-shrink:0;width:36px;height:42px;border:0;
+ border-radius:10px;background:transparent;color:#b9efff;font-size:19px;
 }
 .submit{
-  flex-shrink:0;width:43px;height:42px;border:1px solid #55dfff66;
-  border-radius:11px;background:linear-gradient(135deg,#087cff,#00bce8);
-  color:#fff;font-size:21px;box-shadow:0 0 15px #168bff66
+ flex-shrink:0;width:43px;height:43px;border:1px solid #4bdcff80;
+ border-radius:13px;background:linear-gradient(140deg,#12baff,#006dff);
+ color:white;font-size:22px;box-shadow:0 0 18px #078bff90;
 }
-.hint{text-align:center;color:#617a99;font-size:11px;margin:10px 0 0}
-#status{text-align:center;color:var(--cyan);font-size:12px;min-height:18px;margin-top:8px}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin:29px 2px 13px}
-.section-head h2{font-size:14px;margin:0;font-weight:750}
-.section-head span{font-size:10px;color:#6885a4;letter-spacing:.7px}
-.shortcuts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.hint{text-align:center;color:#718ba9;font-size:9px;margin:13px 0 0}
+#status{min-height:17px;margin-top:8px;text-align:center;color:#00eaff;font-size:12px}
+.sectionHead{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:5px;margin:28px 2px 14px;
+}
+.sectionHead strong{font-size:14px}
+.sectionHead small{font-size:9px;color:#8ba8c7;letter-spacing:.5px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
 .shortcut{
-  min-width:0;min-height:98px;text-decoration:none;color:#d9eaff;
-  border:1px solid #1b3850;border-radius:15px;
-  background:linear-gradient(145deg,#0b1828,#060b13);
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  gap:9px;font-size:11px;transition:border-color .2s,transform .2s
+ min-width:0;min-height:98px;padding:10px 2px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:9px;text-decoration:none;color:#e9f5ff;font-size:11px;
+ border:1px solid #174669;border-radius:19px;
+ background:linear-gradient(145deg,#0c2038,#030a16);
+ box-shadow:inset 0 0 18px #008bff10;
+ transition:transform .2s,border-color .2s;
 }
-.shortcut:hover{border-color:#00eaff88}
-.shortcut:active{transform:scale(.96)}
-.shortcut-icon{
-  display:grid;place-items:center;width:41px;height:41px;
-  border:1px solid #168bff66;border-radius:12px;
-  color:var(--cyan);background:#0c2740;font-size:20px;
-  box-shadow:inset 0 0 12px #168bff16,0 0 10px #168bff10
+.shortcut:active{transform:scale(.95);border-color:#00eaff}
+.tileIcon{
+ width:44px;height:44px;border-radius:15px;
+ display:grid;place-items:center;font-size:23px;
+ border:1px solid #168bff88;background:#092b4a;
+ box-shadow:0 0 15px #078bff25,inset 0 0 12px #078bff20;
 }
-.card{
-  margin-top:25px;padding:16px;border:1px solid #15364c;border-radius:16px;
-  background:linear-gradient(110deg,#09192a,#080d18)
+.banner{
+ display:flex;align-items:center;gap:10px;margin-top:25px;padding:15px 11px;
+ border:1px solid #087fba;border-radius:21px;
+ background:linear-gradient(110deg,#092c51,#030a18);
 }
-.card-title{font-size:13px;font-weight:800;color:#eaf8ff}
-.card p{font-size:12px;line-height:1.7;color:#91a9c4;margin:7px 0 0}
-footer{text-align:center;padding:27px 0 8px;font-size:11px;color:#536b87}
+.bannerIcon{font-size:27px;color:#00eaff}
+.bannerText{flex:1;min-width:0}
+.bannerText strong{font-size:12px}
+.bannerText p{font-size:9px;color:#9bb9da;margin:5px 0 0}
+.install{
+ padding:10px 8px;border-radius:13px;border:1px solid #078bff;
+ background:#052343;color:#a7efff;font-size:10px;white-space:nowrap;
+}
+footer{text-align:center;padding:27px 0 10px;font-size:10px;color:#617e9e}
 @media(max-width:380px){
-  .app{width:calc(100% - 20px)}
-  .brand{font-size:14px;letter-spacing:1px;gap:9px}
-  .logo{width:42px;height:42px}
-  .shortcuts{gap:7px}
-  .shortcut{min-height:87px;font-size:10px}
-  .shortcut-icon{width:37px;height:37px}
+ .app{width:calc(100% - 20px)}
+ .brandName{font-size:16px;letter-spacing:1px}
+ .brandSub{letter-spacing:1px}
+ .pill{font-size:8px;padding:7px}
+ .hero{padding-top:40px}
+ .heroLogo{width:110px;height:110px;font-size:45px}
+ .grid{gap:6px}
+ .shortcut{min-height:87px;font-size:10px}
+ .tileIcon{width:39px;height:39px;font-size:21px}
+ .searchBox{padding:9px}
+ .tab{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important}
+ .space,.brandLogo,.heroLogo{animation:none}
 }
 </style>
 </head>
-
 <body>
+<div class="space"></div>
+<div class="earth"></div>
+
 <main class="app">
-  <header>
-    <div class="brand"><div class="logo">AN</div><span>AJIT NOVA</span></div>
-    <button class="install" id="installBtn" type="button">＋ Install</button>
-  </header>
+<header>
+ <div class="brandLogo">AN</div>
+ <div>
+  <div class="brandName">AJIT <span>NOVA</span></div>
+  <div class="brandSub">EXPLORE BEYOND</div>
+ </div>
+ <div class="pill">⚡ FAST · SECURE · PWA</div>
+</header>
 
-  <section class="hero">
-    <div class="logo">AN</div>
-    <h1>AJIT NOVA</h1>
-    <p class="tagline">THE FUTURE OF SEARCH</p>
-    <div class="line"></div>
-  </section>
+<section class="hero">
+ <div class="heroLogo">AN</div>
+ <h1>AJIT <span>NOVA</span></h1>
+ <p class="tagline">THE FUTURE OF SEARCH</p>
+ <div class="line"></div>
+</section>
 
-  <section class="search-box">
-    <div class="tabs" role="group" aria-label="Search category">
-      <button class="tab active" data-mode="web" type="button">🌐 Web</button>
-      <button class="tab" data-mode="images" type="button">▧ Images</button>
-      <button class="tab" data-mode="videos" type="button">▷ Videos</button>
-      <button class="tab" data-mode="news" type="button">▤ News</button>
-    </div>
-    <form id="searchForm">
-      <div class="search-row">
-        <span class="search-symbol">⌕</span>
-        <input id="query" type="search" placeholder="AJIT NOVA PER KUCHH BHI KHOJE" autocomplete="off" enterkeyhint="search" aria-label="Search">
-        <button class="icon-btn" id="micBtn" type="button" aria-label="Voice search">🎙️</button>
-        <button class="submit" type="submit" aria-label="Search">➜</button>
-      </div>
-    </form>
-    <p class="hint">SEARCH ANYTHING · EXPLORE EVERYTHING</p>
-    <div id="status" role="status" aria-live="polite"></div>
-  </section>
+<section class="searchBox">
+ <div class="tabs">
+  <button class="tab active" data-mode="web" type="button">🌐 Web</button>
+  <button class="tab" data-mode="images" type="button">▧ Images</button>
+  <button class="tab" data-mode="videos" type="button">▷ Videos</button>
+  <button class="tab" data-mode="news" type="button">▤ News</button>
+ </div>
+ <form id="searchForm">
+  <div class="searchRow">
+   <span class="searchIcon">⌕</span>
+   <input id="query" type="search" placeholder="AJIT NOVA PER KUCHH BHI KHOJE" autocomplete="off" enterkeyhint="search" aria-label="Search">
+   <button class="iconBtn" id="micBtn" type="button" aria-label="Voice search">🎙️</button>
+   <button class="submit" type="submit" aria-label="Search">➜</button>
+  </div>
+ </form>
+ <p class="hint">SEARCH ANYTHING · EXPLORE EVERYTHING</p>
+ <div id="status" role="status" aria-live="polite"></div>
+</section>
 
-  <section>
-    <div class="section-head"><h2>✦ QUICK ACCESS</h2><span>EXPLORE THE WORLD</span></div>
-    <div class="shortcuts">
-      <a class="shortcut" href="https://www.google.com/"><span class="shortcut-icon">🌐</span>Google</a>
-      <a class="shortcut" href="https://www.google.com/news"><span class="shortcut-icon">📰</span>News</a>
-      <a class="shortcut" href="https://maps.google.com/"><span class="shortcut-icon">📍</span>Maps</a>
-      <a class="shortcut" href="https://www.google.com/search?q=weather"><span class="shortcut-icon">🌤️</span>Weather</a>
-      <a class="shortcut" href="https://www.google.com/search?q=science"><span class="shortcut-icon">🔬</span>Science</a>
-      <a class="shortcut" href="https://www.google.com/search?q=technology"><span class="shortcut-icon">💻</span>Tech</a>
-      <a class="shortcut" href="https://www.youtube.com/"><span class="shortcut-icon">▶️</span>YouTube</a>
-      <a class="shortcut" href="https://www.wikipedia.org/"><span class="shortcut-icon">📚</span>Wikipedia</a>
-    </div>
-  </section>
+<section>
+ <div class="sectionHead"><strong>✦ QUICK ACCESS</strong><small>EXPLORE THE WORLD</small></div>
+ <div class="grid">
+  <a class="shortcut" href="https://www.google.com/"><span class="tileIcon">🌐</span>Google</a>
+  <a class="shortcut" href="https://news.google.com/"><span class="tileIcon">📰</span>News</a>
+  <a class="shortcut" href="https://maps.google.com/"><span class="tileIcon">📍</span>Maps</a>
+  <a class="shortcut" href="https://www.google.com/search?q=weather"><span class="tileIcon">🌤️</span>Weather</a>
+  <a class="shortcut" href="https://www.google.com/search?q=science"><span class="tileIcon">🔬</span>Science</a>
+  <a class="shortcut" href="https://www.google.com/search?q=technology"><span class="tileIcon">💻</span>Tech</a>
+  <a class="shortcut" href="https://www.youtube.com/"><span class="tileIcon">▶️</span>YouTube</a>
+  <a class="shortcut" href="https://www.wikipedia.org/"><span class="tileIcon">📚</span>Wikipedia</a>
+ </div>
+</section>
 
-  <section class="card">
-    <div class="card-title">⚡ YOUR WORLD. YOUR SEARCH.</div>
-    <p>Discover websites, images, videos and the latest news with AJIT NOVA's futuristic search experience.</p>
-  </section>
-
-  <footer>AJIT NOVA © 2026 · POWERED BY CURIOSITY</footer>
+<section class="banner">
+ <div class="bannerIcon">✦</div>
+ <div class="bannerText">
+  <strong>दुनिया तुम्हारी उंगलियों में</strong>
+  <p>AJIT NOVA · EXPLORE BEYOND</p>
+ </div>
+ <button class="install" id="installBtn" type="button">↓ Install PWA</button>
+</section>
+<footer>AJIT NOVA © 2026 · POWERED BY CURIOSITY</footer>
 </main>
 
 <script>
-(() => {
-  const input = document.getElementById("query");
-  const form = document.getElementById("searchForm");
-  const status = document.getElementById("status");
-  const mic = document.getElementById("micBtn");
-  const installBtn = document.getElementById("installBtn");
-  const tabs = document.querySelectorAll(".tab");
+(()=>{
+ const input=document.getElementById("query");
+ const form=document.getElementById("searchForm");
+ const status=document.getElementById("status");
+ const mic=document.getElementById("micBtn");
+ const installBtn=document.getElementById("installBtn");
+ const tabs=document.querySelectorAll(".tab");
+ let mode="web",installPrompt=null;
 
-  let mode = "web";
-  let installPrompt = null;
+ const urls={
+  web:"https://www.google.com/search?q=",
+  images:"https://www.google.com/search?tbm=isch&q=",
+  videos:"https://www.google.com/search?tbm=vid&q=",
+  news:"https://www.google.com/search?tbm=nws&q="
+ };
 
-  const urls = {
-    web: "https://www.google.com/search?q=",
-    images: "https://www.google.com/search?tbm=isch&q=",
-    videos: "https://www.google.com/search?tbm=vid&q=",
-    news: "https://www.google.com/search?tbm=nws&q="
-  };
+ tabs.forEach(tab=>tab.addEventListener("click",()=>{
+  mode=tab.dataset.mode;
+  tabs.forEach(t=>t.classList.toggle("active",t===tab));
+  input.placeholder=mode==="web"?"AJIT NOVA PER KUCHH BHI KHOJE":
+   mode==="images"?"Images खोजें...":
+   mode==="videos"?"Videos खोजें...":"News खोजें...";
+ }));
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      mode = tab.dataset.mode;
-      tabs.forEach(t => t.classList.toggle("active", t === tab));
-      input.placeholder = mode === "web" ? "AJIT NOVA PER KUCHH BHI KHOJE" :
-        mode === "images" ? "Images खोजें..." :
-        mode === "videos" ? "Videos खोजें..." : "News खोजें...";
-    });
-  });
+ form.addEventListener("submit",event=>{
+  event.preventDefault();
+  const q=input.value.trim();
+  if(!q){status.textContent="पहले कुछ लिखकर खोजो।";input.focus({preventScroll:true});return}
+  location.href=urls[mode]+encodeURIComponent(q);
+ });
 
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-    const q = input.value.trim();
-    if (!q) {
-      status.textContent = "भाई, पहले कुछ लिखकर खोजो।";
-      input.focus({preventScroll:true});
-      return;
-    }
-    location.href = urls[mode] + encodeURIComponent(q);
-  });
+ const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ mic.addEventListener("click",()=>{
+  if(!Recognition){status.textContent="इस ब्राउज़र में Voice Search उपलब्ध नहीं है।";return}
+  const rec=new Recognition();
+  rec.lang="hi-IN";rec.interimResults=false;
+  mic.textContent="🔴";status.textContent="बोलिए, सुन रहा हूँ...";
+  rec.onresult=e=>{input.value=e.results[0][0].transcript;form.requestSubmit()};
+  rec.onerror=()=>status.textContent="Voice Search नहीं चला। फिर कोशिश करें।";
+  rec.onend=()=>mic.textContent="🎙️";
+  try{rec.start()}catch(e){status.textContent="माइक दोबारा दबाकर कोशिश करें।";mic.textContent="🎙️"}
+ });
 
-  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (Recognition) {
-    mic.addEventListener("click", () => {
-      const rec = new Recognition();
-      rec.lang = "hi-IN";
-      rec.interimResults = false;
-      mic.textContent = "🔴";
-      status.textContent = "बोलिए, सुन रहा हूँ...";
-      rec.onresult = e => {
-        input.value = e.results[0][0].transcript;
-        form.requestSubmit();
-      };
-      rec.onerror = () => {
-        status.textContent = "Voice Search नहीं चला। फिर कोशिश करें।";
-      };
-      rec.onend = () => { mic.textContent = "🎙️"; };
-      try { rec.start(); }
-      catch (_) {
-        status.textContent = "माइक दोबारा दबाकर कोशिश करें।";
-        mic.textContent = "🎙️";
-      }
-    });
-  } else {
-    mic.addEventListener("click", () => {
-      status.textContent = "इस ब्राउज़र में Voice Search उपलब्ध नहीं है।";
-    });
-  }
+ window.addEventListener("beforeinstallprompt",event=>{
+  event.preventDefault();installPrompt=event;
+ });
+ installBtn.addEventListener("click",async()=>{
+  if(!installPrompt){status.textContent="Chrome मेन्यू में Add to Home Screen चुनें।";return}
+  installPrompt.prompt();
+  await installPrompt.userChoice;
+  installPrompt=null;
+ });
 
-  window.addEventListener("beforeinstallprompt", event => {
-    event.preventDefault();
-    installPrompt = event;
-    installBtn.style.display = "inline-block";
-  });
-
-  installBtn.addEventListener("click", async () => {
-    if (!installPrompt) {
-      status.textContent = "ब्राउज़र मेन्यू में Add to Home Screen देखें।";
-      return;
-    }
-    installPrompt.prompt();
-    await installPrompt.userChoice;
-    installPrompt = null;
-    installBtn.style.display = "none";
-  });
-
-  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js").catch(() => {});
-    });
-  }
+ if("serviceWorker" in navigator&&location.protocol.startsWith("http")){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+ }
 })();
 </script>
 </body>
