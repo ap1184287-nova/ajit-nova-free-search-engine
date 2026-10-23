@@ -349,4 +349,28 @@ footer{text-align:center;padding:27px 0 10px;font-size:10px;color:#617e9e}
 })();
 </script>
 </body>
+
+<!-- AJIT NOVA OFFLINE GAME -->
+<section id="gamePanel" class="gamePanel">
+  <h2>🎮 AJIT NOVA Runner</h2>
+  <p>बाधाओं से बचने के लिए कूदो!</p>
+
+  <canvas
+    id="runnerCanvas"
+    width="600"
+    height="220">
+  </canvas>
+
+  <p>स्कोर: <span id="runnerScore">0</span></p>
+  <p id="runnerMessage">PLAY दबाकर गेम शुरू करो!</p>
+
+  <button onclick="startRunnerGame()">
+    PLAY / RESTART
+  </button>
+
+  <button onclick="closeOfflineGame()">
+    CLOSE
+  </button>
+</section>
+
 </html>
