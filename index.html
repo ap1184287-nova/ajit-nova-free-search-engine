@@ -1,1015 +1,308 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#03050b">
-<meta name="description" content="AJIT NOVA - Your World, One Search">
-<meta name="color-scheme" content="dark">
-<link rel="manifest" href="./manifest.json">
-<link rel="icon" href="./icon-192.png">
-<title>AJIT NOVA | SIGNATURE ULTRA</title>
+<!DOCTYPE html>  <html lang="hi">    <head>    
+<meta charset="UTF-8">    
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">    
+<meta name="theme-color" content="#020617">    
+<meta name="description" content="AJIT NOVA - Explore Beyond">    
+<link rel="manifest" href="./manifest.json">    
+<link rel="icon" href="./icon-192.png">    
+<title>AJIT NOVA | Explore Beyond</title>  <style>    
+:root{--blue:#078bff;--cyan:#00eaff}    
+*{box-sizing:border-box}    
+html{min-height:100%;background:#020617}    
+body{    
+ margin:0;min-height:100vh;color:#f4f9ff;    
+ font-family:system-ui,Arial,sans-serif;overflow-x:hidden;    
+ background:    
+ radial-gradient(ellipse at 50% 45%,#063d70 0%,transparent 45%),    
+ radial-gradient(ellipse at 0% 90%,#06305b 0%,transparent 40%),    
+ linear-gradient(#020617,#01030a);    
+}    
+button,input{font:inherit}    
+button,a{-webkit-tap-highlight-color:transparent}    
+button{cursor:pointer}    
+.space{    
+ position:fixed;inset:0;z-index:0;pointer-events:none;    
+ background-image:    
+ radial-gradient(2px 2px at 15% 20%,#fff 98%,transparent),    
+ radial-gradient(1px 1px at 75% 12%,#00eaff 98%,transparent),    
+ radial-gradient(1px 1px at 40% 55%,#fff 98%,transparent),    
+ radial-gradient(2px 2px at 90% 70%,#168bff 98%,transparent),    
+ radial-gradient(1px 1px at 25% 85%,#fff 98%,transparent);    
+ background-size:170px 190px;    
+ animation:stars 25s linear infinite;    
+}    
+@keyframes stars{to{background-position:170px 190px}}    
+.earth{    
+ position:fixed;pointer-events:none;z-index:0;    
+ width:160vw;height:65vw;max-height:430px;    
+ top:56%;left:50%;transform:translateX(-50%);    
+ border-radius:50% 50% 0 0;    
+ border-top:2px solid #00eaff;    
+ background:radial-gradient(ellipse at 50% 0%,#078bff35,transparent 65%);    
+ box-shadow:0 -8px 35px #078bff70,0 -25px 75px #078bff20;    
+}    
+.app{    
+ position:relative;z-index:1;    
+ width:calc(100% - 26px);max-width:700px;    
+ margin:auto;padding:18px 0 35px;    
+}    
+header{display:flex;align-items:center;gap:11px}    
+.brandLogo,.heroLogo{    
+ display:grid;place-items:center;position:relative;    
+ flex-shrink:0;color:#fff;font-weight:1000;    
+ border:2px solid #00eaff;    
+ background:linear-gradient(145deg,#14547c,#020817 55%,#0874a5);    
+ transform-style:preserve-3d;    
+ animation:spin3d 5s linear infinite,glow 2s ease-in-out infinite alternate;    
+}    
+.brandLogo{    
+ width:48px;height:48px;border-radius:15px;font-size:20px;    
+}    
+@keyframes spin3d{    
+ 0%{transform:perspective(500px) rotateY(0deg)}    
+ 25%{transform:perspective(500px) rotateY(90deg) rotateX(8deg)}    
+ 50%{transform:perspective(500px) rotateY(180deg)}    
+ 75%{transform:perspective(500px) rotateY(270deg) rotateX(-8deg)}    
+ 100%{transform:perspective(500px) rotateY(360deg)}    
+}    
+@keyframes glow{    
+ from{box-shadow:0 0 10px #078bff70,inset 0 0 10px #00eaff20}    
+ to{box-shadow:0 0 28px #078bff,0 0 45px #00eaff40,inset 0 0 20px #00eaff50}    
+}    
+.brandName{font-size:19px;font-weight:950;letter-spacing:2px}    
+.brandName span,h1 span{color:#00eaff}    
+.brandSub{font-size:9px;color:#a5c9eb;letter-spacing:2px;margin-top:3px}    
+.pill{    
+ margin-left:auto;padding:8px 9px;border:1px solid #087fba;    
+ border-radius:30px;background:#06172a;color:#a9edff;    
+ font-size:9px;white-space:nowrap;    
+}    
+.hero{text-align:center;padding:48px 0 30px}    
+.heroLogo{    
+ width:125px;height:125px;margin:0 auto 30px;    
+ border-radius:32px;font-size:51px;    
+}    
+.heroLogo:before,.heroLogo:after{    
+ content:"";position:absolute;inset:-12px;    
+ border:1px solid #078bff;border-radius:30%;transform:rotate(35deg);    
+}    
+.heroLogo:after{inset:-20px;border-color:#00eaff66;transform:rotate(70deg)}    
+h1{    
+ margin:0;font-size:clamp(35px,9vw,54px);    
+ font-weight:1000;letter-spacing:2px;line-height:1.1;    
+ text-shadow:0 0 14px #078bff,0 0 35px #078bff70;    
+}    
+.tagline{font-size:11px;letter-spacing:3px;color:#b2cce9;margin:15px 0 0}    
+.line{    
+ width:140px;height:2px;margin:23px auto;    
+ background:linear-gradient(90deg,transparent,#00eaff,#078bff,transparent);    
+ box-shadow:0 0 15px #00eaff;    
+}    
+.searchBox{    
+ padding:12px;border:1px solid #087fba;border-radius:24px;    
+ background:linear-gradient(145deg,#0a1c31f5,#020817f5);    
+ box-shadow:0 0 28px #006eff30,inset 0 0 20px #00aaff10;    
+}    
+.tabs{display:flex;gap:5px;margin-bottom:13px}    
+.tab{    
+ flex:1;min-width:0;padding:11px 2px;border:1px solid transparent;    
+ border-radius:12px;background:transparent;color:#91abc8;font-size:12px;    
+}    
+.tab.active{    
+ color:#00eaff;border-color:#00eaff80;    
+ background:#00eaff13;box-shadow:0 0 13px #00eaff20;    
+}    
+.searchRow{    
+ display:flex;align-items:center;gap:3px;min-width:0;    
+ padding:5px;border:1px solid #168bffb0;    
+ border-radius:17px;background:#020914;    
+ box-shadow:0 0 18px #078bff30;    
+}    
+.searchIcon{font-size:25px;color:#00eaff;padding:0 5px}    
+#query{    
+ display:block;flex:1;width:0;min-width:0;    
+ padding:12px 0;border:0;outline:none;    
+ background:transparent;color:#fff;    
+ font-size:16px;appearance:none;border-radius:0;    
+}    
+#query:focus{font-size:16px}    
+#query::placeholder{font-size:11px;color:#91a8c4;opacity:1}    
+#query::-webkit-search-cancel-button{-webkit-appearance:none}    
+.iconBtn{    
+ flex-shrink:0;width:36px;height:42px;border:0;    
+ border-radius:10px;background:transparent;color:#b9efff;font-size:19px;    
+}    
+.submit{    
+ flex-shrink:0;width:43px;height:43px;border:1px solid #4bdcff80;    
+ border-radius:13px;background:linear-gradient(140deg,#12baff,#006dff);    
+ color:white;font-size:22px;box-shadow:0 0 18px #078bff90;    
+}    
+.hint{text-align:center;color:#718ba9;font-size:9px;margin:13px 0 0}    
+#status{min-height:17px;margin-top:8px;text-align:center;color:#00eaff;font-size:12px}    
+.sectionHead{    
+ display:flex;align-items:center;justify-content:space-between;    
+ gap:5px;margin:28px 2px 14px;    
+}    
+.sectionHead strong{font-size:14px}    
+.sectionHead small{font-size:9px;color:#8ba8c7;letter-spacing:.5px}    
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}    
+.shortcut{    
+ min-width:0;min-height:98px;padding:10px 2px;    
+ display:flex;flex-direction:column;align-items:center;justify-content:center;    
+ gap:9px;text-decoration:none;color:#e9f5ff;font-size:11px;    
+ border:1px solid #174669;border-radius:19px;    
+ background:linear-gradient(145deg,#0c2038,#030a16);    
+ box-shadow:inset 0 0 18px #008bff10;    
+ transition:transform .2s,border-color .2s;    
+}    
+.shortcut:active{transform:scale(.95);border-color:#00eaff}    
+.tileIcon{    
+ width:44px;height:44px;border-radius:15px;    
+ display:grid;place-items:center;font-size:23px;    
+ border:1px solid #168bff88;background:#092b4a;    
+ box-shadow:0 0 15px #078bff25,inset 0 0 12px #078bff20;    
+}    
+.banner{    
+ display:flex;align-items:center;gap:10px;margin-top:25px;padding:15px 11px;    
+ border:1px solid #087fba;border-radius:21px;    
+ background:linear-gradient(110deg,#092c51,#030a18);    
+}    
+.bannerIcon{font-size:27px;color:#00eaff}    
+.bannerText{flex:1;min-width:0}    
+.bannerText strong{font-size:12px}    
+.bannerText p{font-size:9px;color:#9bb9da;margin:5px 0 0}    
+.install{    
+ padding:10px 8px;border-radius:13px;border:1px solid #078bff;    
+ background:#052343;color:#a7efff;font-size:10px;white-space:nowrap;    
+}    
+footer{text-align:center;padding:27px 0 10px;font-size:10px;color:#617e9e}    
+@media(max-width:380px){    
+ .app{width:calc(100% - 20px)}    
+ .brandName{font-size:16px;letter-spacing:1px}    
+ .brandSub{letter-spacing:1px}    
+ .pill{font-size:8px;padding:7px}    
+ .hero{padding-top:40px}    
+ .heroLogo{width:110px;height:110px;font-size:45px}    
+ .grid{gap:6px}    
+ .shortcut{min-height:87px;font-size:10px}    
+ .tileIcon{width:39px;height:39px;font-size:21px}    
+ .searchBox{padding:9px}    
+ .tab{font-size:10px}    
+}    
+@media(prefers-reduced-motion:reduce){    
+ .space,.brandLogo,.heroLogo{animation:none}    
+}    
+</style>  </head>    
+<body>    
+<div class="space"></div>    
+<div class="earth"></div>  <main class="app">    
+<header>    
+ <div class="brandLogo">AN</div>    
+ <div>    
+  <div class="brandName">AJIT <span>NOVA</span></div>    
+  <div class="brandSub">EXPLORE BEYOND</div>    
+ </div>    
+ <div class="pill">⚡ FAST · SECURE · PWA</div>    
+</header>  <section class="hero">    
+ <div class="heroLogo">AN</div>    
+ <h1>AJIT <span>NOVA</span></h1>    
+ <p class="tagline">THE FUTURE OF SEARCH</p>    
+ <div class="line"></div>    
+</section>    
+<section class="searchBox">    
+ <div class="tabs">    
+  <button class="tab active" data-mode="web" type="button">🌐 Web</button>    
+  <button class="tab" data-mode="images" type="button">▧ Images</button>    
+  <button class="tab" data-mode="videos" type="button">▷ Videos</button>    
+  <button class="tab" data-mode="news" type="button">▤ News</button>    
+ </div>    
+ <form id="searchForm">    
+  <div class="searchRow">    
+   <span class="searchIcon">⌕</span>    
+   <input id="query" type="search" placeholder="AJIT NOVA PER KUCHH BHI KHOJE" autocomplete="off" enterkeyhint="search" aria-label="Search">    
+   <button class="iconBtn" id="micBtn" type="button" aria-label="Voice search">🎙️</button>    
+   <button class="submit" type="submit" aria-label="Search">➜</button>    
+  </div>    
+ </form>    
+ <p class="hint">SEARCH ANYTHING · EXPLORE EVERYTHING</p>    
+ <div id="status" role="status" aria-live="polite"></div>    
+</section>  <section>    
+ <div class="sectionHead"><strong>✦ QUICK ACCESS</strong><small>EXPLORE THE WORLD</small></div>    
+ <div class="grid">    
+  <a class="shortcut" href="https://www.google.com/"><span class="tileIcon">🌐</span>Google</a>    
+  <a class="shortcut" href="https://news.google.com/"><span class="tileIcon">📰</span>News</a>    
+  <a class="shortcut" href="https://maps.google.com/"><span class="tileIcon">📍</span>Maps</a>    
+  <a class="shortcut" href="https://www.google.com/search?q=weather"><span class="tileIcon">🌤️</span>Weather</a>    
+  <a class="shortcut" href="https://www.google.com/search?q=science"><span class="tileIcon">🔬</span>Science</a>    
+  <a class="shortcut" href="https://www.google.com/search?q=technology"><span class="tileIcon">💻</span>Tech</a>    
+  <a class="shortcut" href="https://www.youtube.com/"><span class="tileIcon">▶️</span>YouTube</a>    
+  <a class="shortcut" href="https://www.wikipedia.org/"><span class="tileIcon">📚</span>Wikipedia</a>    
+ </div>    
+</section>  <section class="banner">    
+ <div class="bannerIcon">✦</div>    
+ <div class="bannerText">    
+  <strong>दुनिया तुम्हारी उंगलियों में</strong>    
+  <p>AJIT NOVA · EXPLORE BEYOND</p>    
+ </div>    
+ <button class="install" id="installBtn" type="button">↓ Install PWA</button>    
+</section>    
+<footer>AJIT NOVA © 2026 · POWERED BY CURIOSITY</footer>    
+</main>  <script>    
+(()=>{    
+ const input=document.getElementById("query");    
+ const form=document.getElementById("searchForm");    
+ const status=document.getElementById("status");    
+ const mic=document.getElementById("micBtn");    
+ const installBtn=document.getElementById("installBtn");    
+ const tabs=document.querySelectorAll(".tab");    
+ let mode="web",installPrompt=null;    const urls={
+web:"https://www.google.com/search?q=",
+images:"https://www.google.com/search?tbm=isch&q=",
+videos:"https://www.google.com/search?tbm=vid&q=",
+news:"https://www.google.com/search?tbm=nws&q="
+};
 
-<style>
-/* =========================================
-   01. ROOT AND RESET
-========================================= */
-:root{
-  --bg:#03050b;
-  --bg2:#07101d;
-  --panel:rgba(10,18,32,.88);
-  --panel2:rgba(14,29,48,.92);
-  --blue:#168bff;
-  --cyan:#00eaff;
-  --purple:#9b5cff;
-  --pink:#ff4fc8;
-  --text:#f4f8ff;
-  --muted:#91a7c4;
-  --border:rgba(22,139,255,.36);
-  --shadow:rgba(0,0,0,.38);
-  --radius:22px;
-}
-*{
-  box-sizing:border-box;
-}
-html{
-  min-height:100%;
-  background:var(--bg);
-  scroll-behavior:smooth;
-}
-body{
-  margin:0;
-  min-height:100vh;
-  min-height:100dvh;
-  color:var(--text);
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:
-    radial-gradient(ellipse at 50% 28%,#092748 0%,transparent 46%),
-    radial-gradient(ellipse at 0% 100%,#07162c 0%,transparent 43%),
-    var(--bg);
-  overflow-x:hidden;
-  transition:background .3s,color .3s;
-}
-button,input,select{
-  font:inherit;
-}
-button,a{
-  -webkit-tap-highlight-color:transparent;
-}
-button{
-  cursor:pointer;
-}
-a{
-  color:inherit;
-}
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible{
-  outline:2px solid var(--cyan);
-  outline-offset:3px;
-}
-img,svg{
-  display:block;
-}
-.hidden{
-  display:none!important;
-}
-body.light-mode{
-  --bg:#eaf3ff;
-  --bg2:#dceaff;
-  --panel:rgba(255,255,255,.93);
-  --panel2:rgba(237,245,255,.97);
-  --text:#11223b;
-  --muted:#526a89;
-  --border:rgba(0,106,220,.3);
-  --shadow:rgba(25,65,110,.12);
-  background:linear-gradient(145deg,#edf5ff,#dbeaff);
-}
-body.light-mode .space,
-body.light-mode .orbitGlow{
-  opacity:.14;
-}
-body.light-mode .searchRow,
-body.light-mode .input,
-body.light-mode input{
-  color:#11223b;
-}
-body.light-mode .searchRow{
-  background:#f6faff;
-}
-body.light-mode .shortcut,
-body.light-mode .settingCard,
-body.light-mode .historyItem{
-  background:linear-gradient(145deg,#fff,#eaf3ff);
-  color:#11223b;
-}
-body.light-mode .heroLogo,
-body.light-mode .brandLogo{
-  color:white;
-}
+tabs.forEach(tab=>tab.addEventListener("click",()=>{
+mode=tab.dataset.mode;
+tabs.forEach(t=>t.classList.toggle("active",t===tab));
+input.placeholder=mode==="web"?"AJIT NOVA PER KUCHH BHI KHOJE":
+mode==="images"?"Images खोजें...":
+mode==="videos"?"Videos खोजें...":"News खोजें...";
+}));
 
-/* =========================================
-   02. SPACE BACKGROUND
-========================================= */
-.space{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  opacity:.85;
-  background-image:
-    radial-gradient(1px 1px at 12% 20%,#fff 98%,transparent),
-    radial-gradient(2px 2px at 72% 32%,#168bff 98%,transparent),
-    radial-gradient(1px 1px at 35% 72%,#fff 98%,transparent),
-    radial-gradient(1px 1px at 90% 80%,#00eaff 98%,transparent),
-    radial-gradient(2px 2px at 48% 12%,#fff 98%,transparent),
-    radial-gradient(1px 1px at 22% 61%,#00eaff 98%,transparent);
-  background-size:190px 210px;
-  animation:starsMove 38s linear infinite;
-}
-@keyframes starsMove{
-  to{
-    background-position:190px 210px;
-  }
-}
-.orbitGlow{
-  position:fixed;
-  pointer-events:none;
-  z-index:0;
-  width:150vw;
-  height:65vw;
-  max-height:410px;
-  left:50%;
-  top:62%;
-  transform:translateX(-50%);
-  border-radius:50% 50% 0 0;
-  border-top:1px solid var(--blue);
-  box-shadow:0 -8px 40px #168bff30,0 -25px 90px #00eaff10;
-  background:radial-gradient(ellipse at 50% 0%,#168bff16,transparent 70%);
-}
-#wallpaperLayer{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  opacity:.23;
-}
-#wallpaperLayer:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(#03050b80,#03050bd9);
-}
+form.addEventListener("submit",event=>{
+event.preventDefault();
+const q=input.value.trim();
+if(!q){status.textContent="पहले कुछ लिखकर खोजो।";input.focus({preventScroll:true});return}
+location.href=urls[mode]+encodeURIComponent(q);
+});
 
-/* =========================================
-   03. MAIN LAYOUT
-========================================= */
-.app{
-  position:relative;
-  z-index:1;
-  width:calc(100% - 28px);
-  max-width:700px;
-  margin:auto;
-  padding:17px 0 32px;
-}
-header{
-  display:flex;
-  align-items:center;
-  gap:11px;
-}
-.brandLogo{
-  width:46px;
-  height:46px;
-  flex-shrink:0;
-  position:relative;
-  display:grid;
-  place-items:center;
-  border:1px solid var(--cyan);
-  border-radius:15px;
-  background:linear-gradient(145deg,#153d60,#030711 60%,#07507a);
-  box-shadow:0 0 17px #168bff45,inset 0 0 12px #00eaff17;
-  font-size:19px;
-  font-weight:1000;
-  letter-spacing:-2px;
-  animation:brandGlow 3s ease-in-out infinite alternate;
-}
-.brandLogo:after{
-  content:"";
-  position:absolute;
-  inset:-5px;
-  border:1px solid #168bff65;
-  border-radius:18px;
-  transform:rotate(12deg);
-}
-@keyframes brandGlow{
-  to{
-    box-shadow:0 0 27px #168bff90,0 0 40px #00eaff20;
-  }
-}
-.brandName{
-  font-size:18px;
-  font-weight:950;
-  letter-spacing:2px;
-}
-.brandName span{
-  color:var(--cyan);
-}
-.brandSub{
-  margin-top:3px;
-  color:#91b8dc;
-  font-size:9px;
-  letter-spacing:2px;
-}
-.pill{
-  margin-left:auto;
-  padding:8px 10px;
-  border:1px solid var(--border);
-  border-radius:30px;
-  background:#081322;
-  color:#a9eaff;
-  font-size:9px;
-  white-space:nowrap;
-}
+const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+mic.addEventListener("click",()=>{
+if(!Recognition){status.textContent="इस ब्राउज़र में Voice Search उपलब्ध नहीं है।";return}
+const rec=new Recognition();
+rec.lang="hi-IN";rec.interimResults=false;
+mic.textContent="🔴";status.textContent="बोलिए, सुन रहा हूँ...";
+rec.onresult=e=>{input.value=e.results[0][0].transcript;form.requestSubmit()};
+rec.onerror=()=>status.textContent="Voice Search नहीं चला। फिर कोशिश करें।";
+rec.onend=()=>mic.textContent="🎙️";
+try{rec.start()}catch(e){status.textContent="माइक दोबारा दबाकर कोशिश करें।";mic.textContent="🎙️"}
+});
 
-/* =========================================
-   04. HERO AND ANIMATION
-========================================= */
-.hero{
-  text-align:center;
-  padding:43px 0 26px;
-}
-.heroLogo{
-  position:relative;
-  isolation:isolate;
-  width:122px;
-  height:122px;
-  margin:0 auto 26px;
-  display:grid;
-  place-items:center;
-  border:1px solid var(--blue);
-  border-radius:32px;
-  background:radial-gradient(circle at 30% 20%,#164f7b,#07101e 55%,#02050b);
-  box-shadow:0 0 28px #168bff50,inset 0 0 28px #00eaff0d;
-  font-size:48px;
-  font-weight:1000;
-  letter-spacing:-5px;
-  text-shadow:0 0 18px #00baff;
-  animation:heroFloat 4s ease-in-out infinite;
-}
-.heroLogo:before,
-.heroLogo:after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  inset:-12px;
-  border:1px solid var(--blue);
-  border-radius:35%;
-  transform:rotate(35deg);
-  box-shadow:0 0 17px #168bff30;
-}
-.heroLogo:after{
-  inset:-21px;
-  border-color:#00eaff70;
-  border-radius:42%;
-  animation:orbitSpin 12s linear infinite;
-}
-@keyframes heroFloat{
-  0%,100%{
-    transform:translateY(0) rotateX(0);
-  }
-  50%{
-    transform:translateY(-6px) rotateX(4deg);
-  }
-}
-@keyframes orbitSpin{
-  to{
-    transform:rotate(325deg);
-  }
-}
-h1{
-  margin:0;
-  font-size:clamp(35px,9vw,53px);
-  font-weight:1000;
-  letter-spacing:2px;
-  line-height:1.1;
-}
-h1 span{
-  color:var(--cyan);
-  text-shadow:0 0 18px #168bff70;
-}
-.tagline{
-  margin:13px 0 0;
-  color:#9bb5d3;
-  font-size:10px;
-  letter-spacing:3px;
-}
-.line{
-  width:125px;
-  height:2px;
-  margin:21px auto;
-  background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);
-  box-shadow:0 0 13px #00eaff70;
-}
+window.addEventListener("beforeinstallprompt",event=>{
+event.preventDefault();installPrompt=event;
+});
+installBtn.addEventListener("click",async()=>{
+if(!installPrompt){status.textContent="Chrome मेन्यू में Add to Home Screen चुनें।";return}
+installPrompt.prompt();
+await installPrompt.userChoice;
+installPrompt=null;
+});
 
-/* =========================================
-   05. PANELS
-========================================= */
-.panel{
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  background:var(--panel);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  box-shadow:0 15px 40px var(--shadow),inset 0 0 20px #168bff08;
+if("serviceWorker" in navigator&&location.protocol.startsWith("http")){
+window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 }
-.searchBox{
-  padding:12px;
-}
+})();
+</script>  </body>
 
-/* =========================================
-   06. SEARCH TABS
-========================================= */
-.tabs{
-  display:flex;
-  gap:5px;
-  margin-bottom:12px;
-}
-.tab{
-  flex:1;
-  min-width:0;
-  padding:11px 2px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:5px;
-  border:1px solid transparent;
-  border-radius:12px;
-  background:transparent;
-  color:var(--muted);
-  font-size:12px;
-  transition:all .2s;
-}
-.tab svg{
-  width:17px;
-  height:17px;
-  flex-shrink:0;
-}
-.tab.active{
-  color:var(--cyan);
-  border-color:#00eaff65;
-  background:#00eaff10;
-  box-shadow:0 0 15px #00eaff0d;
-}
-
-/* =========================================
-   07. SEARCH INPUT AND BUTTONS
-========================================= */
-.searchRow{
-  display:flex;
-  align-items:center;
-  gap:3px;
-  min-width:0;
-  padding:5px;
-  border:1px solid #168bff95;
-  border-radius:17px;
-  background:#030813;
-  box-shadow:0 0 20px #168bff20;
-}
-.searchMark{
-  display:grid;
-  place-items:center;
-  width:33px;
-  flex-shrink:0;
-  color:var(--cyan);
-}
-.searchMark svg{
-  width:23px;
-  height:23px;
-}
-#query{
-  flex:1;
-  width:0;
-  min-width:0;
-  padding:12px 0;
-  border:0;
-  outline:none;
-  background:transparent;
-  color:#fff;
-  font-size:16px;
-  appearance:none;
-  border-radius:0;
-}
-#query:focus{
-  font-size:16px;
-}
-#query::placeholder{
-  font-size:11px;
-  color:#8da5c2;
-  opacity:1;
-}
-#query::-webkit-search-cancel-button{
-  -webkit-appearance:none;
-}
-.iconBtn{
-  flex-shrink:0;
-  width:42px;
-  height:43px;
-  display:grid;
-  place-items:center;
-  border:1px solid transparent;
-  border-radius:12px;
-  background:transparent;
-  color:#c8f4ff;
-}
-.iconBtn svg{
-  width:22px;
-  height:22px;
-}
-.iconBtn:active{
-  background:#168bff20;
-}
-.micListening{
-  color:#ff667e!important;
-  background:#ff315214!important;
-  border-color:#ff667e60!important;
-  animation:micPulse .8s infinite alternate;
-}
-@keyframes micPulse{
-  to{
-    box-shadow:0 0 18px #ff315270;
-  }
-}
-.submit{
-  flex-shrink:0;
-  width:43px;
-  height:43px;
-  display:grid;
-  place-items:center;
-  border:1px solid #62dcff;
-  border-radius:13px;
-  background:linear-gradient(140deg,#16baff,#0666ff);
-  color:white;
-  box-shadow:0 0 17px #168bff70;
-}
-.submit svg{
-  width:22px;
-  height:22px;
-}
-.hint{
-  text-align:center;
-  color:#7189a8;
-  font-size:9px;
-  letter-spacing:1px;
-  margin:13px 0 0;
-}
-#status{
-  min-height:17px;
-  margin-top:8px;
-  text-align:center;
-  color:var(--cyan);
-  font-size:12px;
-}
-
-/* =========================================
-   08. SECTION HEADINGS
-========================================= */
-.sectionHead{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:6px;
-  margin:27px 2px 13px;
-}
-.sectionHead strong{
-  font-size:13px;
-  letter-spacing:.5px;
-}
-.sectionHead small{
-  font-size:9px;
-  color:var(--muted);
-  letter-spacing:.5px;
-}
-.sectionHead button{
-  border:0;
-  background:transparent;
-  color:var(--cyan);
-  font-size:11px;
-}
-
-/* =========================================
-   09. QUICK ACCESS
-========================================= */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:9px;
-}
-.shortcut{
-  position:relative;
-  min-width:0;
-  min-height:96px;
-  padding:10px 3px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  text-decoration:none;
-  color:var(--text);
-  font-size:11px;
-  border:1px solid #20364f;
-  border-radius:18px;
-  background:linear-gradient(145deg,#101b2cdd,#050a13f5);
-  box-shadow:inset 0 0 17px #168bff08;
-  transition:transform .2s,border-color .2s;
-  overflow:hidden;
-}
-.shortcut:active{
-  transform:scale(.96);
-  border-color:var(--cyan);
-}
-.tileIcon{
-  width:43px;
-  height:43px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  border:1px solid #168bff45;
-  background:#08192c;
-  overflow:hidden;
-}
-.tileIcon img{
-  width:26px;
-  height:26px;
-  object-fit:contain;
-}
-.tileIcon svg{
-  width:25px;
-  height:25px;
-}
-.removeShortcut{
-  position:absolute;
-  top:3px;
-  right:3px;
-  width:20px;
-  height:20px;
-  border:0;
-  border-radius:50%;
-  color:#fff;
-  background:#ff385566;
-  font-size:12px;
-  line-height:1;
-}
-
-/* =========================================
-   10. BANNER AND FOOTER
-========================================= */
-.banner{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:24px;
-  padding:14px 11px;
-  border:1px solid var(--border);
-  border-radius:19px;
-  background:linear-gradient(110deg,#0a2038,#050914);
-}
-.bannerIcon{
-  font-size:25px;
-  color:var(--cyan);
-}
-.bannerText{
-  flex:1;
-  min-width:0;
-}
-.bannerText strong{
-  font-size:12px;
-}
-.bannerText p{
-  font-size:9px;
-  color:#92aeca;
-  margin:5px 0 0;
-}
-.install{
-  padding:10px 8px;
-  border-radius:12px;
-  border:1px solid var(--blue);
-  background:#071b32;
-  color:#a8eaff;
-  font-size:10px;
-  white-space:nowrap;
-}
-footer{
-  text-align:center;
-  padding:25px 0 8px;
-  font-size:10px;
-  color:#657e9c;
-  letter-spacing:.5px;
-}
-
-/* =========================================
-   11. EXTRA ACTION BUTTONS
-========================================= */
-.actionRow{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
-  margin-top:12px;
-}
-.actionBtn{
-  min-width:0;
-  padding:12px 5px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  border:1px solid var(--border);
-  border-radius:15px;
-  background:var(--panel);
-  color:var(--text);
-  font-size:10px;
-}
-.actionBtn svg{
-  width:21px;
-  height:21px;
-  color:var(--cyan);
-}
-
-/* =========================================
-   12. HISTORY PANEL
-========================================= */
-.historyPanel{
-  margin-top:17px;
-  padding:13px;
-}
-.historyHeader{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-}
-.historyHeader strong{
-  font-size:13px;
-}
-.smallBtn{
-  padding:8px 10px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:#071a2c;
-  color:#b8eaff;
-  font-size:10px;
-}
-.historyList{
-  display:grid;
-  gap:7px;
-  margin-top:12px;
-}
-.historyItem{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:10px;
-  border:1px solid #20364f;
-  border-radius:12px;
-  background:#07101d;
-}
-.historyQuery{
-  flex:1;
-  min-width:0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  border:0;
-  background:transparent;
-  text-align:left;
-  color:var(--text);
-  font-size:12px;
-}
-.historyTime{
-  color:var(--muted);
-  font-size:9px;
-}
-.emptyText{
-  padding:15px 5px;
-  text-align:center;
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* =========================================
-   13. SETTINGS PANEL
-========================================= */
-.settingsPanel{
-  margin-top:17px;
-  padding:14px;
-}
-.settingsTitle{
-  margin:0 0 12px;
-  font-size:14px;
-}
-.settingGrid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:9px;
-}
-.settingCard{
-  min-width:0;
-  padding:12px 10px;
-  border:1px solid #20364f;
-  border-radius:15px;
-  background:#07101d;
-}
-.settingCard strong{
-  display:block;
-  margin-bottom:9px;
-  font-size:11px;
-}
-.settingCard p{
-  margin:0 0 8px;
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.5;
-}
-.settingCard input[type="color"]{
-  width:100%;
-  height:34px;
-  padding:3px;
-  border:1px solid var(--border);
-  border-radius:9px;
-  background:#06101d;
-}
-.settingCard input[type="file"]{
-  width:100%;
-  max-width:100%;
-  color:var(--muted);
-  font-size:10px;
-}
-.settingCard select{
-  width:100%;
-  padding:9px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:#07101d;
-  color:#fff;
-  font-size:11px;
-}
-.settingButtons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:12px;
-}
-.settingButtons button{
-  flex:1;
-  min-width:100px;
-  padding:10px;
-  border:1px solid var(--border);
-  border-radius:11px;
-  background:#08192c;
-  color:#b8eaff;
-  font-size:11px;
-}
-
-/* =========================================
-   14. MODAL
-========================================= */
-.modalBackdrop{
-  position:fixed;
-  inset:0;
-  z-index:20;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  background:#000a;
-  backdrop-filter:blur(8px);
-}
-.modal{
-  width:100%;
-  max-width:410px;
-  max-height:85vh;
-  overflow:auto;
-  padding:18px;
-  border:1px solid var(--border);
-  border-radius:22px;
-  background:#07101d;
-  box-shadow:0 20px 70px #0009;
-}
-.modal h2{
-  margin:0 0 8px;
-  font-size:18px;
-}
-.modal p{
-  color:#9ab1cc;
-  font-size:11px;
-  line-height:1.6;
-}
-.modal label{
-  display:block;
-  margin:12px 0 6px;
-  color:#c5e7ff;
-  font-size:11px;
-}
-.modal input{
-  width:100%;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  outline:none;
-  background:#020813;
-  color:#fff;
-  font-size:14px;
-}
-.modalButtons{
-  display:flex;
-  gap:8px;
-  margin-top:15px;
-}
-.modalButtons button{
-  flex:1;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:#0b2037;
-  color:#fff;
-  font-size:12px;
-}
-.modalButtons .primary{
-  background:linear-gradient(135deg,#168bff,#0759c9);
-  border-color:#168bff;
-}
-
-/* =========================================
-   15. RESPONSIVE DESIGN
-========================================= */
-@media(min-width:600px){
-  .hero{
-    padding-top:55px;
-  }
-  .searchBox{
-    padding:16px;
-  }
-  .grid{
-    gap:12px;
-  }
-  .shortcut{
-    min-height:108px;
-  }
-}
-@media(max-width:380px){
-  .app{
-    width:calc(100% - 20px);
-  }
-  .brandName{
-    font-size:16px;
-    letter-spacing:1px;
-  }
-  .brandSub{
-    letter-spacing:1px;
-  }
-  .pill{
-    font-size:8px;
-    padding:7px;
-  }
-  .hero{
-    padding-top:38px;
-  }
-  .heroLogo{
-    width:108px;
-    height:108px;
-    font-size:43px;
-  }
-  .grid{
-    gap:6px;
-  }
-  .shortcut{
-    min-height:87px;
-    font-size:10px;
-  }
-  .tileIcon{
-    width:39px;
-    height:39px;
-  }
-  .searchBox{
-    padding:9px;
-  }
-  .tab{
-    font-size:10px;
-    gap:3px;
-  }
-  .tab svg{
-    width:15px;
-    height:15px;
-  }
-  .searchMark{
-    width:27px;
-  }
-  .iconBtn{
-    width:36px;
-  }
-  .submit{
-    width:39px;
-    height:41px;
-  }
-  .settingGrid{
-    grid-template-columns:1fr;
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{
-    animation:none!important;
-    transition:none!important;
-    scroll-behavior:auto!important;
-  }
-}
-</style>
-</head>
-
-<body>
-<div class="space"></div>
-<div class="orbitGlow"></div>
-<div id="wallpaperLayer"></div>
-
-<main class="app">
-
-<!-- =======================================
-     HEADER
-======================================= -->
-<header>
-  <div class="brandLogo">AN</div>
-  <div>
-    <div class="brandName">AJIT <span>NOVA</span></div>
-    <div class="brandSub">NOVA SIGNATURE ULTRA</div>
-  </div>
-  <div class="pill">✦ ULTRA EDITION</div>
-</header>
-
-<!-- =======================================
-     HERO
-======================================= -->
-<section class="hero">
-  <div class="heroLogo">AN</div>
-  <h1>AJIT <span>NOVA</span></h1>
-  <p class="tagline">YOUR WORLD. ONE SEARCH.</p>
-  <div class="line"></div>
-</section>
-
-<!-- =======================================
-     SEARCH ENGINE
-======================================= -->
-<section class="searchBox panel">
-  <div class="tabs">
-    <button class="tab active" data-mode="web" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/>
-      </svg>
-      Web
-    </button>
-
-    <button class="tab" data-mode="images" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <rect x="3" y="3" width="18" height="18" rx="4"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/>
-        <path d="m21 15-5-5L5 21"/>
-      </svg>
-      Images
-    </button>
-
-    <button class="tab" data-mode="videos" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <rect x="3" y="5" width="18" height="14" rx="4"/>
-        <path d="m10 9 5 3-5 3z"/>
-      </svg>
-      Videos
-    </button>
-
-    <button class="tab" data-mode="news" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/>
-      </svg>
-      News
-    </button>
-  </div>
-
-  <form id="searchForm">
-    <div class="searchRow">
-      <span class="searchMark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="10.8" cy="10.8" r="7"/>
-          <path d="m16 16 5 5"/>
-        </svg>
-      </span>
-
-      <input id="query" type="search"
-        placeholder="AJIT NOVA PER KUCHH BHI KHOJE"
-        autocomplete="off"
-        enterkeyhint="search"
-        aria-label="Search">
-
-      <button class="iconBtn" id="micBt
+</html> 
